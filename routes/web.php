@@ -59,8 +59,11 @@ Route::prefix('master')->name('master.')->middleware(['auth', 'auth.admin'])->gr
     Route::post('/bankaccount/update/{id}', 'BankAccountController@update')->name('bankaccount.update');
 
     //category
-    Route::get('/category', 'CategoryController@list')->name('category');
+    Route::get('/category', 'CategoryController@index')->name('category');
     Route::post('/category/store', 'CategoryController@store')->name('category.store');
+    Route::get('/category/edit/{id}', 'CategoryController@edit')->name('category.edit');
+    Route::post('/category/update/{id}', 'CategoryController@update')->name('category.update');
+    Route::get('/category/delete/{id}', 'CategoryController@destroy')->name('category.delete');
 
     //grade
     Route::get('/grade', 'GradeController@index')->name('grade');
@@ -117,4 +120,6 @@ Route::prefix('po')->name('po.')->group(function(){
 //Arrival Raw Material
 Route::prefix('rm')->name('rm.')->group(function(){
     Route::get('/', 'RMcontroller@index')->name('index');
+
+    Route::post('/store', 'RMcontroller@store')->name('store');
 });
