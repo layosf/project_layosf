@@ -71,6 +71,13 @@ Route::prefix('master')->name('master.')->middleware(['auth', 'auth.admin'])->gr
     Route::get('/grade/delete/{id}', 'GradeController@destroy')->name('grade.delete');
     Route::get('/grade/edit/{id}', 'GradeController@edit')->name('grade.edit');
     Route::post('/grade/update/{id}', 'GradeController@update')->name('grade.update');
+
+    //dimention
+    Route::get('/dimention', 'DimentionController@index')->name('dimention');
+    Route::post('/dimention/store', 'DimentionController@store')->name('dimention.store');
+    Route::get('/dimention/delete/{id}', 'DimentionController@destroy')->name('dimention.delete');
+    Route::get('/dimention/edit/{id}', 'DimentionController@edit')->name('dimention.edit');
+    Route::post('/dimention/update/{id}', 'DimentionController@update')->name('dimention.update');
 });
 
 //PO

@@ -306,6 +306,11 @@
                                     </a>
                                 </li>
                                 <li class="site-menu-item">
+                                    <a class="animsition-link" href="{{ route('master.dimention') }}">
+                                        <span class="site-menu-title"> Dimention </span>
+                                    </a>
+                                </li>
+                                <li class="site-menu-item">
                                     <a class="animsition-link" href="{{ route('master.bank') }}">
                                         <span class="site-menu-title"> Bank </span>
                                     </a>
