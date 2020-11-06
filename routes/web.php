@@ -74,7 +74,7 @@ Route::prefix('master')->name('master.')->middleware(['auth', 'auth.admin'])->gr
 });
 
 //PO
-Route::prefix('po')->name('po.')->group(function(){
+Route::prefix('po')->name('po.')->middleware(['auth'])->group(function(){
     Route::get('/', 'POcontroller@index')->name('index');
     Route::get('/orderdetail', 'POcontroller@index')->name('orderdetail');
     Route::get('/requirement', 'POcontroller@index')->name('orderrequirement');
@@ -118,8 +118,17 @@ Route::prefix('po')->name('po.')->group(function(){
 });
 
 //Arrival Raw Material
-Route::prefix('rm')->name('rm.')->group(function(){
+Route::prefix('rm')->name('rm.')->middleware(['auth'])->group(function(){
     Route::get('/', 'RMcontroller@index')->name('index');
+    Route::get('/list', 'RMcontroller@list')->name('list');
 
     Route::post('/store', 'RMcontroller@store')->name('store');
+    Route::get('/edit/{id}', 'RMcontroller@edit')->name('edit');
+    Route::post('/update/{id}', 'RMcontroller@update')->name('update');
+    Route::get('/delete/{id}', 'RMcontroller@delete')->name('delete');
+
+    Route::get('/sendapproval/{id}', 'RMcontroller@sendapproval');
+    Route::get('/approve/{id}', 'RMcontroller@approve');
+    Route::get('/reject/{id}', 'RMcontroller@reject');
+
 });

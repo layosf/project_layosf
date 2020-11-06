@@ -28,8 +28,11 @@
     <link rel="stylesheet" href="{{asset('global/vendor/intro-js/introjs.css')}}">
     <link rel="stylesheet" href="{{asset('global/vendor/slidepanel/slidePanel.css')}}">
     
+    <link rel="stylesheet" href="{{asset('examples/css/uikit/icon.css')}}">
+    
     
     <!-- Fonts -->
+    <link rel="stylesheet" href="{{asset('global/fonts/font-awesome/font-awesome.css')}}">
     <link rel="stylesheet" href="{{asset('global/fonts/weather-icons/weather-icons.css')}}">
     <link rel="stylesheet" href="{{asset('global/fonts/web-icons/web-icons.min.css')}}">
     <link rel="stylesheet" href="{{asset('global/fonts/brand-icons/brand-icons.min.css')}}">
@@ -202,7 +205,7 @@
                         <div class="dropdown-menu dropdown-menu-right dropdown-menu-media" role="menu">
                             <div class="dropdown-menu-header">
                                 <h5>
-                                    Hello, 
+                                    Hello, {{ Auth::user()->username }}
                                 </h5>
 
                             </div>
@@ -322,7 +325,7 @@
                             </a>
                         </li>
                         <li class="site-menu-item has-sub">
-                            <a class="animsition-link" href="{{ route('rm.index') }}">
+                            <a class="animsition-link" href="{{ route('rm.list') }}">
                                 <i class="site-menu-icon wb-library" aria-hidden="true"></i>
                                 <span class="site-menu-title">Arrival Raw Material</span>
                             </a>
