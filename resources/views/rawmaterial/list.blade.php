@@ -42,6 +42,7 @@
                                 
                                 <th>Invoice Size</th>
                                 <th>Phisic Size</th>
+                                <th>Item Product</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -96,6 +97,7 @@
                                     </td>
                                     <td>{{ implode(',', $rm->invDimention()->get()->pluck('thick')->toArray()) }} x {{ implode(',', $rm->invDimention()->get()->pluck('width')->toArray()) }} x {{ implode(',', $rm->invDimention()->get()->pluck('length')->toArray()) }}</td>
                                     <td>{{ implode(',', $rm->phisDimention()->get()->pluck('thick')->toArray()) }} x {{ implode(',', $rm->phisDimention()->get()->pluck('width')->toArray()) }} x {{ implode(',', $rm->phisDimention()->get()->pluck('length')->toArray()) }}</td>
+                                    <td> {{ implode(',', $rm->itemProduct()->get()->pluck('productcode')->toArray()) }}</td>
                                 </tr>
                             @endforeach
                         </tbody>

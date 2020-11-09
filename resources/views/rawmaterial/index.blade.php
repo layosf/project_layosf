@@ -175,7 +175,7 @@
 
                                 <th>Invoice Size</th>
                                 <th>Phisic Size</th>
-                                
+                                <th>Item Product</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -213,13 +213,10 @@
                                             <a class="approve" title="Approve" data-id="{{$rm->id}}"> <i class="icon fa-check"> </i> </a>
 
                                             <a class="reject" title="Reject" data-id="{{$rm->id}}"> <i class="icon fa-times"> </i> </a>
-                                        
-
                                         @elseif($rm->status == '2' || $rm->status == '3')
                                             <a href="{{ route('rm.edit', $rm->id) }}" class='float-center' title="Edit">    
                                                 <i class="icon wb-edit" aria-hidden="true"> </i>
                                             </a>
-                                            
                                             &nbsp
                                             <a class="delete_generals" title="Delete " data-id="{{ $rm->id }}">    
                                                 <i class="icon wb-trash" aria-hidden="true"> </i>
@@ -231,7 +228,7 @@
 
                                     <td>{{ implode(',', $rm->invDimention()->get()->pluck('thick')->toArray()) }} x {{ implode(',', $rm->invDimention()->get()->pluck('width')->toArray()) }} x {{ implode(',', $rm->invDimention()->get()->pluck('length')->toArray()) }}</td>
                                     <td>{{ implode(',', $rm->phisDimention()->get()->pluck('thick')->toArray()) }} x {{ implode(',', $rm->phisDimention()->get()->pluck('width')->toArray()) }} x {{ implode(',', $rm->phisDimention()->get()->pluck('length')->toArray()) }}</td>
-                                    
+                                    <td>{{ implode(',', $rm->itemProduct()->get()->pluck('productcode')->toArray()) }}</td>
                                 </tr>
                             @endforeach
                         </tbody>

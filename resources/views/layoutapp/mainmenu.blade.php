@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html class="no-js css-menubar" lang="en">
 <head>
@@ -9,7 +8,6 @@
     <meta name="author" content="">
     
     <title> @yield('title','Dashboard')</title>
-    
     
     <!-- Stylesheets -->
     <link rel="stylesheet" href="{{asset('global/css/bootstrap.min.css')}}">
@@ -36,7 +34,7 @@
     <link rel="stylesheet" href="{{asset('global/fonts/weather-icons/weather-icons.css')}}">
     <link rel="stylesheet" href="{{asset('global/fonts/web-icons/web-icons.min.css')}}">
     <link rel="stylesheet" href="{{asset('global/fonts/brand-icons/brand-icons.min.css')}}">
-    <!-- <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Roboto:300,400,500,300italic'> -->
+  
     
     <script src="{{asset('global/vendor/breakpoints/breakpoints.js')}}"></script>
     <script>
@@ -184,8 +182,6 @@
                         <a class="nav-link" data-toggle="dropdown" href="javascript:void(0)" data-animation="scale-up" aria-expanded="false" role="button" title="Language">
                             <i class="icon wb-flag"> </i>
                         </a>
-                       
-                        
                         <div class="dropdown-menu" role="menu">
                             <a class="dropdown-item" id="language_id" name="language_id" value="en" onclick="getlanguage('en')" role="menuitem">
                                 <span class="flag-icon flag-icon-gb"></span> English
@@ -197,8 +193,7 @@
                     </li>
                     <li class="nav-item dropdown">
                         
-                        <a class="nav-link" data-toggle="dropdown" href="javascript:void(0)" title="User"
-                            aria-expanded="false" data-animation="scale-up" role="button">
+                        <a class="nav-link" data-toggle="dropdown" href="javascript:void(0)" title="User" aria-expanded="false" data-animation="scale-up" role="button">
                             <i class="icon wb-user" aria-hidden="true"></i>
                             <span class="badge badge-pill badge-danger up">1</span>
                         </a>
@@ -207,17 +202,14 @@
                                 <h5>
                                     Hello, {{ Auth::user()->username }}
                                 </h5>
-
                             </div>
                 
                             <div class="list-group">
                                 <div data-role="container">
-                                   
                                 </div>
                             </div>
                             <div class="dropdown-menu-footer">
                                 <a class="dropdown-menu-footer-btn" href="javascript:void(0)" role="button">
-                                    
                                 </a>
                                 <a class="dropdown-item" href="{{ route('logout') }}" role="menuitem" onclick="event.preventDefault(); document.getElementById('logout-frm').submit();">
                                     <i class="icon md-power"> Logout </i>
@@ -311,6 +303,11 @@
                                     </a>
                                 </li>
                                 <li class="site-menu-item">
+                                    <a class="animsition-link" href="{{ route('master.itemproduct') }}">
+                                        <span class="site-menu-title"> Item Product </span>
+                                    </a>
+                                </li>
+                                <li class="site-menu-item">
                                     <a class="animsition-link" href="{{ route('master.bank') }}">
                                         <span class="site-menu-title"> Bank </span>
                                     </a>
@@ -322,17 +319,17 @@
                                 </li>
                             </ul>
                         </li>
-                        <li class="site-menu-category">TRANSACTION</li>
+                        <li class="site-menu-category"> TRANSACTION </li>
                         <li class="site-menu-item has-sub">
                             <a class="animsition-link" href="{{ route('po.index') }}">
                                 <i class="site-menu-icon wb-shopping-cart" aria-hidden="true"></i>
-                                <span class="site-menu-title">Purchase Order</span>
+                                <span class="site-menu-title"> Purchase Order</span>
                             </a>
                         </li>
                         <li class="site-menu-item has-sub">
                             <a class="animsition-link" href="{{ route('rm.list') }}">
                                 <i class="site-menu-icon wb-library" aria-hidden="true"></i>
-                                <span class="site-menu-title">Arrival Raw Material</span>
+                                <span class="site-menu-title"> Arrival Raw Material</span>
                             </a>
                         </li>
                     </ul>
@@ -359,12 +356,9 @@
 </body>
 </html>
 <script>
-
     function getlanguage(id){
         console.log(id);
-        
         $.ajax({ 
-                
                 url: "{{ url('getlanguage') }}" + '/' + id,
                 data: { id : id},
                 type: 'get',
@@ -380,6 +374,4 @@
                 }
         });
     }
-
-    
 </script>

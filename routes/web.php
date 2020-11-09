@@ -78,6 +78,9 @@ Route::prefix('master')->name('master.')->middleware(['auth', 'auth.admin'])->gr
     Route::get('/dimention/delete/{id}', 'DimentionController@destroy')->name('dimention.delete');
     Route::get('/dimention/edit/{id}', 'DimentionController@edit')->name('dimention.edit');
     Route::post('/dimention/update/{id}', 'DimentionController@update')->name('dimention.update');
+
+    //item product
+    Route::get('/itemproduct', 'ItemproductController@index')->name('itemproduct');
 });
 
 //PO
