@@ -81,8 +81,9 @@
     
     <!-- Page -->
     <script src="{{asset('js/Site.js')}}"></script>
+    
     <script src="{{asset('global/js/Plugin/asscrollable.js')}}"></script>
-    <!-- <script src="{{asset('global/js/Plugin/slidepanel.js')}}"></script> -->
+    <script src="{{asset('global/js/Plugin/slidepanel.js')}}"></script> 
     <script src="{{asset('global/js/Plugin/switchery.js')}}"></script>
     <script src="{{asset('global/js/Plugin/matchheight.js')}}"></script>
     <!-- <script src="{{asset('global/js/Plugin/jvectormap.js')}}"></script> -->
@@ -126,6 +127,7 @@
     <script src="{{ asset('global/vendor/footable/footable.min.js') }}"></script>
     <link rel="stylesheet" href="{{ asset('global/vendor/footable/footable.core.css') }}">
     <link rel="stylesheet" href="{{ asset('examples/css/tables/footable.css') }}">
+    <link rel="stylesheet" href="{{ asset('examples/css/uikit/modals.css') }}">
 </head>
 <body class="animsition dashboard">
     <nav class="site-navbar navbar navbar-default navbar-fixed-top navbar-mega" role="navigation">
@@ -178,6 +180,7 @@
                             <a class="dropdown-item" href="javascript:void(0)" role="menuitem"><i class="icon wb-settings" aria-hidden="true"></i> Settings</a>
                         </div>
                     </li>
+                    <!---------- MULTI LANGUAGE -->
                     <li class="nav-item dropdown">
                         <a class="nav-link" data-toggle="dropdown" href="javascript:void(0)" data-animation="scale-up" aria-expanded="false" role="button" title="Language">
                             <i class="icon wb-flag"> </i>
@@ -191,37 +194,29 @@
                             </a>
                         </div>
                     </li>
+                    <!---------- MULTI LANGUAGE -->
+
                     <li class="nav-item dropdown">
                         
                         <a class="nav-link" data-toggle="dropdown" href="javascript:void(0)" title="User" aria-expanded="false" data-animation="scale-up" role="button">
                             <i class="icon wb-user" aria-hidden="true"></i>
                             <span class="badge badge-pill badge-danger up">1</span>
                         </a>
-                        <div class="dropdown-menu dropdown-menu-right dropdown-menu-media" role="menu">
+                        <div class="dropdown-menu dropdown-menu-right dropdown-menu-media" role="menu" style="width:80px">
                             <div class="dropdown-menu-header">
-                                <h5>
-                                    Hello, {{ Auth::user()->username }}
-                                </h5>
-                            </div>
-                
-                            <div class="list-group">
-                                <div data-role="container">
-                                </div>
-                            </div>
-                            <div class="dropdown-menu-footer">
-                                <a class="dropdown-menu-footer-btn" href="javascript:void(0)" role="button">
-                                </a>
-                                <a class="dropdown-item" href="{{ route('logout') }}" role="menuitem" onclick="event.preventDefault(); document.getElementById('logout-frm').submit();">
-                                    <i class="icon md-power"> Logout </i>
+                                <h6> Hello, {{ Auth::user()->username }} </h6>
+                                <hr>
+                               
+                                <a href="{{ route('logout') }}"  onclick="event.preventDefault(); document.getElementById('logout-frm').submit();">
+                                    <i class="icon fa-power-off"> Logout  </i>
                                 </a>
                                 <form id="logout-frm" action="{{ route('logout') }}" method="POST" style="display: none;">
                                     @csrf
                                 </form>
+                               
                             </div>
                         </div>
                     </li>
-                    
-                    
                 </ul>
                 <!-- End Navbar Toolbar Right -->
             </div>
@@ -355,6 +350,17 @@
     </div>
 </body>
 </html>
+
+<script>
+    (function(document, window, $){
+    'use strict';
+
+    var Site = window.Site;
+    $(document).ready(function(){
+        Site.run();
+    });
+    })(document, window, jQuery);
+</script>
 <script>
     function getlanguage(id){
         console.log(id);

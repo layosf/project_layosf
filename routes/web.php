@@ -140,5 +140,6 @@ Route::prefix('rm')->name('rm.')->middleware(['auth'])->group(function(){
     Route::get('/sendapproval/{id}', 'RMcontroller@sendapproval');
     Route::get('/approve/{id}', 'RMcontroller@approve');
     Route::get('/reject/{id}', 'RMcontroller@reject');
-
+    Route::post('/reasonreject/{id}', 'RMcontroller@reasonreject')->name('reasonreject');
+    Route::get('/get_reason/{id}', 'RMcontroller@get_reason');
 });

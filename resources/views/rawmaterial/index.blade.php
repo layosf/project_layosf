@@ -1,6 +1,10 @@
 @extends('layoutapp.mainmenu')
 @section('title','Raw Material')
-
+<style>
+    label{
+        font-size : 5px;
+    }
+</style>
 <body class="animsition">
 <div class="page">
     <div class="page-header">
@@ -14,7 +18,7 @@
     </div>
     <div class="page-content container-fluid">
         <div class="panel">
-            <div class="panel-body container-fluid">
+            <div class="panel-body container-fluid" >
                 <form action="{{ route('rm.store') }}" method="post" class="form-horizontal" id="exampleConstraintsFormTypes" autocomplete="off">
                 @csrf
                     <div class="row row-lg">
@@ -156,7 +160,7 @@
             </header>
             <div class="panel-body">
                 <div class="table-responsive">
-                    <table style="font-size:12px" class="table table-hover dataTable table-striped w-full" data-plugin="dataTable" width="100%">
+                    <table style="font-size:12px" id="list_rm" class="table table-hover dataTable table-striped w-full" data-plugin="dataTable" width="100%">
                         <thead>
                             <tr>
                                 <th>Arrival</th>
@@ -172,10 +176,11 @@
                                 <th>Approval to</th>
                                 <th>Status</th>
                                 <th>Action</th>
-
+                                
                                 <th>Invoice Size</th>
                                 <th>Phisic Size</th>
                                 <th>Item Product</th>
+                                <th>Reason Reject</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -203,24 +208,51 @@
                                         @else
                                             <span class="badge badge-warning">Send Approval</span>
                                             &nbsp
-                                            <a class="sendforapprove" title="Send for Approve?" data-id="{{ $rm->id }}">    
+                                            <a class="sendforapprove" data-placement="top" data-toggle="tooltip" data-original-title="Click. Send for Approval" data-id="{{ $rm->id }}">    
                                                 <i class="icon fa-send-o" aria-hidden="true"> </i>
                                             </a>
                                         @endif
                                     </td>
+
                                     <td align="center">
                                         @if($rm->approval_to == Auth::user()->id)
-                                            <a class="approve" title="Approve" data-id="{{$rm->id}}"> <i class="icon fa-check"> </i> </a>
+                                            <a class="approve" title="Approve"  data-id="{{$rm->id}}"> <i class="icon fa-check"> </i> </a>
 
-                                            <a class="reject" title="Reject" data-id="{{$rm->id}}"> <i class="icon fa-times"> </i> </a>
+                                            <a class="reasonreject" title="Reject" data-target="#fieldreason" data-toggle="modal" data-id="{{ $rm->id }}"> <i class="icon fa-times"> </i> </a>
+
+                                            <div id="fieldreason" class="modal fade" aria-hidden="true" aria-labelledby="fieldreason" role="dialog" tabindex="-1">
+                                                <div class="modal-dialog modal-simple modal-center">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                <span aria-hidden="true">×</span>
+                                                            </button>
+                                                            <h4 class="modal-title">Reason Reject</h4>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <input type="hidden" id="rm_id"  class="form-control" disabled>
+
+                                                            <textarea id="reason_reject" name="reason_reject" required class="form-control">  </textarea>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-sm btn-default" data-dismiss="modal">Close</button>
+
+                                                            <a class="savefieldreason" title="Save" onclick=savefieldreason()> <button type="submit" class="btn btn-sm btn-primary"> Save </button> </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
                                         @elseif($rm->status == '2' || $rm->status == '3')
-                                            <a href="{{ route('rm.edit', $rm->id) }}" class='float-center' title="Edit">    
+                                            <a href="{{ route('rm.edit', $rm->id) }}" class='float-center' data-placement="top" data-toggle="tooltip" data-original-title="Edit">    
                                                 <i class="icon wb-edit" aria-hidden="true"> </i>
                                             </a>
+                                            
                                             &nbsp
-                                            <a class="delete_generals" title="Delete " data-id="{{ $rm->id }}">    
+                                            <a class="delete_generals" data-placement="top" data-toggle="tooltip" data-original-title="Delete" data-id="{{ $rm->id }}">    
                                                 <i class="icon wb-trash" aria-hidden="true"> </i>
                                             </a>
+
                                         @else
 
                                         @endif
@@ -228,7 +260,8 @@
 
                                     <td>{{ implode(',', $rm->invDimention()->get()->pluck('thick')->toArray()) }} x {{ implode(',', $rm->invDimention()->get()->pluck('width')->toArray()) }} x {{ implode(',', $rm->invDimention()->get()->pluck('length')->toArray()) }}</td>
                                     <td>{{ implode(',', $rm->phisDimention()->get()->pluck('thick')->toArray()) }} x {{ implode(',', $rm->phisDimention()->get()->pluck('width')->toArray()) }} x {{ implode(',', $rm->phisDimention()->get()->pluck('length')->toArray()) }}</td>
-                                    <td>{{ implode(',', $rm->itemProduct()->get()->pluck('productcode')->toArray()) }}</td>
+                                    <td> {{ implode(',', $rm->itemProduct()->get()->pluck('productcode')->toArray()) }}</td>
+                                    <td> {{ $rm->reason_reject }}</td>
                                 </tr>
                             @endforeach
                         </tbody>
@@ -265,6 +298,63 @@
         });
     
     });
+
+    $('.reasonreject').on('click', function(event){
+        event.preventDefault();
+        var id = $(this).data('id');
+
+        $.ajax({
+            url: "/rm/get_reason/"+id,
+            method:"get",
+            dataType: "json",
+            success:function(data){
+                $('#rm_id').val(data[0]);
+                $('#reason_reject').val(data[1]);
+                // document.getElementById('fieldreason').style.display = 'block';
+            }
+        });
+
+    });
+
+    function savefieldreason(){
+        var id = $('#rm_id').val();
+        // window.location = "/rm/reasonreject/"+id;
+
+        let reason_reject = $("#reason_reject").val();
+
+        $.ajax({
+            url: "/rm/reasonreject/"+id,
+            method:"POST",
+            data:{
+                reason_reject:reason_reject,
+                _token: '{{csrf_token()}}'
+            },
+            dataType: "json",
+            success:function(data){
+                console.log(data);
+
+                if(data.success){
+                    $('#fieldreason').modal('hide');
+                    
+                    swal({
+                        title: "Data has been reject",
+                        icon: "success",
+                        buttons: true,
+                    })
+                    .then((ok) => {
+                        if (ok) {
+                            window.location = "/rm/list";
+                        } else {
+
+                        }
+                    });
+                }
+                else{
+                    swal('Error.');
+                }
+            },
+        });
+    }
 
     $('.approve').on('click', function(event){
         event.preventDefault();
