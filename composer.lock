@@ -292,6 +292,7 @@
         },
         {
             "name": "fideloper/proxy",
+<<<<<<< HEAD
             "version": "4.4.0",
             "source": {
                 "type": "git",
@@ -310,6 +311,26 @@
             },
             "require-dev": {
                 "illuminate/http": "^5.0|^6.0|^7.0|^8.0",
+=======
+            "version": "4.4.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/fideloper/TrustedProxy.git",
+                "reference": "c073b2bd04d1c90e04dc1b787662b558dd65ade0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/fideloper/TrustedProxy/zipball/c073b2bd04d1c90e04dc1b787662b558dd65ade0",
+                "reference": "c073b2bd04d1c90e04dc1b787662b558dd65ade0",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/contracts": "^5.0|^6.0|^7.0|^8.0|^9.0",
+                "php": ">=5.4.0"
+            },
+            "require-dev": {
+                "illuminate/http": "^5.0|^6.0|^7.0|^8.0|^9.0",
+>>>>>>> 9b093b8a53b49b0594bb62dc323cf9e5042d23d2
                 "mockery/mockery": "^1.0",
                 "phpunit/phpunit": "^6.0"
             },
@@ -342,7 +363,11 @@
                 "proxy",
                 "trusted proxy"
             ],
+<<<<<<< HEAD
             "time": "2020-06-23T01:36:47+00:00"
+=======
+            "time": "2020-10-22T13:48:01+00:00"
+>>>>>>> 9b093b8a53b49b0594bb62dc323cf9e5042d23d2
         },
         {
             "name": "guzzlehttp/guzzle",
@@ -548,6 +573,7 @@
         },
         {
             "name": "laravel/framework",
+<<<<<<< HEAD
             "version": "v6.18.43",
             "source": {
                 "type": "git",
@@ -558,20 +584,43 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/laravel/framework/zipball/7a6043b9049a93a6388d6ab6ac50dad28600d227",
                 "reference": "7a6043b9049a93a6388d6ab6ac50dad28600d227",
+=======
+            "version": "v6.19.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/laravel/framework.git",
+                "reference": "7eb0b25daf58ec9374c59bd700949b3ea78d0276"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/7eb0b25daf58ec9374c59bd700949b3ea78d0276",
+                "reference": "7eb0b25daf58ec9374c59bd700949b3ea78d0276",
+>>>>>>> 9b093b8a53b49b0594bb62dc323cf9e5042d23d2
                 "shasum": ""
             },
             "require": {
                 "doctrine/inflector": "^1.4|^2.0",
+<<<<<<< HEAD
                 "dragonmantank/cron-expression": "^2.0",
+=======
+                "dragonmantank/cron-expression": "^2.3.1",
+>>>>>>> 9b093b8a53b49b0594bb62dc323cf9e5042d23d2
                 "egulias/email-validator": "^2.1.10",
                 "ext-json": "*",
                 "ext-mbstring": "*",
                 "ext-openssl": "*",
                 "league/commonmark": "^1.3",
+<<<<<<< HEAD
                 "league/flysystem": "^1.0.34",
                 "monolog/monolog": "^1.12|^2.0",
                 "nesbot/carbon": "^2.0",
                 "opis/closure": "^3.1",
+=======
+                "league/flysystem": "^1.1",
+                "monolog/monolog": "^1.12|^2.0",
+                "nesbot/carbon": "^2.31",
+                "opis/closure": "^3.6",
+>>>>>>> 9b093b8a53b49b0594bb62dc323cf9e5042d23d2
                 "php": "^7.2",
                 "psr/container": "^1.0",
                 "psr/simple-cache": "^1.0",
@@ -625,6 +674,7 @@
             "require-dev": {
                 "aws/aws-sdk-php": "^3.0",
                 "doctrine/dbal": "^2.6",
+<<<<<<< HEAD
                 "filp/whoops": "^2.4",
                 "guzzlehttp/guzzle": "^6.3|^7.0",
                 "league/flysystem-cached-adapter": "^1.0",
@@ -633,6 +683,16 @@
                 "orchestra/testbench-core": "^4.0",
                 "pda/pheanstalk": "^4.0",
                 "phpunit/phpunit": "^7.5.15|^8.4|^9.0",
+=======
+                "filp/whoops": "^2.8",
+                "guzzlehttp/guzzle": "^6.3.1|^7.0.1",
+                "league/flysystem-cached-adapter": "^1.0",
+                "mockery/mockery": "~1.3.3|^1.4.2",
+                "moontoast/math": "^1.1",
+                "orchestra/testbench-core": "^4.0",
+                "pda/pheanstalk": "^4.0",
+                "phpunit/phpunit": "^7.5.15|^8.4|^9.3.3",
+>>>>>>> 9b093b8a53b49b0594bb62dc323cf9e5042d23d2
                 "predis/predis": "^1.1.1",
                 "symfony/cache": "^4.3.4"
             },
@@ -645,9 +705,15 @@
                 "ext-pcntl": "Required to use all features of the queue worker.",
                 "ext-posix": "Required to use all features of the queue worker.",
                 "ext-redis": "Required to use the Redis cache and queue drivers (^4.0|^5.0).",
+<<<<<<< HEAD
                 "filp/whoops": "Required for friendly error pages in development (^2.4).",
                 "fzaninotto/faker": "Required to use the eloquent factory builder (^1.9.1).",
                 "guzzlehttp/guzzle": "Required to use the Mailgun mail driver and the ping methods on schedules (^6.0|^7.0).",
+=======
+                "filp/whoops": "Required for friendly error pages in development (^2.8).",
+                "fzaninotto/faker": "Required to use the eloquent factory builder (^1.9.1).",
+                "guzzlehttp/guzzle": "Required to use the Mailgun mail driver and the ping methods on schedules (^6.3.1|^7.0.1).",
+>>>>>>> 9b093b8a53b49b0594bb62dc323cf9e5042d23d2
                 "laravel/tinker": "Required to use the tinker console command (^2.0).",
                 "league/flysystem-aws-s3-v3": "Required to use the Flysystem S3 driver (^1.0).",
                 "league/flysystem-cached-adapter": "Required to use the Flysystem cache (^1.0).",
@@ -693,7 +759,11 @@
                 "framework",
                 "laravel"
             ],
+<<<<<<< HEAD
             "time": "2020-10-13T14:20:24+00:00"
+=======
+            "time": "2020-10-20T18:43:17+00:00"
+>>>>>>> 9b093b8a53b49b0594bb62dc323cf9e5042d23d2
         },
         {
             "name": "laravel/tinker",
@@ -761,6 +831,7 @@
         },
         {
             "name": "league/commonmark",
+<<<<<<< HEAD
             "version": "1.5.5",
             "source": {
                 "type": "git",
@@ -771,6 +842,18 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/thephpleague/commonmark/zipball/45832dfed6007b984c0d40addfac48d403dc6432",
                 "reference": "45832dfed6007b984c0d40addfac48d403dc6432",
+=======
+            "version": "1.5.6",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/thephpleague/commonmark.git",
+                "reference": "a56e91e0fa1f6d0049153a9c34f63488f6b7ce61"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/thephpleague/commonmark/zipball/a56e91e0fa1f6d0049153a9c34f63488f6b7ce61",
+                "reference": "a56e91e0fa1f6d0049153a9c34f63488f6b7ce61",
+>>>>>>> 9b093b8a53b49b0594bb62dc323cf9e5042d23d2
                 "shasum": ""
             },
             "require": {
@@ -826,7 +909,11 @@
                 "md",
                 "parser"
             ],
+<<<<<<< HEAD
             "time": "2020-09-13T14:44:46+00:00"
+=======
+            "time": "2020-10-17T21:33:03+00:00"
+>>>>>>> 9b093b8a53b49b0594bb62dc323cf9e5042d23d2
         },
         {
             "name": "league/flysystem",
@@ -915,6 +1002,7 @@
         },
         {
             "name": "league/mime-type-detection",
+<<<<<<< HEAD
             "version": "1.5.0",
             "source": {
                 "type": "git",
@@ -925,6 +1013,18 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/thephpleague/mime-type-detection/zipball/ea2fbfc988bade315acd5967e6d02274086d0f28",
                 "reference": "ea2fbfc988bade315acd5967e6d02274086d0f28",
+=======
+            "version": "1.5.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/thephpleague/mime-type-detection.git",
+                "reference": "353f66d7555d8a90781f6f5e7091932f9a4250aa"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/thephpleague/mime-type-detection/zipball/353f66d7555d8a90781f6f5e7091932f9a4250aa",
+                "reference": "353f66d7555d8a90781f6f5e7091932f9a4250aa",
+>>>>>>> 9b093b8a53b49b0594bb62dc323cf9e5042d23d2
                 "shasum": ""
             },
             "require": {
@@ -952,7 +1052,11 @@
                 }
             ],
             "description": "Mime-type detection for Flysystem",
+<<<<<<< HEAD
             "time": "2020-09-21T18:10:53+00:00"
+=======
+            "time": "2020-10-18T11:50:25+00:00"
+>>>>>>> 9b093b8a53b49b0594bb62dc323cf9e5042d23d2
         },
         {
             "name": "monolog/monolog",
@@ -1037,6 +1141,7 @@
         },
         {
             "name": "nesbot/carbon",
+<<<<<<< HEAD
             "version": "2.41.3",
             "source": {
                 "type": "git",
@@ -1047,6 +1152,18 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/e148788eeae9b9b7b87996520358b86faad37b52",
                 "reference": "e148788eeae9b9b7b87996520358b86faad37b52",
+=======
+            "version": "2.41.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/briannesbitt/Carbon.git",
+                "reference": "6571aec754a648ef476a8d8f57993f7bc965afe4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/6571aec754a648ef476a8d8f57993f7bc965afe4",
+                "reference": "6571aec754a648ef476a8d8f57993f7bc965afe4",
+>>>>>>> 9b093b8a53b49b0594bb62dc323cf9e5042d23d2
                 "shasum": ""
             },
             "require": {
@@ -1112,7 +1229,11 @@
                 "datetime",
                 "time"
             ],
+<<<<<<< HEAD
             "time": "2020-10-12T20:36:09+00:00"
+=======
+            "time": "2020-10-22T07:28:05+00:00"
+>>>>>>> 9b093b8a53b49b0594bb62dc323cf9e5042d23d2
         },
         {
             "name": "nikic/php-parser",
@@ -1833,6 +1954,7 @@
                 "sweet-alert2",
                 "toast"
             ],
+<<<<<<< HEAD
             "funding": [
                 {
                     "url": "https://ko-fi.com/realrashid",
@@ -1851,6 +1973,8 @@
                     "type": "tidelift"
                 }
             ],
+=======
+>>>>>>> 9b093b8a53b49b0594bb62dc323cf9e5042d23d2
             "time": "2020-09-09T15:24:03+00:00"
         },
         {
@@ -3811,6 +3935,7 @@
         },
         {
             "name": "facade/flare-client-php",
+<<<<<<< HEAD
             "version": "1.3.6",
             "source": {
                 "type": "git",
@@ -3821,12 +3946,28 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/facade/flare-client-php/zipball/451fadf38e9f635e7f8e1f5b3cf5c9eb82f11799",
                 "reference": "451fadf38e9f635e7f8e1f5b3cf5c9eb82f11799",
+=======
+            "version": "1.3.7",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/facade/flare-client-php.git",
+                "reference": "fd688d3c06658f2b3b5f7bb19f051ee4ddf02492"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/facade/flare-client-php/zipball/fd688d3c06658f2b3b5f7bb19f051ee4ddf02492",
+                "reference": "fd688d3c06658f2b3b5f7bb19f051ee4ddf02492",
+>>>>>>> 9b093b8a53b49b0594bb62dc323cf9e5042d23d2
                 "shasum": ""
             },
             "require": {
                 "facade/ignition-contracts": "~1.0",
                 "illuminate/pipeline": "^5.5|^6.0|^7.0|^8.0",
+<<<<<<< HEAD
                 "php": "^7.1",
+=======
+                "php": "^7.1|^8.0",
+>>>>>>> 9b093b8a53b49b0594bb62dc323cf9e5042d23d2
                 "symfony/http-foundation": "^3.3|^4.1|^5.0",
                 "symfony/mime": "^3.4|^4.0|^5.1",
                 "symfony/var-dumper": "^3.4|^4.0|^5.0"
@@ -3862,7 +4003,11 @@
                 "flare",
                 "reporting"
             ],
+<<<<<<< HEAD
             "time": "2020-09-18T06:35:11+00:00"
+=======
+            "time": "2020-10-21T16:02:39+00:00"
+>>>>>>> 9b093b8a53b49b0594bb62dc323cf9e5042d23d2
         },
         {
             "name": "facade/ignition",
@@ -3937,6 +4082,7 @@
         },
         {
             "name": "facade/ignition-contracts",
+<<<<<<< HEAD
             "version": "1.0.1",
             "source": {
                 "type": "git",
@@ -3956,6 +4102,27 @@
                 "friendsofphp/php-cs-fixer": "^2.14",
                 "phpunit/phpunit": "^7.5|^8.0",
                 "vimeo/psalm": "^3.12"
+=======
+            "version": "1.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/facade/ignition-contracts.git",
+                "reference": "3c921a1cdba35b68a7f0ccffc6dffc1995b18267"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/facade/ignition-contracts/zipball/3c921a1cdba35b68a7f0ccffc6dffc1995b18267",
+                "reference": "3c921a1cdba35b68a7f0ccffc6dffc1995b18267",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.3|^8.0"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^v2.15.8",
+                "phpunit/phpunit": "^9.3.11",
+                "vimeo/psalm": "^3.17.1"
+>>>>>>> 9b093b8a53b49b0594bb62dc323cf9e5042d23d2
             },
             "type": "library",
             "autoload": {
@@ -3982,6 +4149,7 @@
                 "flare",
                 "ignition"
             ],
+<<<<<<< HEAD
             "time": "2020-07-14T10:10:28+00:00"
         },
         {
@@ -4000,11 +4168,35 @@
             },
             "require": {
                 "php": "^5.5.9 || ^7.0",
+=======
+            "time": "2020-10-16T08:27:54+00:00"
+        },
+        {
+            "name": "filp/whoops",
+            "version": "2.9.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/filp/whoops.git",
+                "reference": "2ec31f3adc54c71a59c5e3c2143d7a0e2f8899f8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/filp/whoops/zipball/2ec31f3adc54c71a59c5e3c2143d7a0e2f8899f8",
+                "reference": "2ec31f3adc54c71a59c5e3c2143d7a0e2f8899f8",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^5.5.9 || ^7.0 || ^8.0",
+>>>>>>> 9b093b8a53b49b0594bb62dc323cf9e5042d23d2
                 "psr/log": "^1.0.1"
             },
             "require-dev": {
                 "mockery/mockery": "^0.9 || ^1.0",
+<<<<<<< HEAD
                 "phpunit/phpunit": "^4.8.35 || ^5.7 || ^6.0",
+=======
+                "phpunit/phpunit": "^4.8.36 || ^5.7.27 || ^6.5.14 || ^7.5.20 || ^8.5.8 || ^9.3.3",
+>>>>>>> 9b093b8a53b49b0594bb62dc323cf9e5042d23d2
                 "symfony/var-dumper": "^2.6 || ^3.0 || ^4.0 || ^5.0"
             },
             "suggest": {
@@ -4014,7 +4206,11 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
+<<<<<<< HEAD
                     "dev-master": "2.6-dev"
+=======
+                    "dev-master": "2.7-dev"
+>>>>>>> 9b093b8a53b49b0594bb62dc323cf9e5042d23d2
                 }
             },
             "autoload": {
@@ -4043,7 +4239,11 @@
                 "throwable",
                 "whoops"
             ],
+<<<<<<< HEAD
             "time": "2020-06-14T09:00:00+00:00"
+=======
+            "time": "2020-10-20T12:00:00+00:00"
+>>>>>>> 9b093b8a53b49b0594bb62dc323cf9e5042d23d2
         },
         {
             "name": "fzaninotto/faker",
@@ -5061,6 +5261,7 @@
         },
         {
             "name": "scrivo/highlight.php",
+<<<<<<< HEAD
             "version": "v9.18.1.2",
             "source": {
                 "type": "git",
@@ -5071,6 +5272,18 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/scrivo/highlight.php/zipball/efb6e445494a9458aa59b0af5edfa4bdcc6809d9",
                 "reference": "efb6e445494a9458aa59b0af5edfa4bdcc6809d9",
+=======
+            "version": "v9.18.1.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/scrivo/highlight.php.git",
+                "reference": "6a1699707b099081f20a488ac1f92d682181018c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/scrivo/highlight.php/zipball/6a1699707b099081f20a488ac1f92d682181018c",
+                "reference": "6a1699707b099081f20a488ac1f92d682181018c",
+>>>>>>> 9b093b8a53b49b0594bb62dc323cf9e5042d23d2
                 "shasum": ""
             },
             "require": {
@@ -5126,7 +5339,11 @@
                 "highlight.php",
                 "syntax"
             ],
+<<<<<<< HEAD
             "time": "2020-08-27T03:24:44+00:00"
+=======
+            "time": "2020-10-16T07:43:22+00:00"
+>>>>>>> 9b093b8a53b49b0594bb62dc323cf9e5042d23d2
         },
         {
             "name": "sebastian/code-unit-reverse-lookup",
@@ -5841,6 +6058,10 @@
     "platform": {
         "php": "^7.2"
     },
+<<<<<<< HEAD
     "platform-dev": [],
     "plugin-api-version": "1.1.0"
+=======
+    "platform-dev": []
+>>>>>>> 9b093b8a53b49b0594bb62dc323cf9e5042d23d2
 }

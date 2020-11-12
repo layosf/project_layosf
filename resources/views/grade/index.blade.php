@@ -85,9 +85,13 @@
                                 <a href="{{ route('master.grade.edit', $g->id) }}" class='float-center' title="Edit">    
                                     <i class="icon wb-edit" aria-hidden="true"> </i>
                                 </a>
+<<<<<<< HEAD
                                 <a class="float-left">
                                     <button type="button" title="Editttt" class="btn btn-outline btn-success btn-xs " id="edit-item" data-item-id=<?php echo $g['id']; ?>><i class="icon wb-edit"> </i></button>
                                 </a>
+=======
+
+>>>>>>> 9b093b8a53b49b0594bb62dc323cf9e5042d23d2
                                 &nbsp
                                 <a class="demo1" title="Delete" data-id="{{ $g['id'] }}">    
                                     <i class="icon wb-trash" aria-hidden="true"> </i>

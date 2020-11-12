@@ -2,6 +2,7 @@
 @section('title','Species')
 
 <?php 
+<<<<<<< HEAD
     $lang = App\Language::pluck('language')[0];
     $form_species = Stichoza\GoogleTranslate\GoogleTranslate::trans('Form Species', $lang);
     $list = Stichoza\GoogleTranslate\GoogleTranslate::trans('List', $lang);
@@ -14,6 +15,31 @@
    
     $save = Stichoza\GoogleTranslate\GoogleTranslate::trans('Save', $lang);
     $cancel = Stichoza\GoogleTranslate\GoogleTranslate::trans('Cancel', $lang);
+=======
+    // $lang = App\Language::pluck('language')[0];
+    // $form_species = Stichoza\GoogleTranslate\GoogleTranslate::trans('Form Species', $lang);
+    // $list = Stichoza\GoogleTranslate\GoogleTranslate::trans('List', $lang);
+    // $input = Stichoza\GoogleTranslate\GoogleTranslate::trans('Input', $lang);
+    // $general = Stichoza\GoogleTranslate\GoogleTranslate::trans('General', $lang);
+    // $dashboard = Stichoza\GoogleTranslate\GoogleTranslate::trans('Home', $lang);
+    // $namespecies = Stichoza\GoogleTranslate\GoogleTranslate::trans('Name Species', $lang);
+    // $acode = Stichoza\GoogleTranslate\GoogleTranslate::trans('Auto Code', $lang);
+   
+    // $save = Stichoza\GoogleTranslate\GoogleTranslate::trans('Save', $lang);
+    // $cancel = Stichoza\GoogleTranslate\GoogleTranslate::trans('Cancel', $lang);
+
+    $lang = 'language';
+    $form_species = 'Form Species';
+    $list = 'List';
+    $input = 'Input';
+    $general = 'General';
+    $dashboard = 'Home';
+    $namespecies = 'Name Species';
+    $acode = 'Auto Code';
+   
+    $save = 'Save';
+    $cancel = 'Cancel';
+>>>>>>> 9b093b8a53b49b0594bb62dc323cf9e5042d23d2
 ?>
 
 <div class="page">

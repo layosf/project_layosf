@@ -1,6 +1,7 @@
 @extends('layoutapp.mainmenu')
 @section('title','Buyer')
 <?php 
+<<<<<<< HEAD
     $lang = App\Language::pluck('language')[0];
     $form_buyer = Stichoza\GoogleTranslate\GoogleTranslate::trans('Buyer', $lang);
     $list = Stichoza\GoogleTranslate\GoogleTranslate::trans('List', $lang);
@@ -18,6 +19,45 @@
     $action = Stichoza\GoogleTranslate\GoogleTranslate::trans('Action', $lang);
     $save = Stichoza\GoogleTranslate\GoogleTranslate::trans('Save', $lang);
     $cancel = Stichoza\GoogleTranslate\GoogleTranslate::trans('Cancel', $lang);
+=======
+    // $lang = App\Language::pluck('language')[0];
+    // $form_buyer = Stichoza\GoogleTranslate\GoogleTranslate::trans('Form Buyer', $lang);
+    // $list = Stichoza\GoogleTranslate\GoogleTranslate::trans('List', $lang);
+    // $input = Stichoza\GoogleTranslate\GoogleTranslate::trans('Input', $lang);
+    // $general = Stichoza\GoogleTranslate\GoogleTranslate::trans('General', $lang);
+    // $dashboard = Stichoza\GoogleTranslate\GoogleTranslate::trans('Home', $lang);
+    // $namebuyer = Stichoza\GoogleTranslate\GoogleTranslate::trans('Name ', $lang);
+    // $addressbuyer = Stichoza\GoogleTranslate\GoogleTranslate::trans('Address ', $lang);
+    // $country = Stichoza\GoogleTranslate\GoogleTranslate::trans('Country', $lang);
+    // $province = Stichoza\GoogleTranslate\GoogleTranslate::trans('Province', $lang);
+    // $city = Stichoza\GoogleTranslate\GoogleTranslate::trans('City', $lang);
+    // $phone = Stichoza\GoogleTranslate\GoogleTranslate::trans('Phone', $lang);
+    // $email = Stichoza\GoogleTranslate\GoogleTranslate::trans('Email', $lang);
+    // $postalcode = Stichoza\GoogleTranslate\GoogleTranslate::trans('Postal Code', $lang);
+    // $bankaccount = Stichoza\GoogleTranslate\GoogleTranslate::trans('Bank Account', $lang);
+    // $fax = Stichoza\GoogleTranslate\GoogleTranslate::trans('Fax', $lang);
+    // $save = Stichoza\GoogleTranslate\GoogleTranslate::trans('Save', $lang);
+    // $cancel = Stichoza\GoogleTranslate\GoogleTranslate::trans('Cancel', $lang);
+
+    $lang = 'language';
+    $form_buyer = 'Form Buyer';
+    $list = 'List';
+    $input = 'Input';
+    $general = 'General';
+    $dashboard = 'Home';
+    $namebuyer = 'Name ';
+    $addressbuyer = 'Address ';
+    $country = 'Country';
+    $province = 'Province';
+    $city = 'City';
+    $phone = 'Phone';
+    $email = 'Email';
+    $postalcode = 'Postal Code';
+    $bankaccount = 'Bank Account';
+    $fax = 'Fax';
+    $save = 'Save';
+    $cancel = 'Cancel';
+>>>>>>> 9b093b8a53b49b0594bb62dc323cf9e5042d23d2
 ?>
 <div class="page">
     <div class="page-header">

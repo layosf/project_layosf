@@ -28,7 +28,10 @@ class ItemproductController extends Controller
 
         return view('itemproduct.list')->with(['itemproduct'=>Itemproduct::all(),'listitems'=>$kodeproduk]);
     }
+<<<<<<< HEAD
     
+=======
+>>>>>>> 9b093b8a53b49b0594bb62dc323cf9e5042d23d2
     public function list(){
         return view('itemproduct.list')->with(['itemproduct'=>Itemproduct::all(),'speciess'=>Species::all(),'grades'=>Grade::all(),'category'=>Category::all()]);
     }

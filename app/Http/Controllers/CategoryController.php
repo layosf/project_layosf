@@ -12,12 +12,20 @@ class CategoryController extends Controller
     }
 
     public function list(){
+<<<<<<< HEAD
         return view('category.index');
+=======
+        return view('category.index')->with(['cat'=>Category::all() ]);
+>>>>>>> 9b093b8a53b49b0594bb62dc323cf9e5042d23d2
     }
 
     public function store(Request $request){
         try{
             $c = new Category();
+<<<<<<< HEAD
+=======
+            $c->code = $request->get('code');
+>>>>>>> 9b093b8a53b49b0594bb62dc323cf9e5042d23d2
             $c->name = $request->get('name');
             $c->save();
 
@@ -35,6 +43,10 @@ class CategoryController extends Controller
     public function update(Request $request, $id){
         try{
             $c = Category::find($id);
+<<<<<<< HEAD
+=======
+            $c->code = $request->get('code');
+>>>>>>> 9b093b8a53b49b0594bb62dc323cf9e5042d23d2
             $c->name = $request->get('name');
             $c->save();
 
