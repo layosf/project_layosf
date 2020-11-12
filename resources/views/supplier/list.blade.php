@@ -1,22 +1,40 @@
 @extends('layoutapp.mainmenu')
 @section('title','Supplier')
 <?php 
-    $lang = App\Language::pluck('language')[0];
-    $form_supplier = Stichoza\GoogleTranslate\GoogleTranslate::trans('Supplier', $lang);
-    $list = Stichoza\GoogleTranslate\GoogleTranslate::trans('List', $lang);
-    $input = Stichoza\GoogleTranslate\GoogleTranslate::trans('Input', $lang);
-    $listsupplier = Stichoza\GoogleTranslate\GoogleTranslate::trans('List Supplier', $lang);
-    $dashboard = Stichoza\GoogleTranslate\GoogleTranslate::trans('Home', $lang);
-    $name = Stichoza\GoogleTranslate\GoogleTranslate::trans('Name', $lang);
-    $address = Stichoza\GoogleTranslate\GoogleTranslate::trans('Address', $lang);
-    $country = Stichoza\GoogleTranslate\GoogleTranslate::trans('Country', $lang);
-    $province = Stichoza\GoogleTranslate\GoogleTranslate::trans('Province', $lang);
-    $city = Stichoza\GoogleTranslate\GoogleTranslate::trans('City', $lang);
-    $phone = Stichoza\GoogleTranslate\GoogleTranslate::trans('Phone', $lang);
-    $email = Stichoza\GoogleTranslate\GoogleTranslate::trans('Email', $lang);
-    $action = Stichoza\GoogleTranslate\GoogleTranslate::trans('Action', $lang);
-    $save = Stichoza\GoogleTranslate\GoogleTranslate::trans('Save', $lang);
-    $cancel = Stichoza\GoogleTranslate\GoogleTranslate::trans('Cancel', $lang);
+
+    // $lang = App\Language::pluck('language')[0];
+    // $form_supplier = Stichoza\GoogleTranslate\GoogleTranslate::trans('Supplier', $lang);
+    // $list = Stichoza\GoogleTranslate\GoogleTranslate::trans('List', $lang);
+    // $input = Stichoza\GoogleTranslate\GoogleTranslate::trans('Input', $lang);
+    // $listsupplier = Stichoza\GoogleTranslate\GoogleTranslate::trans('List Supplier', $lang);
+    // $dashboard = Stichoza\GoogleTranslate\GoogleTranslate::trans('Home', $lang);
+    // $name = Stichoza\GoogleTranslate\GoogleTranslate::trans('Name', $lang);
+    // $address = Stichoza\GoogleTranslate\GoogleTranslate::trans('Address', $lang);
+    // $country = Stichoza\GoogleTranslate\GoogleTranslate::trans('Country', $lang);
+    // $province = Stichoza\GoogleTranslate\GoogleTranslate::trans('Province', $lang);
+    // $city = Stichoza\GoogleTranslate\GoogleTranslate::trans('City', $lang);
+    // $phone = Stichoza\GoogleTranslate\GoogleTranslate::trans('Phone', $lang);
+    // $email = Stichoza\GoogleTranslate\GoogleTranslate::trans('Email', $lang);
+    // $action = Stichoza\GoogleTranslate\GoogleTranslate::trans('Action', $lang);
+    // $save = Stichoza\GoogleTranslate\GoogleTranslate::trans('Save', $lang);
+    // $cancel = Stichoza\GoogleTranslate\GoogleTranslate::trans('Cancel', $lang);
+
+    $lang = 'language';
+    $form_supplier = 'Supplier';
+    $list = 'List';
+    $input = 'Input';
+    $listsupplier = 'List Supplier';
+    $dashboard = 'Home';
+    $name = 'Name';
+    $address = 'Address';
+    $country = 'Country';
+    $province = 'Province';
+    $city = 'City';
+    $phone = 'Phone';
+    $email = 'Email';
+    $action = 'Action';
+    $save = 'Save';
+    $cancel = 'Cancel';
 ?>
 <div class="page">
     <div class="page-header">

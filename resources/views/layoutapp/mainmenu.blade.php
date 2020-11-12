@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html class="no-js css-menubar" lang="en">
 <head>
@@ -9,6 +10,7 @@
     
     <title> @yield('title','Dashboard')</title>
     
+
     <!-- Stylesheets -->
     <link rel="stylesheet" href="{{asset('global/css/bootstrap.min.css')}}">
     <link rel="stylesheet" href="{{asset('global/css/bootstrap-extend.min.css')}}">
@@ -25,16 +27,18 @@
     <link rel="stylesheet" href="{{asset('global/vendor/switchery/switchery.css')}}">
     <link rel="stylesheet" href="{{asset('global/vendor/intro-js/introjs.css')}}">
     <link rel="stylesheet" href="{{asset('global/vendor/slidepanel/slidePanel.css')}}">
-    
+
     <link rel="stylesheet" href="{{asset('examples/css/uikit/icon.css')}}">
     
+
     
     <!-- Fonts -->
     <link rel="stylesheet" href="{{asset('global/fonts/font-awesome/font-awesome.css')}}">
     <link rel="stylesheet" href="{{asset('global/fonts/weather-icons/weather-icons.css')}}">
     <link rel="stylesheet" href="{{asset('global/fonts/web-icons/web-icons.min.css')}}">
     <link rel="stylesheet" href="{{asset('global/fonts/brand-icons/brand-icons.min.css')}}">
-  
+    <!-- <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Roboto:300,400,500,300italic'> -->
+
     
     <script src="{{asset('global/vendor/breakpoints/breakpoints.js')}}"></script>
     <script>
@@ -54,15 +58,18 @@
     <!-- Plugins -->
     <script src="{{asset('global/vendor/switchery/switchery.js')}}"></script>
     <script src="{{asset('global/vendor/intro-js/intro.js')}}"></script>
-    <!-- <script src="{{asset('global/vendor/screenfull/screenfull.js')}}"></script> -->
+
     <script src="{{asset('global/vendor/slidepanel/jquery-slidePanel.js')}}"></script>
-    <!-- <script src="{{asset('global/vendor/skycons/skycons.js')}}"></script> -->
-    <!-- <script src="{{asset('global/vendor/chartist/chartist.min.js')}}"></script> -->
-    <!-- <script src="{{asset('global/vendor/chartist-plugin-tooltip/chartist-plugin-tooltip.js')}}"></script> -->
     <script src="{{asset('global/vendor/aspieprogress/jquery-asPieProgress.min.js')}}"></script>
-    <!-- <script src="{{asset('global/vendor/jvectormap/jquery-jvectormap.min.js')}}"></script>
+
+    <script src="{{asset('global/vendor/screenfull/screenfull.js')}}"></script>
+    <script src="{{asset('global/vendor/slidepanel/jquery-slidePanel.js')}}"></script>
+    <script src="{{asset('global/vendor/skycons/skycons.js')}}"></script>
+    <script src="{{asset('global/vendor/aspieprogress/jquery-asPieProgress.min.js')}}"></script>
+    <script src="{{asset('global/vendor/jvectormap/jquery-jvectormap.min.js')}}"></script>
     <script src="{{asset('global/vendor/jvectormap/maps/jquery-jvectormap-au-mill-en.js')}}"></script>
-    <script src="{{asset('global/vendor/matchheight/jquery.matchHeight-min.js')}}"></script> -->
+    <script src="{{asset('global/vendor/matchheight/jquery.matchHeight-min.js')}}"></script>
+
     
     <!-- Scripts -->
     <script src="{{asset('global/js/Component.js')}}"></script>
@@ -81,6 +88,7 @@
     
     <!-- Page -->
     <script src="{{asset('js/Site.js')}}"></script>
+
     
     <script src="{{asset('global/js/Plugin/asscrollable.js')}}"></script>
     <script src="{{asset('global/js/Plugin/slidepanel.js')}}"></script> 
@@ -88,10 +96,22 @@
     <script src="{{asset('global/js/Plugin/matchheight.js')}}"></script>
     <!-- <script src="{{asset('global/js/Plugin/jvectormap.js')}}"></script> -->
 
+    <script src="{{asset('global/js/Plugin/asscrollable.js')}}"></script>
+    <script src="{{asset('global/js/Plugin/slidepanel.js')}}"></script>
+    <script src="{{asset('global/js/Plugin/switchery.js')}}"></script>
+    <script src="{{asset('global/js/Plugin/matchheight.js')}}"></script>
+    <script src="{{asset('global/js/Plugin/jvectormap.js')}}"></script>
+
+
     <script src="{{asset('examples/js/dashboard/v1.js')}}"></script>
     <script src="{{asset('examples/js/forms/validation.js') }}"></script>
     <link rel="stylesheet" href="{{asset('global/vendor/bootstrap-datepicker/bootstrap-datepicker.css') }}">
-   
+
+    <script src="{{asset('global/js/Plugin/bootstrap-datepicker.js') }}"></script>
+    <script src="{{asset('global/vendor/bootstrap-datepicker/bootstrap-datepicker.js') }}"></script>
+    <script src="{{asset('global/js/Plugin/bootstrap-datepicker.js') }}"></script>
+    <script src="{{asset('global/js/Plugin/datepair.js') }}"></script>
+
     <script src="{{asset('examples/js/forms/advanced.js') }}"></script>
 
     <link rel="stylesheet" href="{{asset('global/vendor/datatables.net-fixedheader-bs4/dataTables.fixedheader.bootstrap4.css')}}">
@@ -117,12 +137,17 @@
     <script src="{{asset('global/vendor/datatables.net-buttons/dataTables.buttons.js') }}"></script>
     <script src="{{asset('global/vendor/datatables.net-buttons/buttons.html5.js') }}"></script>
     <script src="{{asset('global/vendor/datatables.net-buttons/buttons.flash.js') }}"></script>
+
     <!-- <script src="{{asset('global/vendor/datatables.net-buttons/buttons.print.js') }}"></script> -->
+
+    <script src="{{asset('global/vendor/datatables.net-buttons/buttons.print.js') }}"></script>
+
     <script src="{{asset('global/vendor/datatables.net-buttons/buttons.colVis.js') }}"></script>
     <script src="{{asset('global/vendor/datatables.net-buttons-bs4/buttons.bootstrap4.js') }}"></script>
 
     <script src="{{asset('global/js/Plugin/datatables.js')}}"></script>
     <script src="{{asset('global/vendor/datatables.net-fixedheader/dataTables.fixedHeader.js')}}"></script>
+
     <script src="{{ asset('examples/js/tables/footable.js') }}"></script>
     <script src="{{ asset('global/vendor/footable/footable.min.js') }}"></script>
     <link rel="stylesheet" href="{{ asset('global/vendor/footable/footable.core.css') }}">
@@ -130,6 +155,10 @@
     <link rel="stylesheet" href="{{ asset('examples/css/uikit/modals.css') }}">
 </head>
 <body class="animsition dashboard">
+
+</head>
+<body class="animsition">
+
     <nav class="site-navbar navbar navbar-default navbar-fixed-top navbar-mega" role="navigation">
         <div class="navbar-header">
             <button type="button" class="navbar-toggler hamburger hamburger-close navbar-toggler-left hided"
@@ -180,11 +209,14 @@
                             <a class="dropdown-item" href="javascript:void(0)" role="menuitem"><i class="icon wb-settings" aria-hidden="true"></i> Settings</a>
                         </div>
                     </li>
+
                     <!---------- MULTI LANGUAGE -->
+
                     <li class="nav-item dropdown">
                         <a class="nav-link" data-toggle="dropdown" href="javascript:void(0)" data-animation="scale-up" aria-expanded="false" role="button" title="Language">
                             <i class="icon wb-flag"> </i>
                         </a>
+
                         <div class="dropdown-menu" role="menu">
                             <a class="dropdown-item" id="language_id" name="language_id" value="en" onclick="getlanguage('en')" role="menuitem">
                                 <span class="flag-icon flag-icon-gb"></span> English
@@ -194,6 +226,7 @@
                             </a>
                         </div>
                     </li>
+
                     <!---------- MULTI LANGUAGE -->
 
                     <li class="nav-item dropdown">
@@ -210,13 +243,12 @@
                                 <a href="{{ route('logout') }}"  onclick="event.preventDefault(); document.getElementById('logout-frm').submit();">
                                     <i class="icon fa-power-off"> Logout  </i>
                                 </a>
-                                <form id="logout-frm" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                    @csrf
-                                </form>
-                               
                             </div>
                         </div>
                     </li>
+
+
+
                 </ul>
                 <!-- End Navbar Toolbar Right -->
             </div>
@@ -239,6 +271,23 @@
         </div>
     </nav>
     <?php 
+
+        $lang = 'language';
+        $setup = 'SETUP';
+        $masterdata = 'Master Data';
+        $supplier = 'Supplier';
+        $buyer = 'Buyer';
+        $species = 'Species';
+        $grade = 'Grade';
+        $productionline = 'Production Line';
+        $itemproduct = 'Item Product';
+        $bank = 'Bank';
+        $category = 'Category';
+        $bankaccount = 'Bank Account';
+        $transactionmenu = 'TRANSACTION';
+        $po_menu = 'Purchase Order';
+
+
         // $lang = App\Language::pluck('language')[0];
         // $setup = Stichoza\GoogleTranslate\GoogleTranslate::trans('SETUP', $lang);
         // $masterdata = Stichoza\GoogleTranslate\GoogleTranslate::trans('Master Data', $lang);
@@ -246,44 +295,63 @@
         // $buyer = Stichoza\GoogleTranslate\GoogleTranslate::trans('Buyer', $lang);
         // $species = Stichoza\GoogleTranslate\GoogleTranslate::trans('Species', $lang);
         // $grade = Stichoza\GoogleTranslate\GoogleTranslate::trans('Grade', $lang);
+
+        // $productionline = Stichoza\GoogleTranslate\GoogleTranslate::trans('Production Line', $lang);
+
         // $bank = Stichoza\GoogleTranslate\GoogleTranslate::trans('Bank', $lang);
         // $category = Stichoza\GoogleTranslate\GoogleTranslate::trans('Category', $lang);
         // $bankaccount = Stichoza\GoogleTranslate\GoogleTranslate::trans('Bank Account', $lang);
         // $transactionmenu = Stichoza\GoogleTranslate\GoogleTranslate::trans('TRANSACTION', $lang);
         // $po_menu = Stichoza\GoogleTranslate\GoogleTranslate::trans('Purchase Order', $lang);
         // $rm = Stichoza\GoogleTranslate\GoogleTranslate::trans('Arrival Raw Material', $lang);
+
     ?>
     <div class="site-menubar">
         <div class="site-menubar-body">
             <div>
                 <div>
                     <ul class="site-menu" data-plugin="menu">
+
                         <li class="site-menu-category">SETUP</li>
+
+                        <!-- <li class="site-menu-category">{{ $setup }}</li> -->
+
                         
                         <li class="site-menu-item has-sub">
                             <a href="javascript:void(0)">
                                 <i class="site-menu-icon wb-layout" aria-hidden="true"></i>
+
                                 <span class="site-menu-title">Master Data</span>
+
+                                <!-- <span class="site-menu-title">{{ $masterdata }}</span> -->
+
                                 <span class="site-menu-arrow"></span>
                             </a>
                             <ul class="site-menu-sub">
                                 <li class="site-menu-item">
                                     <a class="animsition-link" href="{{ route('master.supplier') }}">
+
                                         <span class="site-menu-title">Supplier</span>
+
                                     </a>
                                 </li>
                                 <li class="site-menu-item">
                                     <a class="animsition-link" href="{{ route('master.buyer') }}">
+
                                         <span class="site-menu-title">Buyer</span>
+
                                     </a>
                                 </li>
                                 <li class="site-menu-item">
                                     <a class="animsition-link" href="{{ route('master.species') }}">
+
                                         <span class="site-menu-title">Species</span>
+
                                     </a>
                                 </li>
                                 <li class="site-menu-item">
                                     <a class="animsition-link" href="{{ route('master.grade') }}">
+
                                         <span class="site-menu-title">Grade</span>
                                     </a>
                                 </li>
@@ -297,23 +365,36 @@
                                         <span class="site-menu-title"> Dimention </span>
                                     </a>
                                 </li>
+                                
+                                <li class="site-menu-item">
+                                    <a class="animsition-link" href="{{ route('master.productionline') }}">
+                                        <span class="site-menu-title">{{$productionline}}</span>
+                                    </a>
+                                </li>
                                 <li class="site-menu-item">
                                     <a class="animsition-link" href="{{ route('master.itemproduct') }}">
-                                        <span class="site-menu-title"> Item Product </span>
+                                        <span class="site-menu-title">{{$itemproduct}}</span>
                                     </a>
                                 </li>
                                 <li class="site-menu-item">
-                                    <a class="animsition-link" href="{{ route('master.bank') }}">
-                                        <span class="site-menu-title"> Bank </span>
+                                    <a class="animsition-link" href="{{ route('master.category') }}">
+                                        <span class="site-menu-title"> {{$category}} </span>
                                     </a>
                                 </li>
+                                <!-- <li class="site-menu-item">
+                                    <a class="animsition-link" href="{{ route('master.bank') }}">
+                                        <span class="site-menu-title"> {{$bank}} </span>
+                                    </a>
+                                </li> -->
                                 <li class="site-menu-item">
                                     <a class="animsition-link" href="{{ route('master.bankaccount') }}">
-                                        <span class="site-menu-title">Bank Account</span>
+                                        <span class="site-menu-title">{{$bankaccount}}</span>
+
                                     </a>
                                 </li>
                             </ul>
                         </li>
+
                         <li class="site-menu-category"> TRANSACTION </li>
                         <li class="site-menu-item has-sub">
                             <a class="animsition-link" href="{{ route('po.index') }}">
@@ -327,6 +408,7 @@
                                 <span class="site-menu-title"> Arrival Raw Material</span>
                             </a>
                         </li>
+
                     </ul>
                 </div>
             </div>
@@ -351,6 +433,7 @@
 </body>
 </html>
 
+
 <script>
     (function(document, window, $){
     'use strict';
@@ -361,10 +444,15 @@
     });
     })(document, window, jQuery);
 </script>
+
 <script>
+
     function getlanguage(id){
         console.log(id);
+        
         $.ajax({ 
+                
+
                 url: "{{ url('getlanguage') }}" + '/' + id,
                 data: { id : id},
                 type: 'get',
@@ -380,4 +468,5 @@
                 }
         });
     }
+
 </script>

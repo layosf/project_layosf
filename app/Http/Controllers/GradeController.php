@@ -25,6 +25,11 @@ class GradeController extends Controller
        
     }
 
+
+    public function edit($id){
+        return view('grade.edit')->with(['grades'=>Grade::find($id)]);
+    }
+
     public function update(Request $request, $id){
         try{
             $g = Grade::find($id);

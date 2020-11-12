@@ -85,9 +85,8 @@
                                 <a href="{{ route('master.grade.edit', $g->id) }}" class='float-center' title="Edit">    
                                     <i class="icon wb-edit" aria-hidden="true"> </i>
                                 </a>
-                                <a class="float-left">
-                                    <button type="button" title="Editttt" class="btn btn-outline btn-success btn-xs " id="edit-item" data-item-id=<?php echo $g['id']; ?>><i class="icon wb-edit"> </i></button>
-                                </a>
+
+                                
                                 &nbsp
                                 <a class="demo1" title="Delete" data-id="{{ $g['id'] }}">    
                                     <i class="icon wb-trash" aria-hidden="true"> </i>
@@ -105,53 +104,10 @@
 
 <script>
 
-    $(document).on('click', "#edit-item", function() {
-        $(this).addClass('edit-item-trigger-clicked'); //useful for identifying which trigger was clicked and consequently grab data from the correct row and not the wrong one.
-
     
-        var el = $(".edit-item-trigger-clicked"); // See how its usefull right here? 
-        var row = el.closest(".data-row");
-
-        // get the data
-        var id = el.data('item-id');
-        var names = row.children(".names").text();
-        // var tipebiaya = row.children(".tipebiaya").text();
-        // var keterangan = row.children(".keterangan").text();
-        // var biaya = row.children(".biaya").text();
-        // var kendaraan = row.children(".kendaraan").text();
-        // var btg = row.children(".btg").text();
-        // var m3 = row.children(".m3").text();
-        // var hargam3 = row.children(".hargam3").text();
-
-       
-        // fill the data in the input fields
-        // $("#editdate").val(date).text(date);
-        document.getElementById('name').value = names;
-        
-        // $("#edittipebiaya option:selected").val(tipebiaya).text(tipebiaya);
-        // $("#tipebiaya option:selected").val(tipebiaya).text(tipebiaya);
-        
-
-        // $("#editketerangan").val(keterangan);
-        // document.getElementById('keterangan').value = keterangan;
-        // $("#editbiaya").val(biaya);
-        // document.getElementById('biaya').value = biaya;
-        // document.getElementById('kendaraan').value = kendaraan;
-        // $("#editbtg").val(btg);
-        // document.getElementById('btg').value = btg;
-        // $("#editm3").val(m3);
-        // document.getElementById('m3').value = m3;
-        // $("#edithargam3").val(hargam3);
-        // document.getElementById('hargam3').value = hargam3;
-
-        $("#act").attr('action', '/master/grade/update/'+id);
-   
-    })
-
     $('.demo1').on('click', function (event) {
         event.preventDefault();
         var id = $(this).data('id');
-        console.log('sdfghk');
         swal({
             title: "Are you sure?",
             text: "Once deleted, you will not be able to recover this file!",

@@ -1,40 +1,40 @@
 @extends('layoutapp.mainmenu')
-@section('title','Species')
+@section('title','Productionline')
 
 <?php 
-
-    // $lang = App\Language::pluck('language')[0];
-    // $form_species = Stichoza\GoogleTranslate\GoogleTranslate::trans('Form Species', $lang);
-    // $list = Stichoza\GoogleTranslate\GoogleTranslate::trans('List', $lang);
-    // $input = Stichoza\GoogleTranslate\GoogleTranslate::trans('Input', $lang);
-    // $general = Stichoza\GoogleTranslate\GoogleTranslate::trans('General', $lang);
-    // $dashboard = Stichoza\GoogleTranslate\GoogleTranslate::trans('Home', $lang);
-    // $namespecies = Stichoza\GoogleTranslate\GoogleTranslate::trans('Name Species', $lang);
-    // $acode = Stichoza\GoogleTranslate\GoogleTranslate::trans('Auto Code', $lang);
-   
-    // $save = Stichoza\GoogleTranslate\GoogleTranslate::trans('Save', $lang);
-    // $cancel = Stichoza\GoogleTranslate\GoogleTranslate::trans('Cancel', $lang);
-
     $lang = 'language';
-    $form_species = 'Form Species';
+    $form_productionline = 'Form Production Line';
     $list = 'List';
     $input = 'Input';
     $general = 'General';
+    $update = 'Update';
     $dashboard = 'Home';
-    $namespecies = 'Name Species';
-    $acode = 'Auto Code';
-   
+    $nameproductionline = 'Name';
+    $codeproductionline = 'Code';
     $save = 'Save';
     $cancel = 'Cancel';
+
+    // $lang = App\Language::pluck('language')[0];
+    // $form_productionline = Stichoza\GoogleTranslate\GoogleTranslate::trans('Form Production Line', $lang);
+    // $list = Stichoza\GoogleTranslate\GoogleTranslate::trans('List', $lang);
+    // $input = Stichoza\GoogleTranslate\GoogleTranslate::trans('Input', $lang);
+    // $general = Stichoza\GoogleTranslate\GoogleTranslate::trans('General', $lang);
+    // $update = Stichoza\GoogleTranslate\GoogleTranslate::trans('Update', $lang);
+    // $dashboard = Stichoza\GoogleTranslate\GoogleTranslate::trans('Home', $lang);
+    // $nameproductionline = Stichoza\GoogleTranslate\GoogleTranslate::trans('Name', $lang);
+    // $codeproductionline = Stichoza\GoogleTranslate\GoogleTranslate::trans('Code', $lang);
+    // $save = Stichoza\GoogleTranslate\GoogleTranslate::trans('Save', $lang);
+    // $cancel = Stichoza\GoogleTranslate\GoogleTranslate::trans('Cancel', $lang);
 ?>
 
 <div class="page">
     <div class="page-header">
-        <h4 class="page-title">{{ $form_species }}</h4>
+        <h4 class="page-title">{{ $form_productionline }}</h4>
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="{{ route('home') }}">{{ $dashboard }}</a></li>
-            <li class="breadcrumb-item"><a href="{{ url('master/species/list') }}"> {{ $list }} </a></li>
-            <li class="breadcrumb-item active">{{ $input }}</li>
+            <li class="breadcrumb-item"><a href="{{ url('master/productionline/list') }}"> {{ $list }} </a></li>
+            <li class="breadcrumb-item"><a href="{{ url('master/productionline') }}"> {{ $input }} </a></li>
+            <li class="breadcrumb-item active">{{ $update }}</li>
         </ol>
     </div>
     @include('layoutapp.alerts')
@@ -46,7 +46,7 @@
 
             <div class="panel-body">
                
-                <form action="{{ route('master.species.store') }}" method="post" class="form-horizontal" id="exampleConstraintsFormTypes" autocomplete="off">
+                <form action="{{ url('master/productionline/update', ['productionlines'=>$productionlines->id]) }}" method="post" class="form-horizontal" id="exampleConstraintsFormTypes" autocomplete="off">
                 @csrf
                     <div class="row row-lg">
                         
@@ -54,15 +54,15 @@
                             <div class="example-wrap m-md-0">
                                 <div class="example">
                                         <div class="form-group row">
-                                            <label class="col-md-3 form-control-label text-left">{{ $namespecies }}</label>
+                                            <label class="col-md-3 form-control-label text-left">{{ $nameproductionline }}</label>
                                             <div class="col-md-9">
-                                                <input type="text" class="form-control" id="name" name="name" required>
+                                                <input type="text" class="form-control" id="name" name="name" required value="{{ $productionlines->name }}">
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label class="col-md-3 form-control-label text-left">{{ $acode}}</label>
+                                            <label class="col-md-3 form-control-label text-left">{{ $codeproductionline}}</label>
                                             <div class="col-md-9">
-                                            <input type="text" class="form-control" id="autocode" name="autocode">
+                                            <input type="text" class="form-control" id="codeprodline" name="codeprodline" value="{{ $productionlines->code }}">
                                             </div>
                                         </div>
                                 </div>

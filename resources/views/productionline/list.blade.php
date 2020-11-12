@@ -1,40 +1,39 @@
 @extends('layoutapp.mainmenu')
 @section('title','Supplier')
 <?php 
-
-    // $lang = App\Language::pluck('language')[0];
-    // $form_species = Stichoza\GoogleTranslate\GoogleTranslate::trans('Form Species', $lang);
-    // $list = Stichoza\GoogleTranslate\GoogleTranslate::trans('List', $lang);
-    // $input = Stichoza\GoogleTranslate\GoogleTranslate::trans('Input', $lang);
-    // $general = Stichoza\GoogleTranslate\GoogleTranslate::trans('General', $lang);
-    // $listspecies = Stichoza\GoogleTranslate\GoogleTranslate::trans('List Species', $lang);
-    // $dashboard = Stichoza\GoogleTranslate\GoogleTranslate::trans('Home', $lang);
-    // $namespecies = Stichoza\GoogleTranslate\GoogleTranslate::trans('Name Species', $lang);
-    // $acode = Stichoza\GoogleTranslate\GoogleTranslate::trans('Auto Code', $lang);
-    // $action = Stichoza\GoogleTranslate\GoogleTranslate::trans('Action', $lang);
-    // $save = Stichoza\GoogleTranslate\GoogleTranslate::trans('Save', $lang);
-    // $cancel = Stichoza\GoogleTranslate\GoogleTranslate::trans('Cancel', $lang);
-
     $lang = 'language';
-    $form_species = 'Form Species';
+    $form_productionline = 'Form Production Line';
     $list = 'List';
     $input = 'Input';
     $general = 'General';
-    $listspecies = 'List Species';
+    $listproductionline = 'List Production Line';
     $dashboard = 'Home';
-    $namespecies = 'Name Species';
-    $acode = 'Auto Code';
+    $nameproductionline = 'Name';
+    $codeproductionline = 'Code';
     $action = 'Action';
     $save = 'Save';
     $cancel = 'Cancel';
+
+    // $lang = App\Language::pluck('language')[0];
+    // $form_productionline = Stichoza\GoogleTranslate\GoogleTranslate::trans('Form Production Line', $lang);
+    // $list = Stichoza\GoogleTranslate\GoogleTranslate::trans('List', $lang);
+    // $input = Stichoza\GoogleTranslate\GoogleTranslate::trans('Input', $lang);
+    // $general = Stichoza\GoogleTranslate\GoogleTranslate::trans('General', $lang);
+    // $listproductionline = Stichoza\GoogleTranslate\GoogleTranslate::trans('List Production Line', $lang);
+    // $dashboard = Stichoza\GoogleTranslate\GoogleTranslate::trans('Home', $lang);
+    // $nameproductionline = Stichoza\GoogleTranslate\GoogleTranslate::trans('Name', $lang);
+    // $codeproductionline = Stichoza\GoogleTranslate\GoogleTranslate::trans('Code', $lang);
+    // $action = Stichoza\GoogleTranslate\GoogleTranslate::trans('Action', $lang);
+    // $save = Stichoza\GoogleTranslate\GoogleTranslate::trans('Save', $lang);
+    // $cancel = Stichoza\GoogleTranslate\GoogleTranslate::trans('Cancel', $lang);
 ?>
 <div class="page">
     <div class="page-header">
-        <h4 class="page-title">{{ $form_species }}</h4>
+        <h4 class="page-title">{{ $form_productionline }}</h4>
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="{{ route('home') }}">{{ $dashboard }}</a></li>
             <li class="breadcrumb-item active">{{$list}}</li>
-            <li class="breadcrumb-item "><a href="{{ url('master/species') }}">{{$input}}</a></li>
+            <li class="breadcrumb-item "><a href="{{ url('master/productionline') }}">{{$input}}</a></li>
         </ol>
     </div>
     @include('layoutapp.alerts')
@@ -42,7 +41,7 @@
         <div class="panel">
             <header class="panel-heading">
             <h3 class="panel-title">
-                {{ $listspecies }}
+                {{ $listproductionline }}
             </h3>
             </header>
             <div class="panel-body">
@@ -50,21 +49,21 @@
             <table class="table table-hover dataTable table-striped w-full" data-plugin="dataTable">
                 <thead>
                     <tr>
-                        <th>{{$namespecies}}</th>
-                        <th>{{$acode}}</th>
+                        <th>{{$nameproductionline}}</th>
+                        <th>{{$codeproductionline}}</th>
                         
                         <th>{{$action}}</th>
                     </tr>
                 </thead>
                 
                 <tbody>
-                    @foreach($species as $s)
+                    @foreach($productionline as $s)
                     <tr>
                         <td>{{ $s->name }}</td>
-                        <td>{{ $s->autocode}}</td>
+                        <td>{{ $s->code}}</td>
 
                         <td> 
-                            <a href="{{ route('master.species.edit', $s->id) }}" class='float-center' title="Edit">    
+                            <a href="{{ route('master.productionline.edit', $s->id) }}" class='float-center' title="Edit">    
                                 <i class="icon wb-edit" aria-hidden="true"> </i>
                             </a>
                             
@@ -99,7 +98,7 @@
         })
         .then((willDelete) => {
             if (willDelete) {
-                window.location = "/master/species/delete/"+id;
+                window.location = "/master/productionline/delete/"+id;
                 
                 
             } else {

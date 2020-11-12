@@ -39,6 +39,20 @@ Route::prefix('master')->name('master.')->middleware(['auth', 'auth.admin'])->gr
     Route::post('/species/update/{id}', 'SpeciesController@update')->name('species.update');
     Route::get('/species/delete/{id}', 'SpeciesController@destroy')->name('species.delete');
 
+
+    //productionline
+    Route::get('/productionline', 'ProductionlineController@index')->name('productionline');
+    Route::get('/productionline/list', 'ProductionlineController@list')->name('productionline.list');
+    Route::post('/productionline/store', 'ProductionlineController@store')->name('productionline.store');
+    Route::get('/productionline/edit/{id}', 'ProductionlineController@edit')->name('productionline.edit');
+    Route::post('/productionline/update/{id}', 'ProductionlineController@update')->name('productionline.update');
+    Route::get('/productionline/delete/{id}', 'ProductionlineController@destroy')->name('productionline.delete');
+
+    //itemproduct
+    Route::get('/itemproduct', 'ItemproductController@index')->name('itemproduct');
+    Route::get('/itemproduct/list', 'ItemproductController@list')->name('itemproduct.list');
+
+
     //buyer
     Route::get('/buyer', 'BuyerController@index')->name('buyer');
     Route::get('/buyer/list', 'BuyerController@list')->name('buyer.list');
@@ -47,9 +61,10 @@ Route::prefix('master')->name('master.')->middleware(['auth', 'auth.admin'])->gr
     Route::post('/buyer/update/{id}', 'BuyerController@update')->name('buyer.update');
     Route::get('/buyer/delete/{id}', 'BuyerController@destroy')->name('buyer.delete');
 
-    //bank
+
+      //bank
     Route::get('/bank', 'BankController@index')->name('bank');
-    
+
     //bankaccount
     Route::get('/bankaccount', 'BankAccountController@index')->name('bankaccount');
     Route::post('/bankaccount/store','BankAccountController@store')->name('bankaccount.store');
@@ -57,6 +72,7 @@ Route::prefix('master')->name('master.')->middleware(['auth', 'auth.admin'])->gr
     Route::get('/bankaccount/delete/{id}', 'BankAccountController@delete');
     Route::get('/bankaccount/edit/{id}', 'BankAccountController@edit')->name('bankaccount.edit');
     Route::post('/bankaccount/update/{id}', 'BankAccountController@update')->name('bankaccount.update');
+
 
     //category
     Route::get('/category', 'CategoryController@index')->name('category');
@@ -83,8 +99,12 @@ Route::prefix('master')->name('master.')->middleware(['auth', 'auth.admin'])->gr
     Route::get('/itemproduct', 'ItemproductController@index')->name('itemproduct');
 });
 
+
+
+
 //PO
-Route::prefix('po')->name('po.')->middleware(['auth'])->group(function(){
+Route::prefix('po')->name('po.')->group(function(){
+
     Route::get('/', 'POcontroller@index')->name('index');
     Route::get('/orderdetail', 'POcontroller@index')->name('orderdetail');
     Route::get('/requirement', 'POcontroller@index')->name('orderrequirement');
@@ -140,6 +160,8 @@ Route::prefix('rm')->name('rm.')->middleware(['auth'])->group(function(){
     Route::get('/sendapproval/{id}', 'RMcontroller@sendapproval');
     Route::get('/approve/{id}', 'RMcontroller@approve');
     Route::get('/reject/{id}', 'RMcontroller@reject');
+
     Route::post('/reasonreject/{id}', 'RMcontroller@reasonreject')->name('reasonreject');
     Route::get('/get_reason/{id}', 'RMcontroller@get_reason');
 });
+

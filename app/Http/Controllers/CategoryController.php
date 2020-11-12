@@ -12,12 +12,14 @@ class CategoryController extends Controller
     }
 
     public function list(){
-        return view('category.index');
+
+        return view('category.index')->with(['cat'=>Category::all() ]);
     }
 
     public function store(Request $request){
         try{
             $c = new Category();
+            $c->code = $request->get('code');
             $c->name = $request->get('name');
             $c->save();
 
@@ -35,6 +37,7 @@ class CategoryController extends Controller
     public function update(Request $request, $id){
         try{
             $c = Category::find($id);
+            $c->code = $request->get('code');
             $c->name = $request->get('name');
             $c->save();
 

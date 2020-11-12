@@ -23,7 +23,9 @@
     <link rel="stylesheet" href="{{asset('global/vendor/asscrollable/asScrollable.css')}}">
     <link rel="stylesheet" href="{{asset('global/vendor/switchery/switchery.css')}}">
     <link rel="stylesheet" href="{{asset('global/vendor/intro-js/introjs.css')}}">
-    <!-- <link rel="stylesheet" href="{{asset('global/vendor/slidepanel/slidePanel.css')}}"> -->
+
+    <link rel="stylesheet" href="{{asset('global/vendor/slidepanel/slidePanel.css')}}">
+
     <link rel="stylesheet" href="{{asset('global/vendor/flag-icon-css/flag-icon.css')}}">
     <link rel="stylesheet" href="{{asset('examples/css/pages/login-v3.css')}}">
 
@@ -31,7 +33,7 @@
     <!-- Fonts -->
     <link rel="stylesheet" href="{{asset('global/fonts/web-icons/web-icons.min.css')}}">
     <link rel="stylesheet" href="{{asset('global/fonts/brand-icons/brand-icons.min.css')}}">
-    <!-- <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Roboto:300,400,500,300italic'> -->
+
 
     <!-- Scripts -->
     <script src="{{asset('global/vendor/breakpoints/breakpoints.js')}}"></script>
@@ -41,9 +43,15 @@
      <!-- Core  -->
     <script src="{{asset('global/vendor/babel-external-helpers/babel-external-helpers.js')}}"></script>
     <script src="{{asset('global/vendor/jquery/jquery.js')}}"></script>
+
     <!-- <script src="{{asset('global/vendor/popper-js/umd/popper.min.js')}}"></script> -->
     <script src="{{asset('global/vendor/bootstrap/bootstrap.js')}}"></script>
     <!-- <script src="{{asset('global/vendor/animsition/animsition.js')}}"></script> -->
+
+    <script src="{{asset('global/vendor/popper-js/umd/popper.min.js')}}"></script>
+    <script src="{{asset('global/vendor/bootstrap/bootstrap.js')}}"></script>
+    <script src="{{asset('global/vendor/animsition/animsition.js')}}"></script>
+
     <script src="{{asset('global/vendor/mousewheel/jquery.mousewheel.js')}}"></script>
     <script src="{{asset('global/vendor/asscrollbar/jquery-asScrollbar.js')}}"></script>
     <script src="{{asset('global/vendor/asscrollable/jquery-asScrollable.js')}}"></script>
@@ -69,7 +77,9 @@
     <script src="{{asset('js/Plugin/menu.js')}}"></script>
     
     <script src="{{asset('global/js/config/colors.js')}}"></script>
+
     <!-- <script src="{{asset('js/config/tour.js')}}"></script> -->
+
     
     <!-- Page -->
     <script src="{{asset('js/Site.js')}}"></script>
