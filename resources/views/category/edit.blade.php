@@ -1,12 +1,7 @@
 @extends('layoutapp.mainmenu')
 @section('title','Category')
 <?php 
-<<<<<<< HEAD
-    $lang = App\Language::pluck('language')[0];
-    $dashboard = Stichoza\GoogleTranslate\GoogleTranslate::trans('Home', $lang);
-    $general = Stichoza\GoogleTranslate\GoogleTranslate::trans('General', $lang);
-    $categoryname = Stichoza\GoogleTranslate\GoogleTranslate::trans('Category Name', $lang);
-=======
+
     // $lang = App\Language::pluck('language')[0];
     // $dashboard = Stichoza\GoogleTranslate\GoogleTranslate::trans('Home', $lang);
     // $general = Stichoza\GoogleTranslate\GoogleTranslate::trans('General', $lang);
@@ -16,7 +11,6 @@
     $general = 'General';
     $categoryname = 'Name';
     $categorycode = 'Code';
->>>>>>> 9b093b8a53b49b0594bb62dc323cf9e5042d23d2
 ?>
 
 <div class="page">
@@ -41,8 +35,6 @@
                     <div class="row row-lg">
                         <div class="col-lg-12">
                             <div class="form-group row">
-<<<<<<< HEAD
-=======
                                 <label class="col-md-3 form-control-label text-left">{{ $categorycode }}</label>
                                 <div class="col-md-9">
                                     <input type="text" class="form-control" id="code" name="code" required value="{{ $cat->code }}">
@@ -50,7 +42,6 @@
                             </div>
 
                             <div class="form-group row">
->>>>>>> 9b093b8a53b49b0594bb62dc323cf9e5042d23d2
                                 <label class="col-md-3 form-control-label text-left">{{ $categoryname }}</label>
                                 <div class="col-md-9">
                                     <input type="text" class="form-control" id="name" name="name" required value="{{ $cat->name }}">

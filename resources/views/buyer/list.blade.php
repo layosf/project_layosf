@@ -1,25 +1,7 @@
 @extends('layoutapp.mainmenu')
 @section('title','Buyer')
 <?php 
-<<<<<<< HEAD
-    $lang = App\Language::pluck('language')[0];
-    $form_buyer = Stichoza\GoogleTranslate\GoogleTranslate::trans('Buyer', $lang);
-    $list = Stichoza\GoogleTranslate\GoogleTranslate::trans('List', $lang);
-    $input = Stichoza\GoogleTranslate\GoogleTranslate::trans('Input', $lang);
-    $listbuyer = Stichoza\GoogleTranslate\GoogleTranslate::trans('List Buyer', $lang);
-    $dashboard = Stichoza\GoogleTranslate\GoogleTranslate::trans('Home', $lang);
-    $namebuyer = Stichoza\GoogleTranslate\GoogleTranslate::trans('Name ', $lang);
-    $addressbuyer = Stichoza\GoogleTranslate\GoogleTranslate::trans('Address ', $lang);
-    
-    $phone = Stichoza\GoogleTranslate\GoogleTranslate::trans('Phone', $lang);
-    $email = Stichoza\GoogleTranslate\GoogleTranslate::trans('Email', $lang);
-    $postalcode = Stichoza\GoogleTranslate\GoogleTranslate::trans('Postal Code', $lang);
-    $bankaccount = Stichoza\GoogleTranslate\GoogleTranslate::trans('Bank Account', $lang);
-    $fax = Stichoza\GoogleTranslate\GoogleTranslate::trans('Fax', $lang);
-    $action = Stichoza\GoogleTranslate\GoogleTranslate::trans('Action', $lang);
-    $save = Stichoza\GoogleTranslate\GoogleTranslate::trans('Save', $lang);
-    $cancel = Stichoza\GoogleTranslate\GoogleTranslate::trans('Cancel', $lang);
-=======
+
     // $lang = App\Language::pluck('language')[0];
     // $form_buyer = Stichoza\GoogleTranslate\GoogleTranslate::trans('Form Buyer', $lang);
     // $list = Stichoza\GoogleTranslate\GoogleTranslate::trans('List', $lang);
@@ -57,7 +39,6 @@
     $fax = 'Fax';
     $save = 'Save';
     $cancel = 'Cancel';
->>>>>>> 9b093b8a53b49b0594bb62dc323cf9e5042d23d2
 ?>
 <div class="page">
     <div class="page-header">

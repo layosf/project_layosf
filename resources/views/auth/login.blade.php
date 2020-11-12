@@ -23,11 +23,9 @@
     <link rel="stylesheet" href="{{asset('global/vendor/asscrollable/asScrollable.css')}}">
     <link rel="stylesheet" href="{{asset('global/vendor/switchery/switchery.css')}}">
     <link rel="stylesheet" href="{{asset('global/vendor/intro-js/introjs.css')}}">
-<<<<<<< HEAD
-    <!-- <link rel="stylesheet" href="{{asset('global/vendor/slidepanel/slidePanel.css')}}"> -->
-=======
+
     <link rel="stylesheet" href="{{asset('global/vendor/slidepanel/slidePanel.css')}}">
->>>>>>> 9b093b8a53b49b0594bb62dc323cf9e5042d23d2
+
     <link rel="stylesheet" href="{{asset('global/vendor/flag-icon-css/flag-icon.css')}}">
     <link rel="stylesheet" href="{{asset('examples/css/pages/login-v3.css')}}">
 
@@ -35,11 +33,7 @@
     <!-- Fonts -->
     <link rel="stylesheet" href="{{asset('global/fonts/web-icons/web-icons.min.css')}}">
     <link rel="stylesheet" href="{{asset('global/fonts/brand-icons/brand-icons.min.css')}}">
-<<<<<<< HEAD
-    <!-- <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Roboto:300,400,500,300italic'> -->
-=======
-    <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Roboto:300,400,500,300italic'>
->>>>>>> 9b093b8a53b49b0594bb62dc323cf9e5042d23d2
+
 
     <!-- Scripts -->
     <script src="{{asset('global/vendor/breakpoints/breakpoints.js')}}"></script>
@@ -49,15 +43,15 @@
      <!-- Core  -->
     <script src="{{asset('global/vendor/babel-external-helpers/babel-external-helpers.js')}}"></script>
     <script src="{{asset('global/vendor/jquery/jquery.js')}}"></script>
-<<<<<<< HEAD
+
     <!-- <script src="{{asset('global/vendor/popper-js/umd/popper.min.js')}}"></script> -->
     <script src="{{asset('global/vendor/bootstrap/bootstrap.js')}}"></script>
     <!-- <script src="{{asset('global/vendor/animsition/animsition.js')}}"></script> -->
-=======
+
     <script src="{{asset('global/vendor/popper-js/umd/popper.min.js')}}"></script>
     <script src="{{asset('global/vendor/bootstrap/bootstrap.js')}}"></script>
     <script src="{{asset('global/vendor/animsition/animsition.js')}}"></script>
->>>>>>> 9b093b8a53b49b0594bb62dc323cf9e5042d23d2
+
     <script src="{{asset('global/vendor/mousewheel/jquery.mousewheel.js')}}"></script>
     <script src="{{asset('global/vendor/asscrollbar/jquery-asScrollbar.js')}}"></script>
     <script src="{{asset('global/vendor/asscrollable/jquery-asScrollable.js')}}"></script>
@@ -83,11 +77,9 @@
     <script src="{{asset('js/Plugin/menu.js')}}"></script>
     
     <script src="{{asset('global/js/config/colors.js')}}"></script>
-<<<<<<< HEAD
+
     <!-- <script src="{{asset('js/config/tour.js')}}"></script> -->
-=======
-    <script src="{{asset('js/config/tour.js')}}"></script>
->>>>>>> 9b093b8a53b49b0594bb62dc323cf9e5042d23d2
+
     
     <!-- Page -->
     <script src="{{asset('js/Site.js')}}"></script>

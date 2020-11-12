@@ -2,23 +2,6 @@
 @section('title','Supplier')
 
 <?php 
-<<<<<<< HEAD
-    $lang = App\Language::pluck('language')[0];
-    $form_supplier = Stichoza\GoogleTranslate\GoogleTranslate::trans('Form Supplier', $lang);
-    $list = Stichoza\GoogleTranslate\GoogleTranslate::trans('List', $lang);
-    $input = Stichoza\GoogleTranslate\GoogleTranslate::trans('Input', $lang);
-    $general = Stichoza\GoogleTranslate\GoogleTranslate::trans('General', $lang);
-    $dashboard = Stichoza\GoogleTranslate\GoogleTranslate::trans('Home', $lang);
-    $namesupplier = Stichoza\GoogleTranslate\GoogleTranslate::trans('Name Supplier', $lang);
-    $addressupplier = Stichoza\GoogleTranslate\GoogleTranslate::trans('Address Supplier', $lang);
-    $country = Stichoza\GoogleTranslate\GoogleTranslate::trans('Country', $lang);
-    $province = Stichoza\GoogleTranslate\GoogleTranslate::trans('Province', $lang);
-    $city = Stichoza\GoogleTranslate\GoogleTranslate::trans('City', $lang);
-    $phone = Stichoza\GoogleTranslate\GoogleTranslate::trans('Phone', $lang);
-    $email = Stichoza\GoogleTranslate\GoogleTranslate::trans('Email', $lang);
-    $save = Stichoza\GoogleTranslate\GoogleTranslate::trans('Save', $lang);
-    $cancel = Stichoza\GoogleTranslate\GoogleTranslate::trans('Cancel', $lang);
-=======
     // $lang = App\Language::pluck('language')[0];
     // $form_supplier = Stichoza\GoogleTranslate\GoogleTranslate::trans('Form Supplier', $lang);
     // $list = Stichoza\GoogleTranslate\GoogleTranslate::trans('List', $lang);
@@ -51,7 +34,6 @@
     $email = 'Email';
     $save = 'Save';
     $cancel = 'Cancel';
->>>>>>> 9b093b8a53b49b0594bb62dc323cf9e5042d23d2
 ?>
 
 <div class="page">

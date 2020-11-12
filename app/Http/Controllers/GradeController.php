@@ -25,13 +25,11 @@ class GradeController extends Controller
        
     }
 
-<<<<<<< HEAD
-=======
+
     public function edit($id){
         return view('grade.edit')->with(['grades'=>Grade::find($id)]);
     }
 
->>>>>>> 9b093b8a53b49b0594bb62dc323cf9e5042d23d2
     public function update(Request $request, $id){
         try{
             $g = Grade::find($id);
