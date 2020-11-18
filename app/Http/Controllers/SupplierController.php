@@ -7,13 +7,14 @@ use App\Country;
 use App\IndProv;
 use App\IndCity;
 use App\Supplier;
+use App\BankAccount;
 
 
 class SupplierController extends Controller
 {
     public function index()
     {
-        return view('supplier.create')->with(['countries'=>Country::all()]);
+        return view('supplier.create')->with(['countries'=>Country::all(), 'bankaccounts'=>BankAccount::all() ]);
     }
 
     public function get_province($id){
@@ -27,7 +28,7 @@ class SupplierController extends Controller
     }
 
     public function edit($id){
-        return view('supplier.edit')->with(['suplr'=>Supplier::find($id), 'countries'=>Country::all(), 'city'=>IndCity::all(), 'province'=>IndProv::all()]);
+        return view('supplier.edit')->with(['suplr'=>Supplier::find($id), 'countries'=>Country::all(), 'city'=>IndCity::all(), 'province'=>IndProv::all(), 'bankaccounts'=>BankAccount::all()]);
     }
 
     public function update(Request $request, $id){
@@ -40,6 +41,7 @@ class SupplierController extends Controller
             $s->city_id = $request->get('city_id');
             $s->phone = $request->get('phone');
             $s->email = $request->get('email');
+            $s->bankaccount_id = $request->get('bankaccount_id');
             $s->save();
             
             return redirect()->route('master.supplier')->with('success', 'Data has been updated.');
@@ -59,6 +61,7 @@ class SupplierController extends Controller
             $s->city_id = $request->get('city_id');
             $s->phone = $request->get('phone');
             $s->email = $request->get('email');
+            $s->bankaccount_id = $request->get('bankaccount_id');
             $s->save();
             return redirect()->route('master.supplier')->with('success', 'Data has been saved.');
         }

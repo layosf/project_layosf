@@ -64,48 +64,47 @@
                 <form action="{{ route('master.buyer.store') }}" method="post" class="form-horizontal" id="exampleConstraintsFormTypes" autocomplete="off">
                 @csrf
                     <div class="row row-lg">
-                        
                         <div class="col-lg-6">
                             <div class="example-wrap m-md-0">
                                 <div class="example">
-                                        <div class="form-group row">
-                                            <label class="col-md-3 form-control-label text-left">{{ $namebuyer }}</label>
-                                            <div class="col-md-9">
-                                                <input type="text" class="form-control" id="name" name="name" required>
-                                            </div>
+                                    <div class="form-group row">
+                                        <label class="col-md-3 form-control-label text-left">{{ $namebuyer }}</label>
+                                        <div class="col-md-9">
+                                            <input type="text" class="form-control" id="name" name="name" required>
                                         </div>
-                                        <div class="form-group row">
-                                            <label class="col-md-3 form-control-label text-left">{{ $addressbuyer }}</label>
-                                            <div class="col-md-9">
-                                                <textarea class="form-control" name="address" id="address" rows="5" required></textarea>
-                                            </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-md-3 form-control-label text-left">{{ $addressbuyer }}</label>
+                                        <div class="col-md-9">
+                                            <textarea class="form-control" name="address" id="address" rows="5" required></textarea>
                                         </div>
-                                        <div class="form-group row">
-                                            <label class="col-md-3 form-control-label text-left">{{$country}}</label>
-                                            <div class="col-md-9">
-                                                <select class="form-control" id="country_id" name="country_id" required onchange="get_province()">
-                                                    @foreach($countries as $country)
-                                                    <option value="{{ $country->id }}"> {{ $country->name }}</option>
-                                                    @endforeach
-                                                </select>
-                                            </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-md-3 form-control-label text-left">{{ $country }}</label>
+                                        <div class="col-md-9">
+                                            <select class="form-control" id="country_id" name="country_id"  onchange="get_province()">
+                                                @foreach($countries as $country)
+                                                <option value="{{ $country->id }}"> {{ $country->name }}</option>
+                                                @endforeach
+                                            </select>
                                         </div>
-                                        <div class="form-group row">
-                                            <label class="col-md-3 form-control-label text-left">{{ $province}}</label>
-                                            <div class="col-md-9">
-                                                <select class="form-control" id="province_id" name="province_id" required onchange="get_city()">
-                                                    <option value=""> </option>
-                                                </select>
-                                            </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-md-3 form-control-label text-left">{{ $province }}</label>
+                                        <div class="col-md-9">
+                                            <select class="form-control" id="province_id" name="province_id"  onchange="get_city()">
+                                                <option value=""> </option>
+                                            </select>
                                         </div>
-                                        <div class="form-group row">
-                                            <label class="col-md-3 form-control-label text-left">{{ $city}}</label>
-                                            <div class="col-md-9">
-                                                <select class="form-control" id="city_id" name="city_id" required>
-                                                    <option value=""> </option>
-                                                </select>
-                                            </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-md-3 form-control-label text-left">{{ $city }}</label>
+                                        <div class="col-md-9">
+                                            <select class="form-control" id="city_id" name="city_id" >
+                                                <option value=""> </option>
+                                            </select>
                                         </div>
+                                    </div>
                                 </div>
                             </div>
                             
@@ -114,42 +113,41 @@
                         <div class="col-lg-6">
                             <div class="example-wrap">
                                 <div class="example">
-                                        <div class="form-group row">
-                                            <label class="col-md-3 form-control-label">{{ $phone}}</label>
-                                            <div class="col-md-9">
-                                            <input type="text" class="form-control" id="phone" name="phone">
-                                            </div>
+                                    <div class="form-group row">
+                                        <label class="col-md-3 form-control-label">{{ $phone }}</label>
+                                        <div class="col-md-9">
+                                            <input type="text" class="form-control" id="phone" name="phone" onkeypress="return onlyNumberKey(event)" >
                                         </div>
-                                        <div class="form-group row">
-                                            <label class="col-md-3 form-control-label">{{ $fax}}</label>
-                                            <div class="col-md-9">
-                                            <input type="text" class="form-control" id="fax" name="fax">
-                                            </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-md-3 form-control-label">{{ $fax }}</label>
+                                        <div class="col-md-9">
+                                        <input type="text" class="form-control" id="fax" name="fax">
                                         </div>
-                                        <div class="form-group row">
-                                            <label class="col-md-3 form-control-label">{{ $email}}</label>
-                                            <div class="col-md-9">
-                                            <input type="text" class="form-control" id="email" name="email">
-                                            </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-md-3 form-control-label">{{ $email }}</label>
+                                        <div class="col-md-9">
+                                        <input type="text" class="form-control" id="email" name="email">
                                         </div>
-                                        <div class="form-group row">
-                                            <label class="col-md-3 form-control-label">{{ $postalcode}}</label>
-                                            <div class="col-md-9">
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-md-3 form-control-label">{{ $postalcode }}</label>
+                                        <div class="col-md-9">
                                             <input type="text" class="form-control" id="postal_code" name="postal_code">
-                                            </div>
                                         </div>
-                                        <div class="form-group row">
-                                            <label class="col-md-3 form-control-label">{{ $bankaccount}}</label>
-                                            <div class="col-md-9">
-                                                <select class="form-control" id="bankaccount_id" name="bankaccount_id">
-
-                                                    <option value=""> </option>
-                                                    @foreach($bankaccounts as $ba)
-                                                        <option value="{{ $ba->id }}"> {{ $ba->accountname }} - {{ $ba->accountno}} </option>
-                                                    @endforeach
-                                                </select>
-                                            </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-md-3 form-control-label">{{ $bankaccount }}</label>
+                                        <div class="col-md-9">
+                                            <select class="form-control" id="bankaccount_id" name="bankaccount_id">
+                                                <option value=""> </option>
+                                                @foreach($bankaccounts as $ba)
+                                                    <option value="{{ $ba->id }}"> {{ $ba->accountname }} - {{ $ba->accountno }} </option>
+                                                @endforeach
+                                            </select>
                                         </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -172,7 +170,13 @@
 </div>
 
 <script>
-    
+    function onlyNumberKey(evt) { 
+          // Only ASCII charactar in that range allowed 
+        if ((event.which != 46 || $(this).val().indexOf('.') != -1) && (event.which < 48 || event.which > 57)) {
+                event.preventDefault();
+        }
+    } 
+
 
     function get_province(){
         var countryid = document.getElementById('country_id').value;
@@ -185,6 +189,7 @@
                 success: function(data){
                     console.log(data);
                     $('select[name="province_id"]').empty();
+                    $('select[name="city_id"]').empty();
                     $.each(data, function(key, value){
                         $('select[name="province_id"]').append('<option value="'+key+'">'+value+'</option>');
                     })

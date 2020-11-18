@@ -37,7 +37,6 @@
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="{{ route('home') }}">{{ $dashboard }}</a></li>
             <li class="breadcrumb-item active">{{$list}}</li>
-            <!-- <li class="breadcrumb-item "><a href="{{ url('master/itemproduct') }}">{{$input}}</a></li> -->
         </ol>
     </div>
     @include('layoutapp.alerts')
@@ -50,7 +49,7 @@
             </header>
             <div class="panel-body">
             
-            <table class="table table-hover dataTable table-striped w-full" data-plugin="dataTable">
+            <table style="font-size:12px" class="table table-hover dataTable table-striped w-full" data-plugin="dataTable">
                 <thead>
                     <tr>
                         <th>{{$codeitemproduct}}</th>
@@ -98,7 +97,6 @@
         .then((willDelete) => {
             if (willDelete) {
                 window.location = "/master/itemproduct/delete/"+id;
-                
                 
             } else {
                 swal("Your file is safe!");

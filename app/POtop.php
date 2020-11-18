@@ -13,10 +13,12 @@ class POtop extends Model
     }
 
     public function scopeBuyerpo(){
+        
         $b = DB::table('po_top')
             ->leftJoin('po', 'po_top.po_id', '=', 'po.id')
             ->leftJoin('buyer', 'po.buyer_id', '=', 'buyer.id')
             ->select('po_top.id', 'po_top.po_id', 'po_top.material_name','po_top.delivery_size','po_top.settlement_size', 'po_top.feeding_quantity','po_top.application_date','po_top.delivery_date','po_top.remark','po.order_number','po.order_date', 'buyer.name as buyername')
+            ->orderBy('po_top.id', 'desc')
             ->get();
         return $b;
     }

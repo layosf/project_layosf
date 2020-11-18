@@ -67,7 +67,7 @@
                 <h3 class="panel-title">List</h3>
             </div>
             <div class="panel-body">
-                <table class="table table-hover dataTable table-striped w-full" data-plugin="dataTable" width="!00%">
+                <table style="font-size:12px" class="table table-hover dataTable table-striped w-full" data-plugin="dataTable" width="!00%">
                     <thead>
                         <tr>
                             <th>Name</th>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Buyer;
 use App\Species;
+use App\Grade;
 use App\PO;
 use App\POdetail;
 use App\POrequirement;
@@ -13,11 +14,61 @@ use App\PObottom;
 use App\POcore;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
+use DataTables;
 
 class POcontroller extends Controller
 {
     public function index(){
-        return view('po.index')->with(['buyers'=>Buyer::all(), 'pos'=>PO::all(), 'species'=>Species::all(), 'details'=>POdetail::buyerpo(), 'listpo'=>PO::all(), 'reqs'=>POrequirement::all(), 'tops'=>POtop::buyerpo(), 'bottoms'=>PObottom::buyerpo(), 'core'=>POcore::buyerpo()  ]);
+        return view('po.index')->with(['buyers'=>Buyer::all(), 'pos'=>PO::all(), 'species'=>Species::all(), 'details'=>POdetail::buyerpo(), 'listpo'=>PO::orderBy('id','desc')->get(), 'reqs'=>POrequirement::all(), 'tops'=>POtop::buyerpo(), 'bottoms'=>PObottom::buyerpo(), 'core'=>POcore::buyerpo(), 'grades'=>Grade::all()  ]);
+    }
+
+    public function list_detail($id){
+        $b = DB::table('po_detail')
+            ->leftJoin('po', 'po_detail.po_id', '=', 'po.id')
+            ->leftJoin('buyer', 'po.buyer_id', '=', 'buyer.id')
+            ->leftJoin('species', 'po_detail.species_id', '=', 'species.id')
+            ->select('po.id as poid','po.order_number','po.order_date', 'buyer.name as buyername', 'species.name as speciesname', 'po_detail.id','po_detail.tenon', 'po_detail.surface_effect', 'po_detail.thick', 'po_detail.width', 'po_detail.length', 'po_detail.pcs_order', 'po_detail.box_qty', 'po_detail.pallet_qty', 'po_detail.colour', 'po_detail.qty_m2', 'po_detail.veneer_grade', 'po_detail.veneer_process', 'po_detail.veneer_color', 'po_detail.package', 'po_detail.pallet', 'po_detail.bracket_type')
+            ->where('po.id', $id)
+            ->orderBy('po_detail.id','desc')
+            ->get();
+        return DataTables::of($b)->toJson();
+    }
+
+    public function list_top($id){
+
+        $b = DB::table('po_top')
+            ->leftJoin('po', 'po_top.po_id', '=', 'po.id')
+            ->leftJoin('buyer', 'po.buyer_id', '=', 'buyer.id')
+            ->select('po_top.id', 'po_top.po_id', 'po_top.material_name','po_top.delivery_size','po_top.settlement_size', 'po_top.feeding_quantity','po_top.application_date','po_top.delivery_date','po_top.remark','po.order_number','po.order_date', 'buyer.name as buyername')
+            ->where('po.id', $id)
+            ->orderBy('po_top.id', 'desc')
+            ->get();
+        
+        return DataTables::of($b)->toJson();
+    }
+
+    public function list_core($id){
+        $b = DB::table('po_core')
+            ->leftJoin('po', 'po_core.po_id', '=', 'po.id')
+            ->leftJoin('buyer', 'po.buyer_id', '=', 'buyer.id')
+            ->select('po_core.id', 'po_core.po_id','po_core.structure','po_core.structure_legend', 'po_core.material_name','po_core.delivery_size','po_core.settlement_size', 'po_core.feeding_quantity','po_core.application_date','po_core.delivery_date','po_core.remark','po.order_number','po.order_date', 'buyer.name as buyername')
+            ->where('po.id', $id)
+            ->orderBy('po_core.id','desc')
+            ->get();
+
+        return DataTables::of($b)->toJson();
+    }
+
+    public function list_bottom($id){
+        $b = DB::table('po_bottom')
+            ->leftJoin('po', 'po_bottom.po_id', '=', 'po.id')
+            ->leftJoin('buyer', 'po.buyer_id', '=', 'buyer.id')
+            ->select('po_bottom.id', 'po_bottom.po_id', 'po_bottom.material_name','po_bottom.delivery_size','po_bottom.settlement_size', 'po_bottom.feeding_quantity','po_bottom.application_date','po_bottom.delivery_date','po_bottom.remark','po.order_number','po.order_date', 'buyer.name as buyername')
+            ->where('po.id', $id)
+            ->orderBy('po_bottom.id','desc')
+            ->get();
+            
+        return DataTables::of($b)->toJson();
     }
 
     public function general_store(Request $request)
@@ -64,6 +115,22 @@ class POcontroller extends Controller
             $d->order_number = $ordernumber;
             $d->order_date = $request->get('order_date');
             $d->buyer_id = $request->get('buyer_id');
+            $d->back_veneer = $request->get('back_veneer');
+            $d->core_board = $request->get('core_board');
+            $d->base_layer = $request->get('base_layer');
+            $d->paint_process = $request->get('paint_process');
+            $d->brightness = $request->get('brightness');
+            $d->delivery_date = $request->get('delivery_date');
+            $d->tenon = $request->get('tenon');
+            $d->chamfer = $request->get('chamfer');
+            $d->product_description = $request->get('product_description');
+            $d->surface_thickness = $request->get('surface_thickness');
+            $d->mc_range = $request->get('mc_range');
+            $d->tolerance_thickness = $request->get('tolerance_thickness');
+            $d->back_groove = $request->get('back_groove');
+            $d->customer_specific_paint = $request->get('customer_specific_paint');
+            $d->customer_follow_order = $request->get('customer_follow_order');
+            $d->keep_sample = $request->get('keep_sample');
             $d->save();
 
             DB::raw('UNLOCK TABLE');
@@ -100,42 +167,42 @@ class POcontroller extends Controller
             $p->bracket_type = $request->get('bracket_type');
             $p->save();
             
-            return redirect()->route('po.index')->with('success', 'Data has been saved.');
+            return redirect()->route('po.orderdetail')->with('success', 'Data has been saved.');
 
         }catch(\Exception $ex){
             return back()->with('Error', 'Error. '.$ex);
         }
     }
 
-    public function orderrequirement_store(Request $request){
-        try{
-            $p = new POrequirement();
-            $p->po_id = $request->get('ordernumberid');
-            $p->back_veneer = $request->get('back_veneer');
-            $p->core_board = $request->get('core_board');
-            $p->base_layer = $request->get('base_layer');
-            $p->paint_process = $request->get('paint_process');
-            $p->brightness = $request->get('brightness');
-            $p->delivery_date = $request->get('delivery_date');
-            $p->tenon = $request->get('tenon');
-            $p->chamfer = $request->get('chamfer');
-            $p->product_description = $request->get('product_description');
-            $p->surface_thickness = $request->get('surface_thickness');
-            $p->mc_range = $request->get('mc_range');
-            $p->tolerance_thickness = $request->get('tolerance_thickness');
-            $p->back_groove = $request->get('back_groove');
-            $p->customer_specific_paint = $request->get('customer_specific_paint');
-            $p->customer_follow_order = $request->get('customer_follow_order');
-            $p->keep_sample = $request->get('keep_sample');
-            $p->save();
+    // public function orderrequirement_store(Request $request){
+    //     try{
+    //         $p = new POrequirement();
+    //         $p->po_id = $request->get('ordernumberid');
+    //         $p->back_veneer = $request->get('back_veneer');
+    //         $p->core_board = $request->get('core_board');
+    //         $p->base_layer = $request->get('base_layer');
+    //         $p->paint_process = $request->get('paint_process');
+    //         $p->brightness = $request->get('brightness');
+    //         $p->delivery_date = $request->get('delivery_date');
+    //         $p->tenon = $request->get('tenon');
+    //         $p->chamfer = $request->get('chamfer');
+    //         $p->product_description = $request->get('product_description');
+    //         $p->surface_thickness = $request->get('surface_thickness');
+    //         $p->mc_range = $request->get('mc_range');
+    //         $p->tolerance_thickness = $request->get('tolerance_thickness');
+    //         $p->back_groove = $request->get('back_groove');
+    //         $p->customer_specific_paint = $request->get('customer_specific_paint');
+    //         $p->customer_follow_order = $request->get('customer_follow_order');
+    //         $p->keep_sample = $request->get('keep_sample');
+    //         $p->save();
 
-            return redirect()->route('po.index')->with('success', 'Data has been saved.');
+    //         return redirect()->route('po.index')->with('success', 'Data has been saved.');
 
-        }catch(\Exception $ex){
-            return back()->with('Error', 'Error. '.$ex);
-        }
+    //     }catch(\Exception $ex){
+    //         return back()->with('Error', 'Error. '.$ex);
+    //     }
             
-    }
+    // }
 
     public function get_info($id){
         $buyer_id = PO::where('id', $id)->pluck('buyer_id');
@@ -162,6 +229,22 @@ class POcontroller extends Controller
             $d = PO::find($id);
             $d->order_date = $request->get('order_date');
             $d->buyer_id = $request->get('buyer_id');
+            $d->back_veneer = $request->get('back_veneer');
+            $d->core_board = $request->get('core_board');
+            $d->base_layer = $request->get('base_layer');
+            $d->paint_process = $request->get('paint_process');
+            $d->brightness = $request->get('brightness');
+            $d->delivery_date = $request->get('delivery_date');
+            $d->tenon = $request->get('tenon');
+            $d->chamfer = $request->get('chamfer');
+            $d->product_description = $request->get('product_description');
+            $d->surface_thickness = $request->get('surface_thickness');
+            $d->mc_range = $request->get('mc_range');
+            $d->tolerance_thickness = $request->get('tolerance_thickness');
+            $d->back_groove = $request->get('back_groove');
+            $d->customer_specific_paint = $request->get('customer_specific_paint');
+            $d->customer_follow_order = $request->get('customer_follow_order');
+            $d->keep_sample = $request->get('keep_sample');
             $d->save();
             
             return redirect()->route('po.index')->with('success', 'Data has been updated.');
@@ -173,42 +256,41 @@ class POcontroller extends Controller
 
     public function edit_orderdetail($id){
 
-
-        return view('po.editdetail')->with(['pod'=>POdetail::find($id), 'pos'=>PO::all(), 'species'=>Species::all(), 'buyers'=>Buyer::all() ]);
+        return view('po.editdetail')->with(['pod'=>POdetail::find($id), 'pos'=>PO::all(), 'species'=>Species::all(), 'buyers'=>Buyer::all(), 'grades'=>Grade::all() ]);
     }
 
-    public function edit_requirement($id){
-        return view('po.editrequirement')->with(['req'=>POrequirement::find($id), 'pos'=>PO::all()]);
-    }
+    // public function edit_requirement($id){
+    //     return view('po.editrequirement')->with(['req'=>POrequirement::find($id), 'pos'=>PO::all()]);
+    // }
 
-    public function updaterequirement(Request $request,$id){
-        try{
-            $p = POrequirement::find($id);
-            $p->po_id = $request->get('ordernumberid');
-            $p->back_veneer = $request->get('back_veneer');
-            $p->core_board = $request->get('core_board');
-            $p->base_layer = $request->get('base_layer');
-            $p->paint_process = $request->get('paint_process');
-            $p->brightness = $request->get('brightness');
-            $p->delivery_date = $request->get('delivery_date');
-            $p->tenon = $request->get('tenon');
-            $p->chamfer = $request->get('chamfer');
-            $p->product_description = $request->get('product_description');
-            $p->surface_thickness = $request->get('surface_thickness');
-            $p->mc_range = $request->get('mc_range');
-            $p->tolerance_thickness = $request->get('tolerance_thickness');
-            $p->back_groove = $request->get('back_groove');
-            $p->customer_specific_paint = $request->get('customer_specific_paint');
-            $p->customer_follow_order = $request->get('customer_follow_order');
-            $p->keep_sample = $request->get('keep_sample');
-            $p->save();
+    // public function updaterequirement(Request $request,$id){
+    //     try{
+    //         $p = POrequirement::find($id);
+    //         $p->po_id = $request->get('ordernumberid');
+    //         $p->back_veneer = $request->get('back_veneer');
+    //         $p->core_board = $request->get('core_board');
+    //         $p->base_layer = $request->get('base_layer');
+    //         $p->paint_process = $request->get('paint_process');
+    //         $p->brightness = $request->get('brightness');
+    //         $p->delivery_date = $request->get('delivery_date');
+    //         $p->tenon = $request->get('tenon');
+    //         $p->chamfer = $request->get('chamfer');
+    //         $p->product_description = $request->get('product_description');
+    //         $p->surface_thickness = $request->get('surface_thickness');
+    //         $p->mc_range = $request->get('mc_range');
+    //         $p->tolerance_thickness = $request->get('tolerance_thickness');
+    //         $p->back_groove = $request->get('back_groove');
+    //         $p->customer_specific_paint = $request->get('customer_specific_paint');
+    //         $p->customer_follow_order = $request->get('customer_follow_order');
+    //         $p->keep_sample = $request->get('keep_sample');
+    //         $p->save();
 
-            return redirect()->route('po.index')->with('success', 'Data has been updated.');
+    //         return redirect()->route('po.index')->with('success', 'Data has been updated.');
 
-        }catch(\Exception $ex){
-            return back()->with('Error', 'Error. '.$ex);
-        }
-    }
+    //     }catch(\Exception $ex){
+    //         return back()->with('Error', 'Error. '.$ex);
+    //     }
+    // }
 
     public function updatedetail(Request $request,$id){
         try{
@@ -234,7 +316,7 @@ class POcontroller extends Controller
             $p->save();
             
             
-            return redirect()->route('po.index')->with('success', 'Data has been updated.');
+            return redirect()->route('po.orderdetail')->with('success', 'Data has been updated.');
 
         }catch(\Exception $ex){
             return back()->with('Error', 'Error. '.$ex);
@@ -255,7 +337,7 @@ class POcontroller extends Controller
             $s->remark = $request->get('remark');
             $s->save();
             
-            return redirect()->route('po.index')->with('success', 'Data has been saved.');
+            return redirect()->route('po.top')->with('success', 'Data has been saved.');
 
         }catch(\Exception $ex){
             return back()->with('Error', 'Error. '.$ex);
@@ -279,7 +361,7 @@ class POcontroller extends Controller
             $s->remark = $request->get('remark');
             $s->save();
             
-            return redirect()->route('po.index')->with('success', 'Data has been updated.');
+            return redirect()->route('po.top')->with('success', 'Data has been updated.');
 
         }catch(\Exception $ex){
             return back()->with('Error', 'Error. '.$ex);
@@ -299,7 +381,7 @@ class POcontroller extends Controller
             $s->remark = $request->get('remark');
             $s->save();
             
-            return redirect()->route('po.index')->with('success', 'Data has been saved.');
+            return redirect()->route('po.bottom')->with('success', 'Data has been saved.');
         }catch(\Exception $ex){
             return back()->with('Error', 'Error. '.$ex);
         }
@@ -371,16 +453,6 @@ class POcontroller extends Controller
     public function updatecore($id, Request $request){
         try{
 
-            // $this->validate($request, [
-            //     'structure_legend' => 'required|mimes:jpg,jpeg,png,gif'
-            // ]);
-
-            // //upload images
-            // $file = $request->file('structure_legend');
-            // $extension = $file->getClientOriginalExtension(); // getting image extension
-            // $filename =time().'.'.$extension;
-            // $file->move('uploads/structure_legend/', $filename);
-
             $s = POcore::find($id);
             $s->po_id = $request->get('ordernumbers_id');
             $s->structure = $request->get('structure');
@@ -398,7 +470,6 @@ class POcontroller extends Controller
             return redirect()->route('po.core')->with('success', 'Data has been updated.');
 
         }catch(\Exception $ex){
-            // return back()->with('error', 'Error. Please check data again and make sure select file type: .jpg, .jpeg, .png, .gif required.');
             return back()->with('error', 'Error. '.$ex);
         }
     }
@@ -473,14 +544,14 @@ class POcontroller extends Controller
         try{
             $po = POdetail::find($id);
             $po->delete();
-            return redirect()->route('po.index')->with('success', 'Data PO detail has been delete.');
+            return redirect()->route('po.orderdetail')->with('success', 'Data PO detail has been delete.');
         }
         catch(\Illuminate\Database\QueryException $e)
         {
             $errorCode = $e->errorInfo[1];
             if($errorCode == '1451')
             {
-                return redirect()->route('po.index')->with('error', 'Cant delete data ready in use.');
+                return redirect()->route('po.orderdetail')->with('error', 'Cant delete data ready in use.');
             }
         }
     }

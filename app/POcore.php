@@ -17,6 +17,7 @@ class POcore extends Model
             ->leftJoin('po', 'po_core.po_id', '=', 'po.id')
             ->leftJoin('buyer', 'po.buyer_id', '=', 'buyer.id')
             ->select('po_core.id', 'po_core.po_id','po_core.structure','po_core.structure_legend', 'po_core.material_name','po_core.delivery_size','po_core.settlement_size', 'po_core.feeding_quantity','po_core.application_date','po_core.delivery_date','po_core.remark','po.order_number','po.order_date', 'buyer.name as buyername')
+            ->orderBy('po_core.id','desc')
             ->get();
         return $b;
     }

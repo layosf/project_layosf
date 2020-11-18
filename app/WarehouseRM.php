@@ -6,6 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class WarehouseRM extends Model
 {
-    protected $table = 'warehouse_rawmaterial';
-    protected $fillable = ['id'];
+    protected $table = 'warehouse_stock';
+    protected $fillable = ['id', 'itemproduct_id', 'qty'];
 }

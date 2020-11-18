@@ -21,7 +21,7 @@ class AccessAdmin
         {
             return $next($request);
         }
-        return redirect('home')->with('warning', 'You are not allowed to access this module!');
+        return redirect()->route('home')->with('warning', 'You are not allowed to access this module!');
         
     }
 }

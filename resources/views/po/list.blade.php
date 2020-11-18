@@ -2,16 +2,24 @@
 @section('title','Purchase Order')
 
 <?php 
-    $lang = App\Language::pluck('language')[0];
-    $dashboard = Stichoza\GoogleTranslate\GoogleTranslate::trans('Home', $lang);
-    $list = Stichoza\GoogleTranslate\GoogleTranslate::trans('List', $lang);
-    $list_po = Stichoza\GoogleTranslate\GoogleTranslate::trans('PO List', $lang);
-    $input = Stichoza\GoogleTranslate\GoogleTranslate::trans('Input', $lang);
+    // $lang = App\Language::pluck('language')[0];
+    // $dashboard = Stichoza\GoogleTranslate\GoogleTranslate::trans('Home', $lang);
+    // $list = Stichoza\GoogleTranslate\GoogleTranslate::trans('List', $lang);
+    // $list_po = Stichoza\GoogleTranslate\GoogleTranslate::trans('PO List', $lang);
+    // $input = Stichoza\GoogleTranslate\GoogleTranslate::trans('Input', $lang);
+    // $ordernumberr = Stichoza\GoogleTranslate\GoogleTranslate::trans('Order Number', $lang);
+    // $orderdatee = Stichoza\GoogleTranslate\GoogleTranslate::trans('Order Date', $lang);
+    // $buyerr = Stichoza\GoogleTranslate\GoogleTranslate::trans('Buyer', $lang);
+    // $action = Stichoza\GoogleTranslate\GoogleTranslate::trans('Action', $lang);
     
-    $ordernumberr = Stichoza\GoogleTranslate\GoogleTranslate::trans('Order Number', $lang);
-    $orderdatee = Stichoza\GoogleTranslate\GoogleTranslate::trans('Order Date', $lang);
-    $buyerr = Stichoza\GoogleTranslate\GoogleTranslate::trans('Buyer', $lang);
-    $action = Stichoza\GoogleTranslate\GoogleTranslate::trans('Action', $lang);
+    $dashboard = 'Home';
+    $list = 'List';
+    $list_po = 'PO List';
+    $input = 'Input';
+    $ordernumberr = 'Order Number';
+    $orderdatee = 'Order Date';
+    $buyerr = 'Buyer';
+    $action = 'Action';
 ?>
 
 <div class="page">
@@ -28,13 +36,13 @@
     <div class="page-content container-fluid">
         <div class="panel">
             <header class="panel-heading">
-            <h3 class="panel-title">
-                {{ $list_po }}
-            </h3>
+                <h3 class="panel-title">
+                    {{ $list_po }}
+                </h3>
             </header>
         
             <div class="panel-body">
-                <table class="table table-hover dataTable table-striped w-full" data-plugin="dataTable">
+                <table style="font-size:12px" class="table table-hover dataTable table-striped w-full" data-plugin="dataTable">
                     <thead>
                         <tr>
                             <th>{{$ordernumberr}}</th>

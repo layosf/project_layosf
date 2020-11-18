@@ -1,5 +1,10 @@
 @extends('layoutapp.mainmenu')
 @section('title','Purchase Order')
+<style>
+    label{
+        font-size: 10px;
+    }
+</style>
 <?php 
     // $lang = App\Language::pluck('language')[0];
     // $dashboard = Stichoza\GoogleTranslate\GoogleTranslate::trans('Home', $lang);
@@ -33,7 +38,7 @@
 
                                     <li><a class="nav-link {{ request()->is('po/orderdetail') ? 'active' : null }}" href="{{ url('po/orderdetail') }}" >Order Detail</a></li>
 
-                                    <li><a class="nav-link {{ request()->is('po/requirement') ? 'active' : null }}" href="{{ url('po/requirement') }}" >Order Requirement</a></li>
+                                    <!-- <li><a class="nav-link {{ request()->is('po/requirement') ? 'active' : null }}" href="{{ url('po/requirement') }}" >Order Requirement</a></li> -->
 
                                     <li><a class="nav-link {{ request()->is('po/top') ? 'active' : null }}" href="{{ url('po/top') }}" > Top</a></li>
 
@@ -73,14 +78,155 @@
                                                         </select>
                                                     </div>
                                                 </div>
+                                            </div>
 
-                                                <div class="form-group row">
-                                                    <div class="col-lg-12 text-center">
-                                                        <button class="btn btn-primary btn-sm" type="submit">Save</button>
-                                                        <button class="btn btn-white btn-sm" type="reset">Cancel</button>
+                                            <div class="row row-lg">
+                                                <div class="col-lg-6 m-d">
+                                                    <h4 class="example-title">Substrate Requirements</h4>
+                                                    <div class="form-group row">
+                                                        <label class="col-md-3 form-control-label text-left">Back Veneer</label>
+                                                        <div class="col-md-8">
+                                                            <input type="text" class="form-control form-control-sm" id="back_veneer" name="back_veneer" required>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <label class="col-md-3 form-control-label text-left">Core board</label>
+                                                        <div class="col-md-8">
+                                                            <input type="text" class="form-control form-control-sm" id="core_board" name="core_board" required>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <label class="col-md-3 form-control-label text-left">Base Layer</label>
+                                                        <div class="col-md-8">
+                                                            <input type="text" class="form-control form-control-sm" id="base_layer" name="base_layer">
+                                                        </div>
+                                                    </div>
+
+                                                    <h4 class="example-title">Paint</h4>
+                                                    <div class="form-group row">
+                                                        <label class="col-md-3 form-control-label text-left">Paint Process</label>
+                                                        <div class="col-md-8">
+                                                            <input type="text" class="form-control form-control-sm" id="paint_process" name="paint_process" required>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <label class="col-md-3 form-control-label text-left">Brightness</label>
+                                                        <div class="col-md-8">
+                                                            <input type="text" class="form-control form-control-sm" id="brightness" name="brightness" required>
+                                                        </div>
+                                                    </div>
+                                                    
+                                                    <div class="form-group row">
+                                                        <label class="col-md-3 form-control-label text-left">Delivery Date</label>
+                                                        <div class="col-md-8">
+                                                            <div class="input-group">
+                                                                <span class="input-group-addon">
+                                                                    <i class="icon wb-calendar" aria-hidden="true"></i>
+                                                                </span>
+                                                                <input type="date" class="form-control form-control-sm" id="delivery_date" name="delivery_date" required>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <label class="col-md-3 form-control-label text-left">Tenon</label>
+                                                        <div class="col-md-8">
+                                                            <input type="text" class="form-control form-control-sm" id="tenon" name="tenon" required>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <label class="col-md-3 form-control-label text-left">Chamfer</label>
+                                                        <div class="col-md-8">
+                                                            <input type="text" class="form-control form-control-sm" id="chamfer" name="chamfer" required>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <label class="col-md-6 form-control-label text-left">Back Groove</label>
+                                                        <div class="radio-custom radio-primary">
+                                                            <input type="radio" id="back_groove" name="back_groove" value="Yes" checked/>
+                                                            <label for="inputRadiosUnchecked">Yes</label>
+                                                        </div>
+                                                        &nbsp
+                                                        <div class="radio-custom radio-primary">
+                                                            <input type="radio" id="back_groove" name="back_groove" value="No"  />
+                                                            <label for="inputRadiosChecked">No</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <label class="col-md-6 form-control-label text-left">Whether to keep the sample</label>
+                                                        <div class="radio-custom radio-primary">
+                                                            <input type="radio" id="keep_sample" name="keep_sample" value="Yes" checked/>
+                                                            <label for="inputRadiosUnchecked">Yes</label>
+                                                        </div>
+                                                        &nbsp
+                                                        <div class="radio-custom radio-primary">
+                                                            <input type="radio" id="keep_sample" name="keep_sample" value="No"  />
+                                                            <label for="inputRadiosChecked">No</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-lg-6">
+                                                    <div class="form-group row">
+                                                        <label class="col-md-3 form-control-label text-left">Finished surface thickness range</label>
+                                                        <div class="col-md-8">
+                                                            <input type="text" class="form-control form-control-sm" id="surface_thickness" name="surface_thickness" >
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <label class="col-md-3 form-control-label text-left">MC Range</label>
+                                                        <div class="col-md-8">
+                                                            <input type="text" class="form-control form-control-sm" id="mc_range" name="mc_range" >
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <label class="col-md-3 form-control-label text-left">Total thickness tolerance range </label>
+                                                        <div class="col-md-8">
+                                                            <input type="text" class="form-control form-control-sm" id="tolerance_thickness" name="tolerance_thickness" >
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <label class="col-md-3 form-control-label text-left">Product description</label>
+                                                        <div class="col-md-8">
+                                                            <textarea class="form-control form-control-sm" id="product_description" name="product_description"></textarea>
+                                                        </div>
+                                                    </div>
+                                                    
+                                                    
+                                                    <div class="form-group row">
+                                                        <label class="col-md-6 form-control-label text-left">Whether the customer specifies the paint</label>
+                                                        <div class="radio-custom radio-primary">
+                                                            <input type="radio" id="customer_specific_paint" name="customer_specific_paint" value="Yes" checked/>
+                                                            <label for="inputRadiosUnchecked">Yes</label>
+                                                        </div>
+                                                        &nbsp
+                                                        <div class="radio-custom radio-primary">
+                                                            <input type="radio" id="customer_specific_paint" name="customer_specific_paint" value="No"  />
+                                                            <label for="inputRadiosChecked">No</label>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group row">
+                                                        <label class="col-md-6 form-control-label text-left">Whether the customer follows the order</label>
+                                                        <div class="radio-custom radio-primary">
+                                                            <input type="radio" id="customer_follow_order" name="customer_follow_order" value="Yes" checked/>
+                                                            <label for="inputRadiosUnchecked">Yes</label>
+                                                        </div>
+                                                        &nbsp
+                                                        <div class="radio-custom radio-primary">
+                                                            <input type="radio" id="customer_follow_order" name="customer_follow_order" value="No"  />
+                                                            <label for="inputRadiosChecked">No</label>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
+                                        
+                                            <div class="form-group row">
+                                                <div class="col-lg-12 text-center">
+                                                    <button class="btn btn-primary btn-sm" type="submit">Save</button>
+                                                    <button class="btn btn-white btn-sm" type="reset">Cancel</button>
+                                                </div>
+                                            </div>
+                                            
                                         </form>
                                     </div>
 
@@ -156,19 +302,19 @@
                                                     <div class="form-group row">
                                                         <label class="col-md-3 form-control-label text-left">Thick</label>
                                                         <div class="col-md-8">
-                                                            <input type="text" class="form-control form-control-sm" id="thick" name="thick" required>
+                                                            <input type="text" class="allownumericwithdecimal form-control form-control-sm" id="thick" name="thick" required>
                                                         </div>
                                                     </div>
                                                     <div class="form-group row">
                                                         <label class="col-md-3 form-control-label text-left">Width</label>
                                                         <div class="col-md-8">
-                                                            <input type="text" class="form-control form-control-sm" id="width" name="width" required>
+                                                            <input type="text" class="allownumericwithdecimal form-control form-control-sm" id="width" name="width" required>
                                                         </div>
                                                     </div>
                                                     <div class="form-group row">
                                                         <label class="col-md-3 form-control-label text-left">Length</label>
                                                         <div class="col-md-8">
-                                                            <input type="text" class="form-control form-control-sm" id="length" name="length" required>
+                                                            <input type="text" class="allownumericwithdecimal form-control form-control-sm" id="length" name="length" required>
                                                         </div>
                                                     </div>
 
@@ -176,19 +322,19 @@
                                                     <div class="form-group row">
                                                         <label class="col-md-3 form-control-label text-left">Pcs Order</label>
                                                         <div class="col-md-8">
-                                                            <input type="text" class="form-control form-control-sm" id="pcs_order" name="pcs_order" >
+                                                            <input type="text" class="allownumericwithdecimal form-control form-control-sm" id="pcs_order" name="pcs_order" >
                                                         </div>
                                                     </div>
                                                     <div class="form-group row">
                                                         <label class="col-md-3 form-control-label text-left"> Box</label>
                                                         <div class="col-md-8">
-                                                            <input type="text" class="form-control form-control-sm" id="box_qty" name="box_qty" >
+                                                            <input type="text" class="allownumericwithdecimal form-control form-control-sm" id="box_qty" name="box_qty" >
                                                         </div>
                                                     </div>
                                                     <div class="form-group row">
                                                         <label class="col-md-3 form-control-label text-left"> Pallet </label>
                                                         <div class="col-md-8">
-                                                            <input type="text" class="form-control form-control-sm" id="pallet_qty" name="pallet_qty" >
+                                                            <input type="text" class="allownumericwithdecimal form-control form-control-sm" id="pallet_qty" name="pallet_qty" >
                                                         </div>
                                                     </div>
                                                 </div>
@@ -203,19 +349,29 @@
                                                     <div class="form-group row">
                                                         <label class="col-md-3 form-control-label text-left">Qty M2</label>
                                                         <div class="col-md-8">
-                                                            <input type="text" class="form-control form-control-sm" id="qty_m2" name="qty_m2" >
+                                                            <input type="text" class="allownumericwithdecimal form-control form-control-sm" id="qty_m2" name="qty_m2" >
                                                         </div>
                                                     </div>
                                                     <div class="form-group row">
                                                         <label class="col-md-3 form-control-label text-left">Veneer Grade</label>
                                                         <div class="col-md-8">
-                                                            <input type="text" class="form-control form-control-sm" id="veneer_grade" name="veneer_grade" >
+                                                            <!-- <input type="text" class="form-control form-control-sm" id="veneer_grade" name="veneer_grade" > -->
+                                                            <select class="form-control" id="veneer_grade" name="veneer_grade">
+                                                                <option value=""> </option>
+                                                                @foreach($grades as $gr)
+                                                                    <option value ="{{ $gr->id }}"> {{ $gr->name }}</option>
+                                                                @endforeach
+                                                            </select>
                                                         </div>
                                                     </div>
                                                     <div class="form-group row">
                                                         <label class="col-md-3 form-control-label text-left">Veneer Process</label>
                                                         <div class="col-md-8">
-                                                            <input type="text" class="form-control form-control-sm" id="veneer_process" name="veneer_process" >
+                                                            <select name="veneer_process" id="veneer_process" class="form-control">
+                                                                <option value="Sliced"> Sliced</option>
+                                                                <option value="Rotary Cut"> Rotary Cut</option>
+                                                                <option value="Ripsaw"> Ripsaw</option>
+                                                            </select>
                                                         </div>
                                                     </div>
                                                     <div class="form-group row">
@@ -257,7 +413,7 @@
 
                                     </div>
                                     
-                                    <div id="{{ url('po/requirement') }}" class="tab-pane {{ request()->is('po/requirement') ? 'active' : null }}">
+                                    <!-- <div id="{{ url('po/requirement') }}" class="tab-pane {{ request()->is('po/requirement') ? 'active' : null }}">
                                         <form action="{{ route('po.requirement.store') }}" method="post" class="form-horizontal" id="exampleConstraintsFormTypes" autocomplete="off">
                                         @csrf
                                             <div class="col-lg-12">
@@ -423,7 +579,7 @@
                                                 </div>
                                             </div>
                                         </form>
-                                    </div>
+                                    </div> -->
 
                                     <div id="{{ url('po/top') }}" class="tab-pane {{ request()->is('po/top') ? 'active' : null }}">
                                         <form action="{{ route('po.top.store') }}" method="post" class="form-horizontal" id="exampleConstraintsFormTypes" autocomplete="off">
@@ -479,14 +635,14 @@
                                                     <div class="form-group row">
                                                         <label class="col-md-3 form-control-label text-left">Settlement Size/mm</label>
                                                         <div class="col-md-8">
-                                                            <input type="text" class="form-control form-control-sm" id="settlement_size" name="settlement_size">
+                                                            <input type="text" class="allownumericwithdecimal form-control form-control-sm" id="settlement_size" name="settlement_size">
                                                         </div>
                                                     </div>
 
                                                     <div class="form-group row">
                                                         <label class="col-md-3 form-control-label text-left">Feeding Quantity/Piece</label>
                                                         <div class="col-md-8">
-                                                            <input type="text" class="form-control form-control-sm" id="feeding_quantity" name="feeding_quantity" required>
+                                                            <input type="text" class="allownumericwithdecimal form-control form-control-sm" id="feeding_quantity" name="feeding_quantity" required>
                                                         </div>
                                                     </div>
                                                     
@@ -603,14 +759,14 @@
                                                     <div class="form-group row">
                                                         <label class="col-md-3 form-control-label text-left">Settlement Size/mm</label>
                                                         <div class="col-md-8">
-                                                            <input type="text" class="form-control form-control-sm" id="settlement_size" name="settlement_size">
+                                                            <input type="text" class="allownumericwithdecimal form-control form-control-sm" id="settlement_size" name="settlement_size">
                                                         </div>
                                                     </div>
 
                                                     <div class="form-group row">
                                                         <label class="col-md-3 form-control-label text-left">Feeding Quantity/Piece</label>
                                                         <div class="col-md-8">
-                                                            <input type="text" class="form-control form-control-sm" id="feeding_quantity" name="feeding_quantity" required>
+                                                            <input type="text" class="allownumericwithdecimal form-control form-control-sm" id="feeding_quantity" name="feeding_quantity" required>
                                                         </div>
                                                     </div>
                                                     
@@ -647,7 +803,6 @@
                                                     </div>
                                                 </div>
                                                 
-                                                    
                                                 <div class="col-lg-12">
                                                     <div class="form-group row">
                                                         <div class="col-lg-12 text-center">
@@ -714,14 +869,14 @@
                                                     <div class="form-group row">
                                                         <label class="col-md-3 form-control-label text-left">Settlement Size/mm</label>
                                                         <div class="col-md-8">
-                                                            <input type="text" class="form-control form-control-sm" id="settlement_size" name="settlement_size">
+                                                            <input type="text" class="allownumericwithdecimal form-control form-control-sm" id="settlement_size" name="settlement_size">
                                                         </div>
                                                     </div>
 
                                                     <div class="form-group row">
                                                         <label class="col-md-3 form-control-label text-left">Feeding Quantity/Piece</label>
                                                         <div class="col-md-8">
-                                                            <input type="text" class="form-control form-control-sm" id="feeding_quantity" name="feeding_quantity" required>
+                                                            <input type="text" class="allownumericwithdecimal form-control form-control-sm" id="feeding_quantity" name="feeding_quantity" required>
                                                         </div>
                                                     </div>
                                                     
@@ -793,8 +948,23 @@
                                     <th>Order Number</th>
                                     <th>Order Date</th>
                                     <th>Buyer</th>
-                                    
+                                    <th>Back Veneer</th>
+                                    <th>Core Board</th>
+                                    <th>Base Layer</th>
+                                    <th>Paint Process</th>
+                                    <th>Brightness</th>
+                                    <th>Delivery Date</th>
+                                    <th>Tenon</th>
                                     <th>Action</th>
+                                    <th>Chamfer</th>
+                                    <th>Product Description</th>
+                                    <th>Surface Thickness</th>
+                                    <th>MC Range</th>
+                                    <th>Tolerance Thickness</th>
+                                    <th>Back Groove</th>
+                                    <th>Customer Specific Paint</th>
+                                    <th>Customer Follow Order</th>
+                                    <th>Keep Sample</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -803,6 +973,13 @@
                                     <td> {{ $po->order_number }} </td>
                                     <td> {{ $po->order_date }} </td>
                                     <td> {{ implode(',', $po->buyer()->get()->pluck('name')->toArray()) }} </td>
+                                    <td> {{ $po->back_veneer }} </td>
+                                    <td> {{ $po->core_board }} </td>
+                                    <td> {{ $po->base_layer }} </td>
+                                    <td> {{ $po->paint_process }} </td>
+                                    <td> {{ $po->brightness }} </td>
+                                    <td> {{ $po->delivery_date }} </td>
+                                    <td> {{ $po->tenon }} </td>
                                     <td> 
                                         <a href="{{ route('po.general.edit', $po->id) }}" class='float-center' title="Edit General">    
                                             <i class="icon wb-edit" aria-hidden="true"> </i>
@@ -813,6 +990,15 @@
                                             <i class="icon wb-trash" aria-hidden="true"> </i>
                                         </a>
                                     </td>
+                                    <td> {{ $po->chamfer }} </td>
+                                    <td> {{ $po->product_description }} </td>
+                                    <td> {{ $po->surface_thickness }} </td>
+                                    <td> {{ $po->mc_range }} </td>
+                                    <td> {{ $po->tolerance_thickness }} </td>
+                                    <td> {{ $po->back_groove }} </td>
+                                    <td> {{ $po->customer_specific_paint }} </td>
+                                    <td> {{ $po->customer_follow_order }} </td>
+                                    <td> {{ $po->keep_sample }} </td>
                                 </tr>
                                 @endforeach
                             </tbody>
@@ -832,7 +1018,7 @@
                 <div class="panel-body">
                     
                     <div class="table-responsive">
-                        <table style="font-size:12px" class="table table-hover dataTable table-striped" data-plugin="dataTable" width="100%" >
+                        <table id="tbllistdetail" style="font-size:12px" class="table table-hover dataTable table-striped" data-plugin="dataTable" width="100%" >
                             <thead>
                                 <tr>
                                     <th>Order Number</th>
@@ -874,15 +1060,13 @@
                                     <td> {{ $detail->width }} </td>
                                     <td> {{ $detail->length }} </td>
                                     <td> {{ $detail->pcs_order }} </td>
-                                    
                                     <td> {{ $detail->box_qty }} </td>
                                     <td> 
                                         <a href="{{ route('po.orderdetail.edit', $detail->id) }}" class='float-center' title="Edit Detail">    
                                             <i class="icon wb-edit" aria-hidden="true"> </i>
                                         </a>
-                                        
                                         &nbsp
-                                        <a class="delete_detail" title="Delete Detail" data-id="{{ $detail->id }}">    
+                                        <a onclick="deletedetail('{{ $detail->id }}')" title="Delete Detail" data-id="{{ $detail->id }}">    
                                             <i class="icon wb-trash" aria-hidden="true"> </i>
                                         </a>
                                     </td>
@@ -890,7 +1074,7 @@
                                     
                                     <td> {{ $detail->colour }} </td>
                                     <td> {{ $detail->qty_m2 }} </td>
-                                    <td> {{ $detail->veneer_grade }} </td>
+                                    <td> {{ $detail->veneergrade }} </td>
                                     <td> {{ $detail->veneer_process }} </td>
                                     <td> {{ $detail->veneer_color }} </td>
                                     <td> {{ $detail->package }} </td>
@@ -981,7 +1165,7 @@
         @endif
 
         @if(Route::current()->getName() == 'po.top')
-            <div class="panel">
+            <div class="panel" id="listtop">
                 <header class="panel-heading">
                     <h4 class="panel-title">
                     List Top
@@ -989,7 +1173,7 @@
                 </header>
                 <div class="panel-body">
                     <div class="table-responsive">
-                        <table style="font-size:12px" class="table table-hover dataTable table-striped" data-plugin="dataTable" width="100%">
+                        <table id="tbllisttop" style="font-size:12px" class="table table-hover dataTable table-striped" data-plugin="dataTable" width="100%">
                             <thead>
                                 <tr>
                                     <th>Order Number</th>
@@ -1025,7 +1209,7 @@
                                     </a>
                                     
                                     &nbsp
-                                    <a class="delete_top" title="Delete Top" data-id="{{ $top->id }}">    
+                                    <a onclick="deletetop('{{$top->id}}')" title="Delete Top" data-id="{{ $top->id }}">    
                                         <i class="icon wb-trash" aria-hidden="true"> </i>
                                     </a>
                                 </td>
@@ -1048,7 +1232,7 @@
                 </header>
                 <div class="panel-body">
                     <div class="table-responsive">
-                        <table style="font-size:12px" class="table table-hover dataTable table-striped" data-plugin="dataTable" width="100%">
+                        <table id="tbllistbottom" style="font-size:12px" class="table table-hover dataTable table-striped" data-plugin="dataTable" width="100%">
                             <thead>
                                 <tr>
                                     <th>Order Number</th>
@@ -1062,8 +1246,6 @@
                                     <th>Delivery Date</th>
                                     <th>Action</th>
                                     <th>Remarks</th>
-                                    
-                                    
                                 </tr>
                             </thead>
                             <tbody>
@@ -1084,7 +1266,7 @@
                                         <i class="icon wb-edit" aria-hidden="true"> </i>
                                     </a>
                                     &nbsp
-                                    <a class="delete_bottom" title="Delete Bottom" data-id="{{ $bot->id }}">    
+                                    <a onclick="deletebottom('{{ $bot->id }}')" class="delete_bottom" title="Delete Bottom" data-id="{{ $bot->id }}">    
                                         <i class="icon wb-trash" aria-hidden="true"> </i>
                                     </a>
                                 </td>
@@ -1108,7 +1290,7 @@
                 </header>
                 <div class="panel-body">
                     <div class="table-responsive">
-                        <table style="font-size:12px" class="table table-hover dataTable table-striped" data-plugin="dataTable" width="100%">
+                        <table id="tbllistcore" style="font-size:12px" class="table table-hover dataTable table-striped" data-plugin="dataTable" width="100%">
                             <thead>
                                 <tr>
                                     <th>Order Number</th>
@@ -1124,8 +1306,6 @@
                                     <th>Application Date </th>
                                     <th>Delivery Date</th>
                                     <th>Remarks</th>
-                                    
-                                    
                                 </tr>
                             </thead>
                             <tbody>
@@ -1147,7 +1327,7 @@
                                         <i class="icon wb-edit" aria-hidden="true"> </i>
                                     </a>
                                     &nbsp
-                                    <a class="delete_core" title="Delete Core" data-id="{{ $cor->id }}">    
+                                    <a onclick="deletecore('{{ $cor->id }}')" title="Delete Core" data-id="{{ $cor->id }}">    
                                         <i class="icon wb-trash" aria-hidden="true"> </i>
                                     </a>
                                 </td>
@@ -1169,7 +1349,82 @@
 </div>
 </body> 
 
+<script src="https://code.jquery.com/jquery-2.2.2.min.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script> 
 <script>
+
+    function deletetop(id){
+        swal({
+            title: "Are you sure?",
+            text: "Once deleted, you will not be able to recover this file!",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        })
+        .then((willDelete) => {
+            if (willDelete) {
+                window.location = "/po/top/delete/"+id;
+                
+            } else {
+                swal("Your file is safe!");
+            }
+        });
+    }
+
+    function deletebottom(id){
+        swal({
+            title: "Are you sure?",
+            text: "Once deleted, you will not be able to recover this file!",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        })
+        .then((willDelete) => {
+            if (willDelete) {
+                window.location = "/po/bottom/delete/"+id;
+                
+            } else {
+                swal("Your file is safe!");
+            }
+        });
+    }
+
+    function deletecore(id){
+        swal({
+            title: "Are you sure?",
+            text: "Once deleted, you will not be able to recover this file!",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        })
+        .then((willDelete) => {
+            if (willDelete) {
+                window.location = "/po/core/delete/"+id;
+                
+            } else {
+                swal("Your file is safe!");
+            }
+        });
+    }
+
+    function deletedetail(id){
+        swal({
+            title: "Are you sure?",
+            text: "Once deleted, you will not be able to recover this file!",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        })
+        .then((willDelete) => {
+            if (willDelete) {
+                window.location = "/po/orderdetail/delete/"+id;
+                
+                
+            } else {
+                swal("Your file is safe!");
+            }
+        });
+    }
 
     function get_info(){
         var po_id = document.getElementById('ordernumber_id').value;
@@ -1202,8 +1457,55 @@
                         $('#orderdateinfo').val(data[0]);
                     }
             })
+
+            var tbldetail = $('#tbllistdetail').DataTable({
+                            "processing": true,
+                            "serverSide": true,
+                            "destroy": true,
+                            "paging": true,
+                            "pageLength": 25,
+                            "responsive": true,
+                            "buttons": [
+
+                            ],
+                            
+                            "ajax": {
+                                url: '/po/list_detail/'+po_id,
+                                type: 'get',
+                            },      
+
+                            "columns":[
+                                { "data": "order_number"},
+                                { "data": "order_date"},
+                                { "data": "buyername"},
+                                { "data": "speciesname"},
+                                { "data": "tenon"},
+                                { "data": "surface_effect"},
+                                { "data": "thick"},
+                                { "data": "width"},
+                                { "data": "length"},
+                                { "data": "pcs_order"},
+                                { "data": "box_qty"},
+                                
+                                { "data": "id" , render : function (id, type, row, meta) {
+                                    return type === 'display' ?
+                                            '<a href="/po/orderdetail/edit/'+id+'" class="float-center" title="Edit Detail"><i class="icon wb-edit" aria-hidden="true"> </i> </a> <a onclick="deletedetail('+id+')" title="Delete Detail" data-id="'+id+'"> <i class="icon wb-trash" aria-hidden="true"> </i></a>' :data;
+                                }},
+                                { "data": "pallet_qty"},
+                                { "data": "colour"},
+                                { "data": "qty_m2"},
+                                { "data": "veneer_grade"},
+                                { "data": "veneer_process"},
+                                { "data": "veneer_color"},
+                                { "data": "package"},
+                                { "data": "pallet"},
+                                { "data": "bracket_type"},
+                            ]
+
+            }); 
         }
     }
+
 
     function getinfo(){
         var po_id = document.getElementById('ordernum_id').value;
@@ -1233,6 +1535,47 @@
                         $('#orderdateinfo').val(data[0]);
                     }
             })
+
+            var tbltop = $('#tbllisttop').DataTable({
+                            "processing": true,
+                            "serverSide": true,
+                            "destroy": true,
+                            "paging": true,
+                            "pageLength": 25,
+                            "responsive": true,
+                            "buttons": [
+
+                            ],
+                            
+                            "ajax": {
+                                url: '/po/list_top/'+po_id,
+                                type: 'get',
+                            },      
+
+                            "columns":[
+                                { "data": "order_number"},
+                                { "data": "order_date"},
+                                { "data": "buyername"},
+
+                                { "data": "material_name"},
+                                { "data": "delivery_size"},
+
+                                { "data": "settlement_size"},
+
+                                { "data": "feeding_quantity"},
+                                { "data": "application_date"},
+                                { "data": "delivery_date"},
+                                
+                                { "data": "id" , render : function (id, type, row, meta) {
+                                        return type === 'display' ?
+                                            '<a href="/po/top/edit/'+id+'" class="float-center" title="Edit Top"><i class="icon wb-edit" aria-hidden="true"> </i> </a> <a onclick="deletetop('+id+')" title="Delete Top" data-id="'+id+'"> <i class="icon wb-trash" aria-hidden="true"> </i></a>' :data;
+                                }},
+                                { "data": "remark"},
+                            ]
+
+            });
+
+
         }
     }
 
@@ -1264,6 +1607,46 @@
                         $('#orderdateinfoo').val(data[0]);
                     }
             })
+
+            var tbllistbottom = $('#tbllistbottom').DataTable({
+                            "processing": true,
+                            "serverSide": true,
+                            "destroy": true,
+                            "paging": true,
+                            "pageLength": 25,
+                            "responsive": true,
+                            "buttons": [
+
+                            ],
+                            
+                            "ajax": {
+                                url: '/po/list_bottom/'+po_id,
+                                type: 'get',
+                            },      
+
+                            "columns":[
+                                { "data": "order_number"},
+                                { "data": "order_date"},
+                                { "data": "buyername"},
+
+                                { "data": "material_name"},
+                                { "data": "delivery_size"},
+
+                                { "data": "settlement_size"},
+
+                                { "data": "feeding_quantity"},
+                                { "data": "application_date"},
+                                { "data": "delivery_date"},
+                                
+                                { "data": "id" , render : function (id, type, row, meta) {
+                                        return type === 'display' ?
+                                            '<a href="/po/bottom/edit/'+id+'" class="float-center" title="Edit Bottom"><i class="icon wb-edit" aria-hidden="true"> </i> </a> <a onclick="deletebottom('+id+')" title="Delete Bottom" data-id="'+id+'"> <i class="icon wb-trash" aria-hidden="true"> </i></a>' :data;
+                                }},
+                                { "data": "remark"},
+                            ]
+
+            });
+
         }
     }
 
@@ -1295,6 +1678,44 @@
                         $('#orderdateinfos').val(data[0]);
                     }
             })
+
+            var tbllistcore = $('#tbllistcore').DataTable({
+                            "processing": true,
+                            "serverSide": true,
+                            "destroy": true,
+                            "paging": true,
+                            "pageLength": 25,
+                            "responsive": true,
+                            "buttons": [
+
+                            ],
+                            
+                            "ajax": {
+                                url: '/po/list_core/'+po_id,
+                                type: 'get',
+                            },      
+
+                            "columns":[
+                                { "data": "order_number"},
+                                { "data": "order_date"},
+                                { "data": "buyername"},
+
+                                { "data": "structure"},
+                                { "data": "structure_legend"},
+                                { "data": "material_name"},
+                                { "data": "delivery_size"},
+                                { "data": "settlement_size"},
+                                { "data": "feeding_quantity"},
+                                { "data": "id" , render : function (id, type, row, meta) {
+                                        return type === 'display' ?
+                                            '<a href="/po/core/edit/'+id+'" class="float-center" title="Edit Core"><i class="icon wb-edit" aria-hidden="true"> </i> </a> <a onclick="deletecore('+id+')" title="Delete Core" data-id="'+id+'"> <i class="icon wb-trash" aria-hidden="true"> </i></a>' :data;
+                                }},
+                                { "data": "application_date"},
+                                { "data": "delivery_date"},
+                                { "data": "remark"},
+                            ]
+
+            });
         }
     }
 
@@ -1302,54 +1723,25 @@
         var poid = document.getElementById('ordernumber_id').value;
         console.log('PO id '+poid);
     }
+
 </script>
-<script src="https://code.jquery.com/jquery-2.2.2.min.js"></script>
-<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script> 
+
 <script>
 
-    $('.delete_detail').on('click', function (event) {
-        event.preventDefault();
-        var id = $(this).data('id');
-        swal({
-            title: "Are you sure?",
-            text: "Once deleted, you will not be able to recover this file!",
-            icon: "warning",
-            buttons: true,
-            dangerMode: true,
-        })
-        .then((willDelete) => {
-            if (willDelete) {
-                window.location = "/po/orderdetail/delete/"+id;
-                
-                
-            } else {
-                swal("Your file is safe!");
+    $(".allownumericwithdecimal").on("keypress keyup blur",function (event) {
+            $(this).val($(this).val().replace(/[^0-9\.]/g,''));
+            if ((event.which != 46 || $(this).val().indexOf('.') != -1) && (event.which < 48 || event.which > 57)) {
+                event.preventDefault();
             }
-        });
-    
     });
-    
-    $('.delete_core').on('click', function (event) {
-        event.preventDefault();
-        var id = $(this).data('id');
-        swal({
-            title: "Are you sure?",
-            text: "Once deleted, you will not be able to recover this file!",
-            icon: "warning",
-            buttons: true,
-            dangerMode: true,
-        })
-        .then((willDelete) => {
-            if (willDelete) {
-                window.location = "/po/core/delete/"+id;
-                
-                
-            } else {
-                swal("Your file is safe!");
-            }
-        });
-    
+
+    $(".allownumericwithoutdecimal").on("keypress keyup blur",function (event) {    
+        $(this).val($(this).val().replace(/[^\d].+/, ""));
+        if ((event.which < 48 || event.which > 57)) {
+            event.preventDefault();
+        }
     });
+
 
     $('.delete_bottom').on('click', function (event) {
         event.preventDefault();
@@ -1365,34 +1757,13 @@
             if (willDelete) {
                 window.location = "/po/bottom/delete/"+id;
                 
-                
             } else {
                 swal("Your file is safe!");
             }
         });
     
     });
-
-    $('.delete_top').on('click', function (event) {
-        event.preventDefault();
-        var id = $(this).data('id');
-        swal({
-            title: "Are you sure?",
-            text: "Once deleted, you will not be able to recover this file!",
-            icon: "warning",
-            buttons: true,
-            dangerMode: true,
-        })
-        .then((willDelete) => {
-            if (willDelete) {
-                window.location = "/po/top/delete/"+id;
-                
-            } else {
-                swal("Your file is safe!");
-            }
-        });
     
-    });
     $('.delete_generals').on('click', function (event) {
         event.preventDefault();
         var id = $(this).data('id');
@@ -1414,7 +1785,6 @@
         });
     });
 
-    
     $('.delete_req').on('click', function (event) {
         event.preventDefault();
         var id = $(this).data('id');

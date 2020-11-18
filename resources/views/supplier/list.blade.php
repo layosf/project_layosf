@@ -55,7 +55,7 @@
             </header>
             <div class="panel-body">
             
-            <table class="table table-hover dataTable table-striped w-full" data-plugin="dataTable">
+            <table style="font-size:12px" class="table table-hover dataTable table-striped w-full" data-plugin="dataTable">
                 <thead>
                     <tr>
                         <th>{{$name}}</th>

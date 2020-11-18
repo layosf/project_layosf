@@ -96,7 +96,7 @@
                             <div class="form-group row">
                                 <label class="col-md-3 form-control-label text-left">Pcs</label>
                                 <div class="col-md-8">
-                                    <input type="text" class="form-control form-control-sm" id="pcs" name="pcs" required value="{{ $rme->pcs }}">
+                                    <input type="text" onkeypress="return onlyNumberKey(event)" class="form-control form-control-sm" id="pcs" name="pcs" required value="{{ $rme->pcs }}">
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -113,13 +113,13 @@
                             <div class="form-group row">
                                 <label class="col-md-3 form-control-label text-left">M2</label>
                                 <div class="col-md-8">
-                                    <input type="text" class="form-control form-control-sm" id="m2" name="m2" required value="{{ $rme->m2 }}">
+                                    <input type="text" onkeypress="return onlyNumberKey(event)" class="form-control form-control-sm" id="m2" name="m2" required value="{{ $rme->m2 }}">
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label class="col-md-3 form-control-label text-left">M3</label>
                                 <div class="col-md-8">
-                                    <input type="text" class="form-control form-control-sm" id="m3" name="m3" required value="{{ $rme->m3 }}">
+                                    <input type="text" onkeypress="return onlyNumberKey(event)" class="form-control form-control-sm" id="m3" name="m3" required value="{{ $rme->m3 }}">
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -146,7 +146,13 @@
             </div>
         </div>
     </div>
-    
-
 </div>
 </body>
+<script>
+    function onlyNumberKey(evt) { 
+          // Only ASCII charactar in that range allowed 
+        if ((event.which != 46 || $(this).val().indexOf('.') != -1) && (event.which < 48 || event.which > 57)) {
+                event.preventDefault();
+        }
+    }
+</script>

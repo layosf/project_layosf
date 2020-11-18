@@ -110,11 +110,10 @@
                         <div class="col-lg-6">
                             <div class="example-wrap">
                                 <div class="example">
-                                    <!-- <form class="form-horizontal" id="exampleConstraintsFormTypes" autocomplete="off"> -->
                                         <div class="form-group row">
                                             <label class="col-md-3 form-control-label">{{ $phone}}</label>
                                             <div class="col-md-9">
-                                            <input type="text" class="form-control" id="phone" name="phone">
+                                            <input type="text" class="form-control" onkeypress="return onlyNumberKey(event)" id="phone" name="phone">
                                             </div>
                                         </div>
                                         <div class="form-group row">
@@ -123,7 +122,17 @@
                                             <input type="text" class="form-control" id="email" name="email">
                                             </div>
                                         </div>
-                                        
+                                        <div class="form-group row">
+                                            <label class="col-md-3 form-control-label">Bank Account</label>
+                                            <div class="col-md-9">
+                                                <select class="form-control" id="bankaccount_id" name="bankaccount_id">
+                                                    <option value=""> </option>
+                                                    @foreach($bankaccounts as $ba)
+                                                        <option value="{{ $ba->id }}"> {{ $ba->accountname }} - {{ $ba->accountno }} </option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                        </div>
                                     <!-- </form> -->
                                 </div>
                             </div>
@@ -146,7 +155,13 @@
 
 </div>
 <script>
-    
+
+    function onlyNumberKey(evt) { 
+          // Only ASCII charactar in that range allowed 
+        if ((event.which != 46 || $(this).val().indexOf('.') != -1) && (event.which < 48 || event.which > 57)) {
+                event.preventDefault();
+        }
+    } 
 
     function get_province(){
         var countryid = document.getElementById('country_id').value;

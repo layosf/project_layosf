@@ -26,7 +26,11 @@
 
                                     <li><a class="nav-link active" data-toggle="tab" href="#general" aria-controls="general" role="tab">Order Detail</a></li>
 
-                                    <li><a class="nav-link {{ request()->is('po/orderrequirement') ? 'active' : null }}" href="{{ url('po/orderrequirement') }}" >Order Requirement</a></li>
+                                    <li><a class="nav-link {{ request()->is('po/top') ? 'active' : null }}" href="{{ url('po/top') }}" > Top</a></li>
+
+                                    <li><a class="nav-link {{ request()->is('po/core') ? 'active' : null }}" href="{{ url('po/core') }}" > Core</a></li>
+
+                                    <li><a class="nav-link {{ request()->is('po/bottom') ? 'active' : null }}" href="{{ url('po/bottom') }}" > Bottom</a></li>
                                 </ul>
                                 <div class="tab-content pt-20">
                                     
@@ -41,7 +45,7 @@
                                                         <select class="form-control form-control-sm" id="ordernumber_id" name="ordernumber_id" required onchange="get_info()">
                                                             <option value=""> </option>
                                                             @foreach($pos as $poo)
-                                                                <option value="{{ $poo->id }}" {{ $poo->id == $pod->id ?'selected':'' }}> {{ $poo->order_number }} </option>
+                                                                <option value="{{ $poo->id }}" {{ $poo->id == $pod->po_id ?'selected':'' }}> {{ $poo->order_number }} </option>
                                                             @endforeach
                                                         </select>
                                                     </div>
@@ -104,19 +108,19 @@
                                                     <div class="form-group row">
                                                         <label class="col-md-3 form-control-label text-left">Thick</label>
                                                         <div class="col-md-8">
-                                                            <input type="text" class="form-control form-control-sm" id="thick" name="thick" required value="{{ $pod->thick }}">
+                                                            <input type="text" class="form-control form-control-sm" id="thick" name="thick" onkeypress="return onlyNumberKey(event)" required value="{{ $pod->thick }}">
                                                         </div>
                                                     </div>
                                                     <div class="form-group row">
                                                         <label class="col-md-3 form-control-label text-left">Width</label>
                                                         <div class="col-md-8">
-                                                            <input type="text" class="form-control form-control-sm" id="width" name="width" required value="{{ $pod->width }}">
+                                                            <input type="text" class="form-control form-control-sm" id="width" onkeypress="return onlyNumberKey(event)" name="width" required value="{{ $pod->width }}">
                                                         </div>
                                                     </div>
                                                     <div class="form-group row">
                                                         <label class="col-md-3 form-control-label text-left">Length</label>
                                                         <div class="col-md-8">
-                                                            <input type="text" class="form-control form-control-sm" id="length" name="length" required value="{{ $pod->length }}">
+                                                            <input type="text" class="form-control form-control-sm" onkeypress="return onlyNumberKey(event)" id="length" name="length" required value="{{ $pod->length }}">
                                                         </div>
                                                     </div>
 
@@ -124,19 +128,19 @@
                                                     <div class="form-group row">
                                                         <label class="col-md-3 form-control-label text-left">Pcs Order</label>
                                                         <div class="col-md-8">
-                                                            <input type="text" class="form-control form-control-sm" id="pcs_order" name="pcs_order" value="{{ $pod->pcs_order }}">
+                                                            <input type="text" class="form-control form-control-sm" onkeypress="return onlyNumberKey(event)" id="pcs_order" name="pcs_order" value="{{ $pod->pcs_order }}">
                                                         </div>
                                                     </div>
                                                     <div class="form-group row">
                                                         <label class="col-md-3 form-control-label text-left"> Box</label>
                                                         <div class="col-md-8">
-                                                            <input type="text" class="form-control form-control-sm" id="box_qty" name="box_qty" value="{{ $pod->box_qty }}">
+                                                            <input type="text" class="form-control form-control-sm" onkeypress="return onlyNumberKey(event)" id="box_qty" name="box_qty" value="{{ $pod->box_qty }}">
                                                         </div>
                                                     </div>
                                                     <div class="form-group row">
                                                         <label class="col-md-3 form-control-label text-left"> Pallet </label>
                                                         <div class="col-md-8">
-                                                            <input type="text" class="form-control form-control-sm" id="pallet_qty" name="pallet_qty" value="{{ $pod->pallet_qty }}">
+                                                            <input type="text" class="form-control form-control-sm" onkeypress="return onlyNumberKey(event)" id="pallet_qty" name="pallet_qty" value="{{ $pod->pallet_qty }}">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -151,19 +155,28 @@
                                                     <div class="form-group row">
                                                         <label class="col-md-3 form-control-label text-left">Qty M2</label>
                                                         <div class="col-md-8">
-                                                            <input type="text" class="form-control form-control-sm" id="qty_m2" name="qty_m2" value="{{ $pod->qty_m2 }}">
+                                                            <input type="text" class="form-control form-control-sm" onkeypress="return onlyNumberKey(event)" id="qty_m2" name="qty_m2" value="{{ $pod->qty_m2 }}">
                                                         </div>
                                                     </div>
                                                     <div class="form-group row">
                                                         <label class="col-md-3 form-control-label text-left">Veneer Grade</label>
                                                         <div class="col-md-8">
-                                                            <input type="text" class="form-control form-control-sm" id="veneer_grade" name="veneer_grade" value="{{ $pod->veneer_grade }}">
+                                                            <select class="form-control" id="veneer_grade" name="veneer_grade">
+                                                                <option value=""> </option>
+                                                                @foreach($grades as $gr)
+                                                                    <option value ="{{ $gr->id }}" {{ $gr->id == $pod->veneer_grade ? 'selected':''}}> {{ $gr->name }}</option>
+                                                                @endforeach
+                                                            </select>
                                                         </div>
                                                     </div>
                                                     <div class="form-group row">
                                                         <label class="col-md-3 form-control-label text-left">Veneer Process</label>
                                                         <div class="col-md-8">
-                                                            <input type="text" class="form-control form-control-sm" id="veneer_process" name="veneer_process" value="{{ $pod->veneer_process }}">
+                                                            <select name="veneer_process" id="veneer_process" class="form-control">
+                                                                <option value="Sliced" {{ $pod->veneer_process === 'Sliced' ? 'selected':'' }}> Sliced</option>
+                                                                <option value="Rotary Cut" {{ $pod->veneer_process === 'Rotary Cut' ? 'selected':'' }}> Rotary Cut</option>
+                                                                <option value="Ripsaw" {{ $pod->veneer_process === 'Ripsaw' ? 'selected':'' }}> Ripsaw</option>
+                                                            </select>
                                                         </div>
                                                     </div>
                                                     <div class="form-group row">
@@ -221,6 +234,13 @@
 </body>
 
 <script>
+
+    function onlyNumberKey(evt) { 
+          // Only ASCII charactar in that range allowed 
+        if ((event.which != 46 || $(this).val().indexOf('.') != -1) && (event.which < 48 || event.which > 57)) {
+                event.preventDefault();
+        }
+    } 
 
     function get_info(){
         var po_id = document.getElementById('ordernumber_id').value;

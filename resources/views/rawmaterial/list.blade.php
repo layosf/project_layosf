@@ -78,9 +78,11 @@
                                         @endif
                                     </td>
                                     <td align="center">
-                                        @if($rm->approval_to == Auth::user()->id)
+                                        @if($rm->approval_to == Auth::user()->id && $rm->status == '0' )
                                             <a class="approve" title="Approve" data-id="{{$rm->id}}"> <i class="icon fa-check"> </i> </a>
-
+                                        
+                                        
+                                        @elseif($rm->approval_to == Auth::user()->id && $rm->status == '1')
                                             <a class="reasonreject" title="Reject" data-target="#fieldreason" data-toggle="modal" data-id="{{ $rm->id }}"> <i class="icon fa-times"> </i> </a>
 
                                             <div id="fieldreason" class="modal fade" aria-hidden="true" aria-labelledby="fieldreason" role="dialog" tabindex="-1">
@@ -105,7 +107,7 @@
                                                 </div>
                                             </div>
 
-                                        @elseif($rm->status == '2' || $rm->status == '3')
+                                        @elseif($rm->approval_to != Auth::user()->id && $rm->status == '2' || $rm->status == '3')
                                             <a href="{{ route('rm.edit', $rm->id) }}" class='float-center'  data-placement="top" data-toggle="tooltip" data-original-title="Edit">    
                                                 <i class="icon wb-edit" aria-hidden="true"> </i>
                                             </a>

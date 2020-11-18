@@ -33,13 +33,13 @@
 
                                     <li><a class="nav-link {{ request()->is('po/orderdetail') ? 'active' : null }}" href="{{ url('po/orderdetail') }}" >Order Detail</a></li>
 
-                                    <li><a class="nav-link {{ request()->is('po/requirement') ? 'active' : null }}" href="{{ url('po/requirement') }}" >Order Requirement</a></li>
+                                    <!-- <li><a class="nav-link {{ request()->is('po/requirement') ? 'active' : null }}" href="{{ url('po/requirement') }}" >Order Requirement</a></li> -->
 
                                     <li><a class="nav-link {{ request()->is('po/top') ? 'active' : null }}" href="{{ url('po/top') }}" > Top</a></li>
 
                                     <li><a class="nav-link {{ request()->is('po/core') ? 'active' : null }}" href="{{ url('po/core') }}" > Core</a></li>
 
-                                    <li><a class="nav-link {{ request()->is('po/bottom') ? 'active' : null }}" href="{{ url('po/bottom') }}" > Bottom</a></li>
+                                    <li><a class="nav-link active" data-toggle="tab" href="#bottom" aria-controls="bottom" role="tab">Bottom</a></li>
                                 </ul>
                                 <div class="tab-content pt-20">
 
@@ -94,20 +94,20 @@
                                                     <div class="form-group row">
                                                         <label class="col-md-3 form-control-label text-left">Delivery Size/mm</label>
                                                         <div class="col-md-8">
-                                                            <input type="text" class="form-control form-control-sm" id="delivery_size" name="delivery_size" required value="{{ $bots->delivery_size }}">
+                                                            <input type="text" class=" form-control form-control-sm" onkeypress="return allownumericwithdecimal(event)" id="delivery_size" name="delivery_size" required value="{{ $bots->delivery_size }}">
                                                         </div>
                                                     </div>
                                                     <div class="form-group row">
                                                         <label class="col-md-3 form-control-label text-left">Settlement Size/mm</label>
                                                         <div class="col-md-8">
-                                                            <input type="text" class="form-control form-control-sm" id="settlement_size" name="settlement_size" value="{{ $bots->settlement_size }}">
+                                                            <input type="text" class=" form-control form-control-sm" onkeypress="return allownumericwithdecimal(event)" id="settlement_size" name="settlement_size" value="{{ $bots->settlement_size }}">
                                                         </div>
                                                     </div>
 
                                                     <div class="form-group row">
                                                         <label class="col-md-3 form-control-label text-left">Feeding Quantity/Piece</label>
                                                         <div class="col-md-8">
-                                                            <input type="text" class="form-control form-control-sm" id="feeding_quantity" name="feeding_quantity" required value="{{ $bots->feeding_quantity }}">
+                                                            <input type="text" class=" form-control form-control-sm" onkeypress="return allownumericwithdecimal(event)" id="feeding_quantity" name="feeding_quantity" required value="{{ $bots->feeding_quantity }}">
                                                         </div>
                                                     </div>
                                                     
@@ -170,6 +170,20 @@
 </body>
 
 <script>
+
+    function allownumericwithdecimal(event) {
+        if ((event.which != 46 || $(this).val().indexOf('.') != -1) && (event.which < 48 || event.which > 57)) {
+                event.preventDefault();
+        }
+    });
+
+
+    $(".allownumericwithoutdecimal").on("keypress keyup blur",function (event) {    
+        $(this).val($(this).val().replace(/[^\d].+/, ""));
+        if ((event.which < 48 || event.which > 57)) {
+            event.preventDefault();
+        }
+    });
 
     function get_info(){
         var po_id = document.getElementById('ordernumber_id').value;

@@ -2,16 +2,27 @@
 @section('title','Grade')
 
 <?php 
-    $lang = App\Language::pluck('language')[0];
-    $form_grade = Stichoza\GoogleTranslate\GoogleTranslate::trans('Form Grade', $lang);
-    $list = Stichoza\GoogleTranslate\GoogleTranslate::trans('List', $lang);
-    $input = Stichoza\GoogleTranslate\GoogleTranslate::trans('Input', $lang);
-    $general = Stichoza\GoogleTranslate\GoogleTranslate::trans('General', $lang);
-    $dashboard = Stichoza\GoogleTranslate\GoogleTranslate::trans('Home', $lang);
-    $namegrade = Stichoza\GoogleTranslate\GoogleTranslate::trans('Name', $lang);
-    $action = Stichoza\GoogleTranslate\GoogleTranslate::trans('Action', $lang);
-    $save = Stichoza\GoogleTranslate\GoogleTranslate::trans('Save', $lang);
-    $cancel = Stichoza\GoogleTranslate\GoogleTranslate::trans('Cancel', $lang);
+    // $lang = App\Language::pluck('language')[0];
+    // $form_grade = Stichoza\GoogleTranslate\GoogleTranslate::trans('Form Grade', $lang);
+    // $list = Stichoza\GoogleTranslate\GoogleTranslate::trans('List', $lang);
+    // $input = Stichoza\GoogleTranslate\GoogleTranslate::trans('Input', $lang);
+    // $general = Stichoza\GoogleTranslate\GoogleTranslate::trans('General', $lang);
+    // $dashboard = Stichoza\GoogleTranslate\GoogleTranslate::trans('Home', $lang);
+    // $namegrade = Stichoza\GoogleTranslate\GoogleTranslate::trans('Name', $lang);
+    // $action = Stichoza\GoogleTranslate\GoogleTranslate::trans('Action', $lang);
+    // $save = Stichoza\GoogleTranslate\GoogleTranslate::trans('Save', $lang);
+    // $cancel = Stichoza\GoogleTranslate\GoogleTranslate::trans('Cancel', $lang);
+
+    // $lang = App\Language::pluck('language')[0];
+    $form_grade = 'Form Grade';
+    $list = 'List';
+    $input = 'Input';
+    $general = 'General';
+    $dashboard = 'Home';
+    $namegrade = 'Name';
+    $action = 'Action';
+    $save = 'Save';
+    $cancel = 'Cancel';
 ?>
 
 <div class="page">
@@ -67,7 +78,7 @@
         </div>
         <div class="panel">
             <div class="panel-body">
-                <table class="table table-hover dataTable table-striped w-full" data-plugin="dataTable" id="listgrade">
+                <table style="font-size:12px" class="table table-hover dataTable table-striped w-full" data-plugin="dataTable" id="listgrade">
                     <thead>
                         <tr>
                             <th> ID </th>

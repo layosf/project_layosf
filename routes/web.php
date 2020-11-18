@@ -99,18 +99,20 @@ Route::prefix('master')->name('master.')->middleware(['auth', 'auth.admin'])->gr
     Route::get('/itemproduct', 'ItemproductController@index')->name('itemproduct');
 });
 
-
-
-
 //PO
-Route::prefix('po')->name('po.')->group(function(){
+Route::prefix('po')->name('po.')->middleware(['auth'])->group(function(){
 
     Route::get('/', 'POcontroller@index')->name('index');
     Route::get('/orderdetail', 'POcontroller@index')->name('orderdetail');
-    Route::get('/requirement', 'POcontroller@index')->name('orderrequirement');
+    // Route::get('/requirement', 'POcontroller@index')->name('orderrequirement');
     Route::get('/top', 'POcontroller@index')->name('top');
     Route::get('/core', 'POcontroller@index')->name('core');
     Route::get('/bottom', 'POcontroller@index')->name('bottom');
+
+    Route::get('/list_top/{id}', 'POcontroller@list_top')->name('listtop');
+    Route::get('/list_core/{id}', 'POcontroller@list_core')->name('listcore');
+    Route::get('/list_bottom/{id}', 'POcontroller@list_bottom')->name('listbottom');
+    Route::get('/list_detail/{id}', 'POcontroller@list_detail')->name('listdetail');
 
     Route::get('/list', 'POcontroller@list')->name('list');
     Route::post('/store', 'POcontroller@general_store')->name('general.store');
@@ -147,10 +149,18 @@ Route::prefix('po')->name('po.')->group(function(){
     Route::get('/bottom/delete/{id}', 'POcontroller@delete_bottom')->name('bottom.delete');
 });
 
+//perjanjian jual beli supplier
+Route::prefix('agreement')->name('agreement.')->middleware(['auth'])->group(function(){
+    Route::get('/', 'AgreementController@index')->name('index');
+    Route::post('/store', 'AgreementController@store')->name('store');
+    Route::get('/get_infosupplier/{id}', 'AgreementController@get_infosupplier');
+});
+
 //Arrival Raw Material
 Route::prefix('rm')->name('rm.')->middleware(['auth'])->group(function(){
     Route::get('/', 'RMcontroller@index')->name('index');
     Route::get('/list', 'RMcontroller@list')->name('list');
+    Route::get('/warehouserm', 'RMcontroller@warehouserm')->name('warehouserm');
 
     Route::post('/store', 'RMcontroller@store')->name('store');
     Route::get('/edit/{id}', 'RMcontroller@edit')->name('edit');

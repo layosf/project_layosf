@@ -42,6 +42,7 @@ class BuyerController extends Controller
             $b->postal_code = $request->get('postal_code');
             $b->bankaccount_id = $request->get('bankaccount_id');
             $b->save();
+            
             return redirect()->route('master.buyer')->with('success', 'Data has been saved.');
         }catch(\Exception $e){
             return redirect()->back()->with('error', $e);
@@ -75,6 +76,7 @@ class BuyerController extends Controller
             $b->bankaccount_id = $request->get('bankaccount_id');
             $b->save();
             return redirect()->route('master.buyer')->with('success', 'Data has been updated.');
+            
         }catch(\Exception $e){
             return redirect()->back()->with('error', $e);
         }

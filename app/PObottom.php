@@ -17,6 +17,7 @@ class PObottom extends Model
             ->leftJoin('po', 'po_bottom.po_id', '=', 'po.id')
             ->leftJoin('buyer', 'po.buyer_id', '=', 'buyer.id')
             ->select('po_bottom.id', 'po_bottom.po_id', 'po_bottom.material_name','po_bottom.delivery_size','po_bottom.settlement_size', 'po_bottom.feeding_quantity','po_bottom.application_date','po_bottom.delivery_date','po_bottom.remark','po.order_number','po.order_date', 'buyer.name as buyername')
+            ->orderBy('po_bottom.id','desc')
             ->get();
         return $b;
     }

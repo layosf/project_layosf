@@ -4,6 +4,8 @@
 <link rel="stylesheet" href="{{asset('examples/css/dashboard/ecommerce.css') }}">
 
 <div class="page">
+    @include('layoutapp.alerts')
+    <br>
     <div class="page-header">
         <h1 class="page-title font-size-26 font-weight-100">LAYO SF Overview</h1>
     </div>

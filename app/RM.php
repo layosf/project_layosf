@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class RM extends Model
 {
     protected $table = 'rawmaterial';
-    protected $fillable = ['id', 'arrival_date', 'partai', 'species_id', 'category_id', 'supplier_id', 'pcs', 'm2', 'm3', 'grade_id', 'invoice_dimention_id','phisic_dimention_id','itemproduct_id','status', 'approval_to', 'warehouse_rm_id', 'reason_reject'];
+    protected $fillable = ['id', 'arrival_date', 'partai', 'species_id', 'category_id', 'supplier_id', 'pcs', 'm2', 'm3', 'grade_id', 'invoice_dimention_id','phisic_dimention_id','itemproduct_id','status', 'approval_to', 'reason_reject'];
 
     public function itemProduct(){
         return $this->hasMany('App\Itemproduct', 'id', 'itemproduct_id');

@@ -153,6 +153,10 @@
     <link rel="stylesheet" href="{{ asset('global/vendor/footable/footable.core.css') }}">
     <link rel="stylesheet" href="{{ asset('examples/css/tables/footable.css') }}">
     <link rel="stylesheet" href="{{ asset('examples/css/uikit/modals.css') }}">
+    <script src="{{ asset('global/js/Plugin/toastr.js') }}"></script>
+    <script src="{{ asset('global/vendor/toastr/toastr.js') }}"></script>
+    <link rel="stylesheet" href="{{ asset('global/vendor/toastr/toastr.css') }}">
+    <link rel="stylesheet" href="{{ asset('examples/css/advanced/toastr.css') }}">
 </head>
 <body class="animsition dashboard">
 
@@ -200,9 +204,7 @@
             
                 <!-- Navbar Toolbar Right -->
                 <ul class="nav navbar-toolbar navbar-right navbar-toolbar-right">
-                    
-                    <li class="nav-item dropdown">
-                        
+                    <li class="nav-item dropdown">                        
                         <div class="dropdown-menu" role="menu">
                             <a class="dropdown-item" href="javascript:void(0)" role="menuitem"><i class="icon wb-user" aria-hidden="true"></i> Profile</a>
                             <a class="dropdown-item" href="javascript:void(0)" role="menuitem"><i class="icon wb-payment" aria-hidden="true"></i> Billing</a>
@@ -243,6 +245,9 @@
                                 <a href="{{ route('logout') }}"  onclick="event.preventDefault(); document.getElementById('logout-frm').submit();">
                                     <i class="icon fa-power-off"> Logout  </i>
                                 </a>
+                                <form id="logout-frm" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                    @csrf
+                                </form>
                             </div>
                         </div>
                     </li>
@@ -311,11 +316,8 @@
             <div>
                 <div>
                     <ul class="site-menu" data-plugin="menu">
-
+                        
                         <li class="site-menu-category">SETUP</li>
-
-                        <!-- <li class="site-menu-category">{{ $setup }}</li> -->
-
                         
                         <li class="site-menu-item has-sub">
                             <a href="javascript:void(0)">
@@ -376,11 +378,7 @@
                                         <span class="site-menu-title">{{$itemproduct}}</span>
                                     </a>
                                 </li>
-                                <li class="site-menu-item">
-                                    <a class="animsition-link" href="{{ route('master.category') }}">
-                                        <span class="site-menu-title"> {{$category}} </span>
-                                    </a>
-                                </li>
+                               
                                 <!-- <li class="site-menu-item">
                                     <a class="animsition-link" href="{{ route('master.bank') }}">
                                         <span class="site-menu-title"> {{$bank}} </span>
@@ -402,13 +400,26 @@
                                 <span class="site-menu-title"> Purchase Order</span>
                             </a>
                         </li>
+                        
+                        <li class="site-menu-item has-sub">
+                            <a class="animsition-link" href="{{ route('agreement.index') }}">
+                                <i class="site-menu-icon wb-shopping-cart" aria-hidden="true"></i>
+                                <span class="site-menu-title"> Agreement Purchase Order</span>
+                            </a>
+                        </li>
                         <li class="site-menu-item has-sub">
                             <a class="animsition-link" href="{{ route('rm.list') }}">
                                 <i class="site-menu-icon wb-library" aria-hidden="true"></i>
                                 <span class="site-menu-title"> Arrival Raw Material</span>
                             </a>
                         </li>
-
+                        <li class="site-menu-item has-sub">
+                            <a class="animsition-link" href="{{ route('rm.warehouserm') }}">
+                                <i class="site-menu-icon wb-library" aria-hidden="true"></i>
+                                <span class="site-menu-title"> Warehouse Raw Material</span>
+                            </a>
+                        </li>
+                    
                     </ul>
                 </div>
             </div>
@@ -433,7 +444,7 @@
 </body>
 </html>
 
-
+<?php $user_welcome = Auth::user()->username; ?>
 <script>
     (function(document, window, $){
     'use strict';
@@ -443,6 +454,23 @@
         Site.run();
     });
     })(document, window, jQuery);
+
+    // $(document).ready(function() 
+    // {
+    //     setTimeout(function() 
+    //     {
+    //         toastr.options = 
+    //         {
+    //             closeButton: true,
+    //             progressBar: true,
+    //             showMethod: 'slideDown',
+    //             timeOut: 4000
+    //         };
+    //         var messages = <?php echo json_encode($user_welcome); ?>; 
+    //         toastr.success('Welcome '+messages);
+
+    //     }, 1300);
+    // });
 </script>
 
 <script>
@@ -451,8 +479,6 @@
         console.log(id);
         
         $.ajax({ 
-                
-
                 url: "{{ url('getlanguage') }}" + '/' + id,
                 data: { id : id},
                 type: 'get',

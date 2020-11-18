@@ -82,6 +82,12 @@ class RMcontroller extends Controller
         }
     }
 
+    public function warehouserm()
+    {
+        // dd(RM::where('status','1')->get());
+        return view('rawmaterial.listwarehouserm')->with(['warehouserm'=>RM::where('status','1')->get()]);
+    }
+
     public function delete($id){
         try{
             $rm = RM::find($id);
@@ -111,6 +117,7 @@ class RMcontroller extends Controller
     public function approve($id){
         $rm = RM::find($id);
         $rm->status = '1';
+        $rm->reason_reject = null;
         $rm->save();
 
         //generate itemcode
@@ -146,21 +153,43 @@ class RMcontroller extends Controller
                     //update raw material
                     $rawmt = RM::find($id);
                     $rawmt->itemproduct_id = $items->id;
-                    
-                    if($rawmt->warehouse_rm_id == null)
-                    {
-                        $wrm = new WarehouseRM();
-                        $wrm->save();
-                        $lastIDwrm = $wrm->id;
 
-                        $rawmt->warehouse_rm_id = $lastIDwrm;
-                        $rawmt->save();
-                    }
-                    else
+                    ////////update qty
+                    $cek = WarehouseRM::where('itemproduct_id', $items->id)->get();
+                    if(count($cek) > 0)
                     {
-                        $rawmt->save();
+                        //udah ada
+                        foreach($cek as $c)
+                        {
+                            $w = WarehouseRM::find($c->id);
+                            // $w->itemproduct_id = $items->id;
+                            $w->qty = $w->qty+$rawmt->pcs;
+                            $w->save();
+                        }
+                        
                     }
+                    else{
+                        
+                            $w = new WarehouseRM();
+                            $w->itemproduct_id = $items->id;
+                            $w->qty = $rawmt->pcs;
+                            $w->save();
+                        
+                    }
+                    // if($rawmt->warehouse_rm_id == null)
+                    // {
+                    //     $wrm = new WarehouseRM();
+                    //     $wrm->save();
+                    //     $lastIDwrm = $wrm->id;
 
+                    //     $rawmt->warehouse_rm_id = $lastIDwrm;
+                    //     $rawmt->save();
+                    // }
+                    // else
+                    // {
+                    //     $rawmt->save();
+                    // }
+                    $rawmt->save();
                     return redirect()->route('rm.list')->with('success', 'Data has been approve. Item Product '.$productcode);
                 }
             }
@@ -178,20 +207,28 @@ class RMcontroller extends Controller
                 $rawm->itemproduct_id = $insertedId;
                 // $rawm->save();
 
-                if($rawm->warehouse_rm_id == null)
+                $cek = WarehouseRM::where('itemproduct_id', $insertedId)->get();
+                if(count($cek) > 0)
                 {
-                    $wrm = new WarehouseRM();
-                    $wrm->save();
-                    $lastIDwrm = $wrm->id;
-
-                    $rawm->warehouse_rm_id = $lastIDwrm;
-                    $rawm->save();
+                    //udah ada
+                    foreach($cek as $c)
+                    {
+                        $w = WarehouseRM::find($c->id);
+                        // $w->itemproduct_id = $insertedId;
+                        $w->qty = $w->qty+$rawm->pcs;
+                        $w->save();
+                    }
+                    
                 }
-                else
-                {
-                    $rawm->save();
+                else{
+                   
+                        $w = new WarehouseRM();
+                        $w->itemproduct_id = $insertedId;
+                        $w->qty = $rawm->pcs;
+                        $w->save();
                 }
 
+                $rawm->save();
                 return redirect()->route('rm.list')->with('success', 'Data has been approve. Item Product '.$productcode);
             }
         }
@@ -207,58 +244,58 @@ class RMcontroller extends Controller
             //update raw material
             $rawma = RM::find($id);
             $rawma->itemproduct_id = $inserted_id;
-            // $rawma->save();
+            
 
-            if($rawma->warehouse_rm_id == null)
+            $cek = WarehouseRM::where('itemproduct_id', $inserted_id)->get();
+            
+            if(count($cek) > 0)
             {
-                $wrm = new WarehouseRM();
-                $wrm->save();
-                $lastIDwrm = $wrm->id;
-
-                $rawma->warehouse_rm_id = $lastIDwrm;
-                $rawma->save();
-
+            //     //udah ada
+                foreach($cek as $c)
+                {
+                    $w = WarehouseRM::find($c->id);
+                    $w->qty = $w->qty + $rawma->pcs;
+                    $w->save();
+                }
+                
             }
-            else
-            {
-                $rawma->save();
+            else{
+           
+                    $w = new WarehouseRM();
+                    $w->itemproduct_id = $inserted_id;
+                    $w->qty = $rawma->pcs;
+                    $w->save();
+           
             }
+
+            $rawma->save();
 
             return redirect()->route('rm.list')->with('success', 'Data has been approve. Item Product '.$productcode);
         }
     }
 
-    public function reject($id){
-        $rm = RM::find($id);
+    // public function reject($id){
+    //     $rm = RM::find($id);
 
-        if($rm->warehouse_rm_id == null)
-        {
-            $rm->status = '2';
-            $rm->itemproduct_id = null;
-            $rm->warehouse_rm_id = null;
-            $rm->save();
-            // $wrm->delete();
-        }
-        else
-        {
-            $wrm = WarehouseRM::find($rm->warehouse_rm_id);
+    //     if($rm->itemproduct_id == null)
+    //     {
+    //         $rm->status = '2';
+    //         $rm->reason_reject = 
+    //         $rm->save();
+    //     }
+    //     else
+    //     {
+            
+    //         $wrm = WarehouseRM::find($rm->warehouse_rm_id);
+    //         $wrm->qty = $wrm->qty - $rm->pcs;
+    //         $wrm->save();
 
-            $rm->status = '2';
-            $rm->itemproduct_id = null;
-            $rm->warehouse_rm_id = null;
-            $rm->save();
-            $wrm->delete();
-        }
-        // $wrm = WarehouseRM::find($rm->warehouse_rm_id);
-
-        // $rm->status = '2';
-        // $rm->itemproduct_id = null;
-        // $rm->warehouse_rm_id = null;
-        // $rm->save();
-        // $wrm->delete();
-
-        return redirect()->route('rm.list')->with('success', 'Data has been send reject.');
-    }
+    //         $rm->status = '2';
+    //         $rm->save();
+    //     }
+        
+    //     return redirect()->route('rm.list')->with('success', 'Data has been send reject.');
+    // }
 
     public function get_reason($id){
         // $rm =RM::findOrFail($id);
@@ -270,26 +307,28 @@ class RMcontroller extends Controller
    
         $rm = RM::find($id);
 
-        if($rm->warehouse_rm_id == null)
+
+        if($rm->itemproduct_id == null)
         {
             $rm->status = '2';
-            $rm->itemproduct_id = null;
-            $rm->warehouse_rm_id = null;
             $rm->reason_reject = $request->get('reason_reject');
             $rm->save();
-            // $wrm->delete();
         }
         else
         {
-            $wrm = WarehouseRM::find($rm->warehouse_rm_id);
+            $wrm = WarehouseRM::where('itemproduct_id',$rm->itemproduct_id)->get();
+            foreach($wrm as $w){
+                $up = WarehouseRM::where('id', $w->id)->update(['qty' => $w->qty - $rm->pcs]);
+                // dd($w);
+            }
+            
 
-            $rm->status = '2';
             $rm->itemproduct_id = null;
-            $rm->warehouse_rm_id = null;
             $rm->reason_reject = $request->get('reason_reject');
+            $rm->status = '2';
             $rm->save();
-            $wrm->delete();
         }
+
         return response()->json([
             'success'=>'Data has been reject.'
         ]);

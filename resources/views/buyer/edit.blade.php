@@ -32,7 +32,7 @@
     $addressbuyer = 'Address ';
     $country = 'Country';
     $province = 'Province';
-    $city = 'City';
+    $cities = 'City';
     $phone = 'Phone';
     $email = 'Email';
     $postalcode = 'Postal Code';
@@ -40,6 +40,7 @@
     $fax = 'Fax';
     $save = 'Save';
     $cancel = 'Cancel';
+    $update='Update';
 ?>
 
 <div class="page">
@@ -82,29 +83,32 @@
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label class="col-md-3 form-control-label text-left">{{$country}}</label>
+                                            <label class="col-md-3 form-control-label text-left">{{ $country }}</label>
                                             <div class="col-md-9">
-                                                <select class="form-control" id="country_id" name="country_id" required onchange="get_province()">
+                                                <select class="form-control" id="country_id" name="country_id"  onchange="get_province()">
+                                                    <option value=""> </option>
                                                     @foreach($countries as $country)
-                                                        <option value="{{ $country->id }}" {{$country->id == $buyer->countryid ?'selected':''}}> {{ $country->name }} </option>
+                                                        <option value="{{ $country->id }}"> {{ $country->name }} </option>
                                                     @endforeach
                                                 </select>
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label class="col-md-3 form-control-label text-left">{{ $province}}</label>
+                                            <label class="col-md-3 form-control-label text-left">{{ $province }}</label>
                                             <div class="col-md-9">
-                                                <select class="form-control" id="province_id" name="province_id" required onchange="get_city()">
+                                                <select class="form-control" id="province_id" name="province_id"  onchange="get_city()">
+                                                    <option value=""> </option>
                                                 @foreach($provinces as $prov)
-                                                    <option value="{{ $prov->id }}" {{$prov->id == $buyer->provid ?'selected':''}}> {{ $prov->name }}</option>
+                                                    <option value="{{ $prov->id }}"> {{ $prov->name }}</option>
                                                 @endforeach
                                                 </select>
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label class="col-md-3 form-control-label text-left">{{ $cities}}</label>
+                                            <label class="col-md-3 form-control-label text-left">{{ $cities }}</label>
                                             <div class="col-md-9">
-                                                <select class="form-control" id="city_id" name="city_id" required>
+                                                <select class="form-control" id="city_id" name="city_id" >
+                                                    <option value=""> </option>
                                                     @foreach($city as $cty)
                                                         <option value="{{ $cty->id }}" {{$cty->id == $buyer->cityid ?'selected':''}}> {{ $cty->name }}</option>
                                                     @endforeach
@@ -122,7 +126,7 @@
                                         <div class="form-group row">
                                             <label class="col-md-3 form-control-label">{{ $phone}}</label>
                                             <div class="col-md-9">
-                                            <input type="text" class="form-control" id="phone" name="phone" value="{{ $buyer->phone }}">
+                                            <input type="text" class="form-control" id="phone" name="phone" onkeypress="return onlyNumberKey(event)" value="{{ $buyer->phone }}">
                                             </div>
                                         </div>
                                         <div class="form-group row">
@@ -147,7 +151,6 @@
                                             <label class="col-md-3 form-control-label">{{ $bankaccount}}</label>
                                             <div class="col-md-9">
                                                 <select class="form-control" id="bankaccount_id" name="bankaccount_id">
-                                                <option value="{{ $cty->id }}" {{$cty->id == $buyer->cityid ?'selected':''}}> {{ $cty->name }}</option>
                                                     <option value=""> </option>
                                                     @foreach($bankaccounts as $ba)
                                                         <option value="{{ $ba->id }}" {{$ba->id == $buyer->bank_accountid ?'selected':''}}> {{ $ba->accountname }} - {{ $ba->accountno}} </option>
@@ -178,6 +181,12 @@
 
 <script>
     
+    function onlyNumberKey(evt) { 
+          // Only ASCII charactar in that range allowed 
+        if ((event.which != 46 || $(this).val().indexOf('.') != -1) && (event.which < 48 || event.which > 57)) {
+                event.preventDefault();
+        }
+    } 
 
     function get_province(){
         var countryid = document.getElementById('country_id').value;

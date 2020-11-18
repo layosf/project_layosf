@@ -26,7 +26,7 @@
 
                                     <li><a class="nav-link {{ request()->is('po/orderdetail') ? 'active' : null }}" href="{{ url('po/orderdetail') }}" >Order Detail</a></li>
 
-                                    <li><a class="nav-link {{ request()->is('po/requirement') ? 'active' : null }}" href="{{ url('po/requirement') }}" >Order Requirement</a></li>
+                                    <!-- <li><a class="nav-link {{ request()->is('po/requirement') ? 'active' : null }}" href="{{ url('po/requirement') }}" >Order Requirement</a></li> -->
 
                                    
                                     <li><a class="nav-link active" data-toggle="tab" href="#top" aria-controls="top" role="tab">Top</a></li>
@@ -87,20 +87,20 @@
                                                     <div class="form-group row">
                                                         <label class="col-md-3 form-control-label text-left">Delivery Size/mm</label>
                                                         <div class="col-md-8">
-                                                            <input type="text" class="form-control form-control-sm" id="delivery_size" name="delivery_size" required value="{{ $tops->delivery_size }}">
+                                                            <input type="text" class=" form-control form-control-sm" onkeypress="return onlyNumberKey(event)" id="delivery_size" name="delivery_size" required value="{{ $tops->delivery_size }}">
                                                         </div>
                                                     </div>
                                                     <div class="form-group row">
                                                         <label class="col-md-3 form-control-label text-left">Settlement Size/mm</label>
                                                         <div class="col-md-8">
-                                                            <input type="text" class="form-control form-control-sm" id="settlement_size" name="settlement_size" value="{{ $tops->settlement_size }}">
+                                                            <input type="text" class=" form-control form-control-sm" onkeypress="return onlyNumberKey(event)" id="settlement_size" name="settlement_size" value="{{ $tops->settlement_size }}">
                                                         </div>
                                                     </div>
 
                                                     <div class="form-group row">
                                                         <label class="col-md-3 form-control-label text-left">Feeding Quantity/Piece</label>
                                                         <div class="col-md-8">
-                                                            <input type="text" class="form-control form-control-sm" id="feeding_quantity" name="feeding_quantity" required value="{{ $tops->feeding_quantity }}">
+                                                            <input type="text" class=" form-control form-control-sm" onkeypress="return onlyNumberKey(event)" id="feeding_quantity" name="feeding_quantity" required value="{{ $tops->feeding_quantity }}">
                                                         </div>
                                                     </div>
                                                     
@@ -165,6 +165,20 @@
 
 <script>
 
+    function onlyNumberKey(evt) { 
+          // Only ASCII charactar in that range allowed 
+        if ((event.which != 46 || $(this).val().indexOf('.') != -1) && (event.which < 48 || event.which > 57)) {
+                event.preventDefault();
+        }
+    } 
+
+
+    $(".allownumericwithoutdecimal").on("keypress keyup blur",function (event) {    
+        $(this).val($(this).val().replace(/[^\d].+/, ""));
+        if ((event.which < 48 || event.which > 57)) {
+            event.preventDefault();
+        }
+    });
     function get_info(){
         var po_id = document.getElementById('ordernumber_id').value;
 
