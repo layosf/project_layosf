@@ -8,7 +8,7 @@ class Supplier extends Model
 {
     //
     protected $table = 'supplier';
-    protected $fillable = ['id', 'name', 'address', 'country_id', 'province_id','city_id','phone', 'email'];
+    protected $fillable = ['id', 'name', 'address', 'country_id', 'province_id','city_id','phone', 'email', 'contact_person'];
 
 
     public function city()

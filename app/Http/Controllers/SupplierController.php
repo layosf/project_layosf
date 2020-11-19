@@ -35,6 +35,7 @@ class SupplierController extends Controller
         try{
             $s = Supplier::find($id);
             $s->name = $request->get('name');
+            $s->contact_person = $request->get('contact_person');
             $s->address = $request->get('address');
             $s->country_id = $request->get('country_id');
             $s->province_id = $request->get('province_id');
@@ -55,6 +56,7 @@ class SupplierController extends Controller
         try{
             $s = new Supplier();
             $s->name = $request->get('name');
+            $s->contact_person = $request->get('contact_person');
             $s->address = $request->get('address');
             $s->country_id = $request->get('country_id');
             $s->province_id = $request->get('province_id');

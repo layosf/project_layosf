@@ -241,7 +241,6 @@
                             <div class="dropdown-menu-header">
                                 <h6> Hello, {{ Auth::user()->username }} </h6>
                                 <hr>
-                               
                                 <a href="{{ route('logout') }}"  onclick="event.preventDefault(); document.getElementById('logout-frm').submit();">
                                     <i class="icon fa-power-off"> Logout  </i>
                                 </a>
@@ -403,7 +402,7 @@
                         
                         <li class="site-menu-item has-sub">
                             <a class="animsition-link" href="{{ route('agreement.index') }}">
-                                <i class="site-menu-icon wb-shopping-cart" aria-hidden="true"></i>
+                                <i class="site-menu-icon icon fa-envelope" aria-hidden="true"></i>
                                 <span class="site-menu-title"> Agreement Purchase Order</span>
                             </a>
                         </li>
@@ -413,9 +412,10 @@
                                 <span class="site-menu-title"> Arrival Raw Material</span>
                             </a>
                         </li>
+                        
                         <li class="site-menu-item has-sub">
                             <a class="animsition-link" href="{{ route('rm.warehouserm') }}">
-                                <i class="site-menu-icon wb-library" aria-hidden="true"></i>
+                                <i class="site-menu-icon icon fa-hdd-o" aria-hidden="true"></i>
                                 <span class="site-menu-title"> Warehouse Raw Material</span>
                             </a>
                         </li>

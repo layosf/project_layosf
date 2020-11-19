@@ -154,6 +154,10 @@ Route::prefix('agreement')->name('agreement.')->middleware(['auth'])->group(func
     Route::get('/', 'AgreementController@index')->name('index');
     Route::post('/store', 'AgreementController@store')->name('store');
     Route::get('/get_infosupplier/{id}', 'AgreementController@get_infosupplier');
+    Route::get('/list', 'AgreementController@list')->name('list');
+    Route::get('/edit/{id}', 'AgreementController@edit')->name('edit');
+    Route::post('/update/{id}', 'AgreementController@update');
+    Route::get('/delete/{id}', 'AgreementController@delete');
 });
 
 //Arrival Raw Material

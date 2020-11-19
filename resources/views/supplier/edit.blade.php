@@ -71,6 +71,12 @@
                                             </div>
                                         </div>
                                         <div class="form-group row">
+                                            <label class="col-md-3 form-control-label text-left">Contact Person</label>
+                                            <div class="col-md-9">
+                                            <input type="text" class="form-control" id="contact_person" name="contact_person" value="{{ $suplr->contact_person }}">
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
                                             <label class="col-md-3 form-control-label text-left">{{$addressupplier}}</label>
                                             <div class="col-md-9">
                                                 <textarea class="form-control" name="address" id="address" rows="5" required> {{ $suplr->address }} </textarea>

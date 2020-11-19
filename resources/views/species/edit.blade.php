@@ -23,6 +23,7 @@
     $dashboard = 'Home';
     $namespecies = 'Name Species';
     $acode = 'Auto Code';
+    $update = 'Update';
    
     $save = 'Save';
     $cancel = 'Cancel';

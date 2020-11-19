@@ -59,6 +59,7 @@
                 <thead>
                     <tr>
                         <th>{{$name}}</th>
+                        <th> Contact Person</th>
                         <th>{{$address}}</th>
                         <th>{{$country}}</th>
                         <th>{{$province}}</th>
@@ -73,6 +74,7 @@
                     @foreach($suppliers as $s)
                     <tr>
                         <td>{{ $s->name }}</td>
+                        <td> {{ $s->contact_person }}</td>
                         <td>{{ $s->address}}</td>
                         <td> {{ implode(',', $s->country()->get()->pluck('name')->toArray()) }}</td>
                         <td> {{ implode(',', $s->province()->get()->pluck('name')->toArray()) }}</td>
@@ -83,9 +85,7 @@
                             <a href="{{ route('master.supplier.edit', $s->id) }}" class='float-center' title="Edit">    
                                 <i class="icon wb-edit" aria-hidden="true"> </i>
                             </a>
-                            
                             &nbsp
-                            
                             <a class="demo1" title="Delete" data-id="{{ $s->id }}">    
                                 <i class="icon wb-trash" aria-hidden="true"> </i>
                             </a>
@@ -116,33 +116,7 @@
         })
         .then((willDelete) => {
             if (willDelete) {
-                // $.ajax({
-                //         type : "GET",
-                //         url : "{{ url('prm/invoice/delete')}}" + '/' + id,
-                //         data : {id:id},
-                //         dataType : "json",
-                //         success: function (data)
-                //         {
-                //             if(data.warning)
-                //             {
-                //                 console.log('not')
-                //                 swal("Cancelled", "Cant delete data ready in use", "error");
-                //                 location.reload();
-                //             }
-                //             else
-                //             {
-                //                 console.log('delete')
-                //                 swal("Done!", "Your data has been delete.", "success");
-                //                 location.reload();
-                //                 // swal("Poof! Your imaginary file has been deleted!", {
-                //                 //     icon: "success",
-                //                 // });
-                //             }
-                //         }   
-                // });
                 window.location = "/master/supplier/delete/"+id;
-                
-                
             } else {
                 swal("Your file is safe!");
             }
