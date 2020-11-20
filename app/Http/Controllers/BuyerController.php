@@ -23,7 +23,7 @@ class BuyerController extends Controller
                 ->leftJoin('country', 'prov.country_id', '=', 'country.id')
                 ->leftJoin('bank_account', 'buyer.bankaccount_id', '=', 'bank_account.id')
                 ->leftJoin('bank', 'bank_account.bank_id', '=', 'bank.id')
-                ->select('buyer.id','buyer.name', 'buyer.address','buyer.phone', 'buyer.fax', 'buyer.email', 'buyer.postal_code', 'country.name as countryname', 'prov.name as provname', 'city.name as cityname', 'bank_account.accountname', 'bank_account.accountno', 'bank.namebank')
+                ->select('buyer.id','buyer.name', 'buyer.code','buyer.address','buyer.phone', 'buyer.fax', 'buyer.email', 'buyer.postal_code', 'country.name as countryname', 'prov.name as provname', 'city.name as cityname', 'bank_account.accountname', 'bank_account.accountno', 'bank.namebank')
                 ->get();
         
 
@@ -34,6 +34,7 @@ class BuyerController extends Controller
         try{
             $b = new Buyer();
             $b->name = $request->get('name');
+            $b->code = $request->get('code');
             $b->address = $request->get('address');
             $b->city_id = $request->get('city_id');
             $b->phone = $request->get('phone');
@@ -56,7 +57,7 @@ class BuyerController extends Controller
                 ->leftJoin('country', 'prov.country_id', '=', 'country.id')
                 ->leftJoin('bank_account', 'buyer.bankaccount_id', '=', 'bank_account.id')
                 ->leftJoin('bank', 'bank_account.bank_id', '=', 'bank.id')
-                ->select('buyer.id as buyer_id','buyer.name', 'buyer.address','buyer.phone', 'buyer.fax', 'buyer.email', 'buyer.postal_code', 'country.id as countryid','country.name as countryname', 'prov.id as provid','prov.name as provname', 'city.id as cityid','city.name as cityname', 'bank_account.id as bank_accountid','bank_account.accountname', 'bank_account.accountno', 'bank.namebank')
+                ->select('buyer.id as buyer_id','buyer.code','buyer.name', 'buyer.address','buyer.phone', 'buyer.fax', 'buyer.email', 'buyer.postal_code', 'country.id as countryid','country.name as countryname', 'prov.id as provid','prov.name as provname', 'city.id as cityid','city.name as cityname', 'bank_account.id as bank_accountid','bank_account.accountname', 'bank_account.accountno', 'bank.namebank')
                 ->where('buyer.id',$id)
                 ->get()[0];
 
@@ -67,6 +68,7 @@ class BuyerController extends Controller
         try{
             $b = Buyer::find($id);
             $b->name = $request->get('name');
+            $b->code = $request->get('code');
             $b->address = $request->get('address');
             $b->city_id = $request->get('city_id');
             $b->phone = $request->get('phone');

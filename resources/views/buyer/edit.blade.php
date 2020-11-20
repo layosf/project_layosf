@@ -73,7 +73,13 @@
                                         <div class="form-group row">
                                             <label class="col-md-3 form-control-label text-left">{{ $namebuyer }}</label>
                                             <div class="col-md-9">
-                                                <input type="text" class="form-control" id="name" name="name" required value="{{ $buyer->name }}">
+                                                <input type="text" class="form-control form-control-sm" id="name" name="name" required value="{{ $buyer->name }}">
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-md-3 form-control-label text-left">Code</label>
+                                            <div class="col-md-9">
+                                                <input type="text" class="form-control form-control-sm" id="code" name="code" required value="{{ $buyer->code }}">
                                             </div>
                                         </div>
                                         <div class="form-group row">
@@ -85,7 +91,7 @@
                                         <div class="form-group row">
                                             <label class="col-md-3 form-control-label text-left">{{ $country }}</label>
                                             <div class="col-md-9">
-                                                <select class="form-control" id="country_id" name="country_id"  onchange="get_province()">
+                                                <select class="form-control form-control-sm" id="country_id" name="country_id"  onchange="get_province()">
                                                     <option value=""> </option>
                                                     @foreach($countries as $country)
                                                         <option value="{{ $country->id }}"> {{ $country->name }} </option>
@@ -96,7 +102,7 @@
                                         <div class="form-group row">
                                             <label class="col-md-3 form-control-label text-left">{{ $province }}</label>
                                             <div class="col-md-9">
-                                                <select class="form-control" id="province_id" name="province_id"  onchange="get_city()">
+                                                <select class="form-control form-control-sm" id="province_id" name="province_id"  onchange="get_city()">
                                                     <option value=""> </option>
                                                 @foreach($provinces as $prov)
                                                     <option value="{{ $prov->id }}"> {{ $prov->name }}</option>
@@ -107,7 +113,7 @@
                                         <div class="form-group row">
                                             <label class="col-md-3 form-control-label text-left">{{ $cities }}</label>
                                             <div class="col-md-9">
-                                                <select class="form-control" id="city_id" name="city_id" >
+                                                <select class="form-control form-control-sm" id="city_id" name="city_id" >
                                                     <option value=""> </option>
                                                     @foreach($city as $cty)
                                                         <option value="{{ $cty->id }}" {{$cty->id == $buyer->cityid ?'selected':''}}> {{ $cty->name }}</option>
@@ -126,31 +132,31 @@
                                         <div class="form-group row">
                                             <label class="col-md-3 form-control-label">{{ $phone}}</label>
                                             <div class="col-md-9">
-                                            <input type="text" class="form-control" id="phone" name="phone" onkeypress="return onlyNumberKey(event)" value="{{ $buyer->phone }}">
+                                            <input type="text" class="form-control form-control-sm" id="phone" name="phone" onkeypress="return onlyNumberKey(event)" value="{{ $buyer->phone }}">
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <label class="col-md-3 form-control-label">{{ $fax}}</label>
                                             <div class="col-md-9">
-                                            <input type="text" class="form-control" id="fax" name="fax" value="{{ $buyer->fax }}">
+                                            <input type="text" class="form-control form-control-sm" id="fax" name="fax" value="{{ $buyer->fax }}">
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <label class="col-md-3 form-control-label">{{ $email}}</label>
                                             <div class="col-md-9">
-                                            <input type="text" class="form-control" id="email" name="email" value="{{ $buyer->email }}">
+                                            <input type="text" class="form-control form-control-sm" id="email" name="email" value="{{ $buyer->email }}">
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <label class="col-md-3 form-control-label">{{ $postalcode}}</label>
                                             <div class="col-md-9">
-                                            <input type="text" class="form-control" id="postal_code" name="postal_code" value="{{ $buyer->postal_code }}">
+                                            <input type="text" class="form-control form-control-sm" id="postal_code" name="postal_code" value="{{ $buyer->postal_code }}">
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <label class="col-md-3 form-control-label">{{ $bankaccount}}</label>
                                             <div class="col-md-9">
-                                                <select class="form-control" id="bankaccount_id" name="bankaccount_id">
+                                                <select class="form-control form-control-sm" id="bankaccount_id" name="bankaccount_id">
                                                     <option value=""> </option>
                                                     @foreach($bankaccounts as $ba)
                                                         <option value="{{ $ba->id }}" {{$ba->id == $buyer->bank_accountid ?'selected':''}}> {{ $ba->accountname }} - {{ $ba->accountno}} </option>

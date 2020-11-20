@@ -1,6 +1,5 @@
 @extends('layoutapp.mainmenu')
 @section('title','Agreement')
-
 <div class="page">
     <div class="page-header">
         <h4 class="page-title">List Agreement</h4>
@@ -59,12 +58,16 @@
                             <td> {{ $l->cert_code }} </td>
                             
                             <td> 
-                                <a href="{{ route('agreement.edit', $l->id) }}" class='float-center' data-placement="top" data-toggle="tooltip" data-original-title="Edit">    
+                                <a href="{{ route('agreement.edit', $l->id) }}" class='float-center' data-placement="top" data-toggle="tooltip" data-original-title="Edit"> 
                                     <i class="icon wb-edit" aria-hidden="true"> </i>
                                 </a>
                                 &nbsp
                                 <a class="demo1" data-placement="top" data-toggle="tooltip" data-original-title="Delete" data-id="{{ $l->id }}">    
                                     <i class="icon wb-trash" aria-hidden="true"> </i>
+                                </a>
+                                &nbsp
+                                <a href="{{ route('agreement.print', $l->id) }}" class='float-center' data-placement="top" data-toggle="tooltip" data-original-title="Print" target="_blank">    
+                                    <i class="icon fa-file-pdf-o" aria-hidden="true"> </i>
                                 </a>
                             </td>
                             <td> {{ $l->qualitynote }} </td>

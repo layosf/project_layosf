@@ -70,7 +70,13 @@
                                     <div class="form-group row">
                                         <label class="col-md-3 form-control-label text-left">{{ $namebuyer }}</label>
                                         <div class="col-md-9">
-                                            <input type="text" class="form-control" id="name" name="name" required>
+                                            <input type="text" class="form-control form-control-sm" id="name" name="name" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-md-3 form-control-label text-left">Code</label>
+                                        <div class="col-md-9">
+                                            <input type="text" class="form-control form-control-sm" id="code" name="code" required>
                                         </div>
                                     </div>
                                     <div class="form-group row">
@@ -82,7 +88,7 @@
                                     <div class="form-group row">
                                         <label class="col-md-3 form-control-label text-left">{{ $country }}</label>
                                         <div class="col-md-9">
-                                            <select class="form-control" id="country_id" name="country_id"  onchange="get_province()">
+                                            <select class="form-control form-control-sm" id="country_id" name="country_id"  onchange="get_province()">
                                                 @foreach($countries as $country)
                                                 <option value="{{ $country->id }}"> {{ $country->name }}</option>
                                                 @endforeach
@@ -92,7 +98,7 @@
                                     <div class="form-group row">
                                         <label class="col-md-3 form-control-label text-left">{{ $province }}</label>
                                         <div class="col-md-9">
-                                            <select class="form-control" id="province_id" name="province_id"  onchange="get_city()">
+                                            <select class="form-control form-control-sm" id="province_id" name="province_id"  onchange="get_city()">
                                                 <option value=""> </option>
                                             </select>
                                         </div>
@@ -100,7 +106,7 @@
                                     <div class="form-group row">
                                         <label class="col-md-3 form-control-label text-left">{{ $city }}</label>
                                         <div class="col-md-9">
-                                            <select class="form-control" id="city_id" name="city_id" >
+                                            <select class="form-control form-control-sm" id="city_id" name="city_id" >
                                                 <option value=""> </option>
                                             </select>
                                         </div>
@@ -116,31 +122,31 @@
                                     <div class="form-group row">
                                         <label class="col-md-3 form-control-label">{{ $phone }}</label>
                                         <div class="col-md-9">
-                                            <input type="text" class="form-control" id="phone" name="phone" onkeypress="return onlyNumberKey(event)" >
+                                            <input type="text" class="form-control form-control-sm" id="phone" name="phone" onkeypress="return onlyNumberKey(event)" >
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <label class="col-md-3 form-control-label">{{ $fax }}</label>
                                         <div class="col-md-9">
-                                        <input type="text" class="form-control" id="fax" name="fax">
+                                        <input type="text" class="form-control form-control-sm" id="fax" name="fax">
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <label class="col-md-3 form-control-label">{{ $email }}</label>
                                         <div class="col-md-9">
-                                        <input type="text" class="form-control" id="email" name="email">
+                                        <input type="text" class="form-control form-control-sm" id="email" name="email">
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <label class="col-md-3 form-control-label">{{ $postalcode }}</label>
                                         <div class="col-md-9">
-                                            <input type="text" class="form-control" id="postal_code" name="postal_code">
+                                            <input type="text" class="form-control form-control-sm" id="postal_code" name="postal_code">
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <label class="col-md-3 form-control-label">{{ $bankaccount }}</label>
                                         <div class="col-md-9">
-                                            <select class="form-control" id="bankaccount_id" name="bankaccount_id">
+                                            <select class="form-control form-control-sm" id="bankaccount_id" name="bankaccount_id">
                                                 <option value=""> </option>
                                                 @foreach($bankaccounts as $ba)
                                                     <option value="{{ $ba->id }}"> {{ $ba->accountname }} - {{ $ba->accountno }} </option>

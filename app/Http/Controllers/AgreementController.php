@@ -15,6 +15,7 @@ use App\Currency;
 use App\Certificate;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use PDF;
 
 class AgreementController extends Controller
 {
@@ -137,6 +138,33 @@ class AgreementController extends Controller
         }
     }
 
+    public function print($id){
+        $agreement = Agreement::find($id);
+        $pihak = DB::table('agreement as a')
+                ->leftJoin('supplier as s', 'a.supplier_id', '=', 's.id')
+                ->leftJoin('company as c', 'a.beneficiary_id', '=', 'c.id')
+                ->select('s.name as suppliername', 's.contact_person as supplier_cp','s.address as supplier_address','c.name as beneficiaryname', 'c.contact_person as beneficiary_cp', 'c.address as beneficiaryaddress')
+                ->where('a.id', $id)
+                ->get();
+        $detail = DB::table('agreement as a')
+                ->leftJoin('species as b', 'a.species_id', '=', 'b.id')
+                ->leftJoin('category as c', 'a.category_id', '=','c.id')
+                ->leftJoin('supplier as d', 'a.supplier_id', '=', 'd.id')
+                ->leftJoin('bank_account as e', 'd.bankaccount_id', '=', 'e.id')
+                ->leftJoin('bank as f', 'e.bank_id', '=', 'f.id')
+                ->leftJoin('tax', 'a.taxppn_id', '=', 'tax.id')
+                ->leftJoin('tax as g', 'a.taxpph_id', '=', 'g.id')
+                ->leftJoin('currency as h', 'a.currency_id', '=', 'h.id')
+                ->leftJoin('certificate as i', 'a.certificate_id', '=', 'i.id')
+                ->leftJoin('company as j', 'a.beneficiary_id', '=', 'j.id')
+                ->select('a.id','a.code','a.startcontract', 'a.expiredcontract', 'a.vol_m3', 'a.paymentnote', 'a.transport', 'a.volumenote', 'a.qualitynote', 'a.measurement', 'a.document', 'a.status', 'b.name as speciesname', 'c.name as categoryname', 'd.name as suppliername', 'd.address as supplieraddress', 'd.contact_person as suppliercp','e.accountname', 'e.accountno', 'f.namebank', 'tax.name as taxppn', 'g.name as taxpph', 'h.code as currencycode', 'i.cert_code', 'i.cert_name','j.name as beneficiaryname', 'j.contact_person as beneficiary_cp')
+                ->where('a.id', $id)
+                ->get();
+        // dd($detail);
+
+        $pdf = PDF::loadView('agreement-supplier.report', compact('agreement', 'pihak', 'detail'));
+        return $pdf->stream('Agreement '.$id.'.pdf');
+    }
     public function get_infosupplier($id){
         
         $get = DB::table('supplier as s')
