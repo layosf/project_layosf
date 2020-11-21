@@ -73,7 +73,7 @@
                                                     <div class="col-md-8">
                                                         <select class="form-control form-control-sm" id="buyer_id" name="buyer_id" required>
                                                             @foreach($buyers as $buyer)
-                                                                <option value="{{ $buyer->id }}"> {{ $buyer->name }} </option>
+                                                                <option value="{{ $buyer->id }}"> {{ $buyer->name }} - {{ $buyer->code }} </option>
                                                             @endforeach
                                                         </select>
                                                     </div>

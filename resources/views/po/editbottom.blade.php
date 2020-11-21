@@ -43,7 +43,7 @@
                                 </ul>
                                 <div class="tab-content pt-20">
 
-                                    <div class="tab-pane active" id="top" role="tabpanel">
+                                    <div class="tab-pane active" id="bottom" role="tabpanel">
                                         <form action="{{ url('po/bottom/update', ['bots'=>$bots->id]) }}" method="post" class="form-horizontal" id="exampleConstraintsFormTypes" autocomplete="off">
                                         @csrf
                                             <div class="col-lg-12">

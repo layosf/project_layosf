@@ -152,6 +152,13 @@ Route::prefix('po')->name('po.')->middleware(['auth'])->group(function(){
 //perjanjian jual beli supplier
 Route::prefix('agreement')->name('agreement.')->middleware(['auth'])->group(function(){
     Route::get('/', 'AgreementController@index')->name('index');
+    Route::get('/detail', 'AgreementController@index')->name('detail');
+
+    Route::post('/detail/store', 'AgreementController@store_detail')->name('detail.store');
+    Route::post('/detail/update/{id}', 'AgreementController@update_detail')->name('detail.update');
+    Route::get('/detail/delete/{id}', 'AgreementController@delete_detail')->name('detail.delete');
+    Route::get('/detail/edit/{id}', 'AgreementController@edit_detail')->name('detail.edit');
+
     Route::post('/store', 'AgreementController@store')->name('store');
     Route::get('/get_infosupplier/{id}', 'AgreementController@get_infosupplier');
     Route::get('/list', 'AgreementController@list')->name('list');
