@@ -44,6 +44,7 @@
                                 <th>Invoice Size</th>
                                 <th>Phisic Size</th>
                                 <th>Item Product</th>
+                                <th>To Warehouse</th>
                                 <th>Reason Reject</th>
                             </tr>
                         </thead>
@@ -80,7 +81,29 @@
                                     <td align="center">
                                         @if($rm->approval_to == Auth::user()->id && $rm->status == '0' )
                                             <a class="approve" title="Approve" data-id="{{$rm->id}}"> <i class="icon fa-check"> </i> </a>
-                                        
+                                            <a class="reasonreject" title="Reject" data-target="#fieldreason" data-toggle="modal" data-id="{{ $rm->id }}"> <i class="icon fa-times"> </i> </a>
+
+                                            <div id="fieldreason" class="modal fade" aria-hidden="true" aria-labelledby="fieldreason" role="dialog" tabindex="-1">
+                                                <div class="modal-dialog modal-simple modal-center">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                <span aria-hidden="true">×</span>
+                                                            </button>
+                                                            <h4 class="modal-title">Reason Reject</h4>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <input type="hidden" id="rm_id"  class="form-control" disabled>
+
+                                                            <textarea id="reason_reject" name="reason_reject" required class="form-control">  </textarea>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-sm btn-default" data-dismiss="modal">Close</button>
+                                                            <a class="savefieldreason" title="Save" onclick=savefieldreason()> <button type="submit" class="btn btn-sm btn-primary"> Save </button> </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         
                                         @elseif($rm->approval_to == Auth::user()->id && $rm->status == '1')
                                             <a class="reasonreject" title="Reject" data-target="#fieldreason" data-toggle="modal" data-id="{{ $rm->id }}"> <i class="icon fa-times"> </i> </a>
@@ -123,6 +146,7 @@
                                     <td>{{ implode(',', $rm->invDimention()->get()->pluck('thick')->toArray()) }} x {{ implode(',', $rm->invDimention()->get()->pluck('width')->toArray()) }} x {{ implode(',', $rm->invDimention()->get()->pluck('length')->toArray()) }}</td>
                                     <td>{{ implode(',', $rm->phisDimention()->get()->pluck('thick')->toArray()) }} x {{ implode(',', $rm->phisDimention()->get()->pluck('width')->toArray()) }} x {{ implode(',', $rm->phisDimention()->get()->pluck('length')->toArray()) }}</td>
                                     <td> {{ implode(',', $rm->itemProduct()->get()->pluck('productcode')->toArray()) }}</td>
+                                    <td> {{ implode(',', $rm->toWarehouse()->get()->pluck('code')->toArray()) }} </td>
                                     <td> {{ $rm->reason_reject }}</td>
                                 </tr>
                             @endforeach

@@ -132,6 +132,16 @@
                                     </select>
                                 </div>
                             </div>
+                            <div class="form-group row">
+                                <label class="col-md-3 form-control-label text-left">To Warehouse Location</label>
+                                <div class="col-md-8">
+                                    <select id="to_warehouse" name="to_warehouse" class="form-control form-control-sm">
+                                        @foreach($locations as $loc)
+                                            <option value="{{ $loc->id}}" {{ $loc->id == $rme->to_warehouse ? 'selected':''}}> {{ $loc->code }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="col-lg-12">

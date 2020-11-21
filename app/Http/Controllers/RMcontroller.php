@@ -12,11 +12,12 @@ use App\User;
 use App\Itemproduct;
 use App\Dimention;
 use App\WarehouseRM;
+use App\WarehouseLocation;
 
 class RMcontroller extends Controller
 {
     public function index(){
-        return view('rawmaterial.index')->with(['species'=>Species::all(), 'suppliers'=>Supplier::all(), 'category'=>Category::all(), 'grade'=>Grade::all(), 'users'=>User::all(), 'rawmaterials'=>RM::orderBy('created_at','desc')->get(), 'dimentions'=>Dimention::all() ]);
+        return view('rawmaterial.index')->with(['species'=>Species::all(), 'suppliers'=>Supplier::all(), 'category'=>Category::all(), 'grade'=>Grade::all(), 'users'=>User::all(), 'rawmaterials'=>RM::orderBy('created_at','desc')->get(), 'dimentions'=>Dimention::all(), 'locations'=>WarehouseLocation::all() ]);
     }
 
     public function list(){
@@ -41,6 +42,7 @@ class RMcontroller extends Controller
             
             $rm->status = '3';
             $rm->approval_to = $request->get('approval_to');
+            $rm->to_warehouse = $request->get('to_warehouse');
             $rm->save();
 
             return redirect()->route('rm.index')->with('success', 'Data has been saved.');
@@ -51,7 +53,7 @@ class RMcontroller extends Controller
     }
 
     public function edit($id){
-        return view('rawmaterial.edit')->with(['rme'=>RM::find($id), 'species'=>Species::all(), 'suppliers'=>Supplier::all(), 'category'=>Category::all(), 'grade'=>Grade::all(), 'users'=>User::all(), 'dimentions'=>Dimention::all() ]);
+        return view('rawmaterial.edit')->with(['rme'=>RM::find($id), 'species'=>Species::all(), 'suppliers'=>Supplier::all(), 'category'=>Category::all(), 'grade'=>Grade::all(), 'users'=>User::all(), 'dimentions'=>Dimention::all(), 'locations'=>WarehouseLocation::all() ]);
     }
 
     public function update($id, Request $request){
@@ -73,6 +75,7 @@ class RMcontroller extends Controller
             $rm->status = '3';
             $rm->itemproduct_id = null;
             $rm->approval_to = $request->get('approval_to');
+            $rm->to_warehouse = $request->get('to_warehouse');
             $rm->save();
 
             return redirect()->route('rm.index')->with('success', 'Data has been update.');
@@ -322,7 +325,6 @@ class RMcontroller extends Controller
                 // dd($w);
             }
             
-
             $rm->itemproduct_id = null;
             $rm->reason_reject = $request->get('reason_reject');
             $rm->status = '2';

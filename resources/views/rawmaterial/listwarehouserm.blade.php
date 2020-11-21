@@ -43,7 +43,7 @@
                                 
                                 <th>Invoice Size</th>
                                 <th>Phisic Size</th>
-                                
+                                <th>To Warehouse</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -82,7 +82,7 @@
                                    
                                     <td>{{ implode(',', $w->invDimention()->get()->pluck('thick')->toArray()) }} x {{ implode(',', $w->invDimention()->get()->pluck('width')->toArray()) }} x {{ implode(',', $w->invDimention()->get()->pluck('length')->toArray()) }}</td>
                                     <td>{{ implode(',', $w->phisDimention()->get()->pluck('thick')->toArray()) }} x {{ implode(',', $w->phisDimention()->get()->pluck('width')->toArray()) }} x {{ implode(',', $w->phisDimention()->get()->pluck('length')->toArray()) }}</td>
-                                    
+                                    <td> {{ implode(',', $w->toWarehouse()->get()->pluck('code')->toArray()) }} </td>
                                     
                                 </tr>
                             @endforeach
